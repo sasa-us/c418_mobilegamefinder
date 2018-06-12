@@ -12,4 +12,4 @@ A site that offers bored gamers assistance in choosing their next phone game, ut
 
 ### mentors
 - Collette
-- 
+- Scott
