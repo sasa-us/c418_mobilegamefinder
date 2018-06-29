@@ -2,6 +2,13 @@ import React from 'react';
 
 export default props => {
     return (
-        <h1>Wizard Page</h1>
+        <div>
+            <h1>Wizard Page</h1>
+            <div>Wizard Question</div>
+            <div>Wizard Question</div>
+            <div>Wizard Question</div>
+            <div>Wizard Question</div>
+            <div>Wizard Question</div>
+        </div>
     )
 }

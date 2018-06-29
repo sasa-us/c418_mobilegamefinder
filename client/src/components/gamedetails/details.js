@@ -1,10 +1,10 @@
 import React from 'react';
-import Details from './details';
 
 export default ()=> {
     return (
         <div>
-            <Details />
+            <h1>Game Details Page</h1>
+            <p>I has game detailssss</p>
         </div>
     )
 }

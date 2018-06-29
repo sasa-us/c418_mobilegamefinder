@@ -13,16 +13,16 @@ body {
     color: $react-color;
     font-family: quest;
     font-size: 30px;
-    padding: 50px;
+    padding: 10px;
     text-align: center;
 
     .logo {
-        height: 220px;
+        height: 50px;
         filter: drop-shadow($shadow);
     }
 
     h1 {
-        font-size: 5em;
+        font-size: 3em;
         letter-spacing: 5px;
         margin: 0.16em;
         text-shadow: $shadow;
@@ -31,4 +31,12 @@ body {
 
 .rotate {
     animation: spin 10s linear infinite;
+}
+.nav {
+    list-style-type: none;
+    padding: 0;
+}
+.nav li {
+        display: inline-block;
+        padding-left: 2vmin;
 }

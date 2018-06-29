@@ -16,7 +16,7 @@ const App = () => (
             <div className="app">
                 <h1>Game Ferret</h1>
             </div>
-            <ul>
+            <ul className="nav">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/browse">Browse</Link></li>
                 <li><Link to="/wizard">Wizard</Link></li>
