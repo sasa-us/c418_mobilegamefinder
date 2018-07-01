@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/css/app.scss';
+// import '../assets/css/app.scss';
 import logo from '../assets/images/logo.svg';
 import {Route, Link} from 'react-router-dom';
 import Home from './home';
