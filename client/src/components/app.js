@@ -1,6 +1,4 @@
 import React from 'react';
-// import '../assets/css/app.scss';
-import logo from '../assets/images/logo.svg';
 import {Route} from 'react-router-dom';
 import Header from './header-bar';
 import Home from './home';
