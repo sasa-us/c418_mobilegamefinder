@@ -111,7 +111,10 @@ class HeaderBar extends Component {
                 </div>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
                     <div>
-                        <input type="text" placeholder="Search.." className="dropdownInput"/>
+                        <form class="form-inline dropForm">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <input class="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search"/>
+                        </form>
                     </div>
                 </div>
             </div>

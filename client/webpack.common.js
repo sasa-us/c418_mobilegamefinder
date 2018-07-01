@@ -78,6 +78,10 @@ module.exports = {
                     rel: 'stylesheet'
                 },
                 {
+                    href: 'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
+                    rel: 'stylesheet'
+                },
+                {
                     href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css',
                     rel: 'stylesheet'
                 }
