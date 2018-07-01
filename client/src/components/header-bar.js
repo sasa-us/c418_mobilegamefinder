@@ -65,6 +65,10 @@ class HeaderBar extends Component {
     }
 
     render() {
+        const menuOverlayStyle = {
+            background: this.state.dropdownsOpen.main ? "rgba(0,0,0,.5)" : "rgba(0,0,0,0)",
+            "pointer-events": this.state.dropdownsOpen.main ? "auto" : "none"
+        };
         const mainMenuButtonStyle = {
             transform: this.state.dropdownsOpen.main ? "translateX(75px)" : "translateX(0px)"
         };
@@ -86,11 +90,12 @@ class HeaderBar extends Component {
         return(
             <div>
                 <nav className="header">
+                    <div className="menu-overlay" onClick={this.toggleMainMenu.bind(this)} style={menuOverlayStyle}></div>
                     <img className="menu-icon" src={MenuIcon} alt="menu icon" aria-label="Menu" onClick={this.toggleMainMenu.bind(this)} style={mainMenuButtonStyle}/>
                     <ul className="main-menu" style={mainMenuStyle}>
-                        <li className="navbar-text"><Link to="/">Home</Link></li>
-                        <li className="navbar-text"><Link to="/search">Search</Link></li>
-                        <li className="navbar-text">
+                        <Link to="/"><li className="nav-text">Home</li></Link>
+                        <Link to="/search"><li className="nav-text">Search</li></Link>
+                        <li className="nav-text">
                             <div className="plus-bar" onClick={this.toggleBrowseMenu.bind(this)}>
                                 <Link to="/browse">Browse </Link>
                                 <img className="plus-icon" src={Plus} alt="plus icon"/>
@@ -102,8 +107,8 @@ class HeaderBar extends Component {
                                 <li><a>By Developer</a></li>
                             </ul>
                         </li>
-                        <li className="navbar-text"><Link to="/wizard">Wizard</Link></li>
-                        <li className="navbar-text">
+                        <Link to="/wizard"><li className="nav-text">Wizard</li></Link>
+                        <li className="nav-text nav-text-bottom">
                             <div className="plus-bar" onClick={this.toggleAboutMenu.bind(this)}>
                                 <Link to="/about">About </Link>
                                 <img className="plus-icon" src={Plus} alt="plus icon"/>

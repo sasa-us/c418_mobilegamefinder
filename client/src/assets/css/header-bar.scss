@@ -15,7 +15,6 @@
     height: 55px;
     width: 51px;
     margin-left: 5px;
-    background: paleturquoise;
     transition: 0.5s;
 }
 .search-icon{
@@ -29,9 +28,13 @@
     transition: 0.5s;
     padding: 0;
 }
-.main-menu li{
-    padding-left: 10px;
+.nav-text{
+    padding: 15px 0 15px 10px;
     font-size: 18px;
+    border-top: 2px solid gray;
+}
+.nav-text-bottom{
+    border-bottom: 2px solid gray;
 }
 .browse-menu, .about-menu{
     margin-top: 0;
@@ -48,7 +51,7 @@
     height: 100vh;
     top: 0;
     margin: 0;
-    padding-top: 75px;
+    padding-top: 73px;
     overflow-x: hidden;
 }
 .plus-icon{
@@ -58,6 +61,15 @@
 .plus-bar{
     display: flex;
     justify-content: space-between;
+}
+.menu-overlay{
+    position: fixed;
+    height: 101vh;
+    width: 100vw;
+    background: rgba(0,0,0,.4);
+    transform: translate(0%, 44%);
+    overflow: hidden;
+    transition: 0.5s;
 }
 .dropdownSearch{
     display: flex;
