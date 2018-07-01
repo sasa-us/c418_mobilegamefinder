@@ -98,7 +98,7 @@ class HeaderBar extends Component {
                         <li className="nav-text">
                             <div className="plus-bar" onClick={this.toggleBrowseMenu.bind(this)}>
                                 <Link to="/browse">Browse </Link>
-                                <img className="plus-icon" src={Plus} alt="plus icon"/>
+                                <span className={`glyphicon glyphicon-${this.state.dropdownsOpen.browse ? "minus" : "plus"}`} alt="list expand icon" aria-label="Browse-Menu expansion"></span>
                             </div>
                             <ul className="browse-menu" style={browseMenuStyle}>
                                 <li><a>By Popularity</a></li>
@@ -111,7 +111,7 @@ class HeaderBar extends Component {
                         <li className="nav-text nav-text-bottom">
                             <div className="plus-bar" onClick={this.toggleAboutMenu.bind(this)}>
                                 <Link to="/about">About </Link>
-                                <img className="plus-icon" src={Plus} alt="plus icon"/>
+                                <span className={`glyphicon glyphicon-${this.state.dropdownsOpen.about ? "minus" : "plus"}`} alt="list expand icon" aria-label="About-Menu expansion"></span>
                             </div>
                             <ul className="about-menu" style={aboutMenuStyle}>
                                 <li><a>Contact Us</a></li>

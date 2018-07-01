@@ -37,7 +37,7 @@
     border-bottom: 2px solid gray;
 }
 .browse-menu, .about-menu{
-    margin-top: 0;
+    margin: 15px 0 0 10px;
     height: 0;
     overflow: hidden;
 }
@@ -54,9 +54,9 @@
     padding-top: 73px;
     overflow-x: hidden;
 }
-.plus-icon{
-    height: 16px;
-    margin-right: 7px;
+.glyphicon-plus, .glyphicon-minus{
+    margin-right: 9px;
+    padding-top: 2px;
 }
 .plus-bar{
     display: flex;
