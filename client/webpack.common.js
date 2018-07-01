@@ -76,6 +76,10 @@ module.exports = {
                 {
                     href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
                     rel: 'stylesheet'
+                },
+                {
+                    href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css',
+                    rel: 'stylesheet'
                 }
             ],
             title: 'React Starter with SASS'
