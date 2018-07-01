@@ -11,9 +11,11 @@
     margin: 20px 0;
 }
 .menu-icon{
+    z-index: 2;
     height: 55px;
     width: 51px;
     margin-left: 5px;
+    transition: 0.5s;
 }
 .search-icon{
     height: 45px;
@@ -21,27 +23,36 @@
 }
 .main-menu, .browse-menu, .about-menu{
     list-style-type: none;
-    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    padding: 0;
+}
+.nav-text{
+    padding: 15px 0 15px 10px;
+    font-size: 18px;
+    border-top: 2px solid gray;
+}
+.nav-text-bottom{
+    border-bottom: 2px solid gray;
 }
 .browse-menu, .about-menu{
-    padding-bottom: 4px;
+    margin-top: 0;
+    height: 0;
+    overflow: hidden;
+}
+.browse-menu li, .about-menu li{
+    font-size: 16px;
 }
 .main-menu{
-    display: none;
-    flex-direction: column;
-    width: 32%;
+    z-index: 1;
+    position: fixed;
+    width: 0;
     height: 100vh;
-    position: absolute;
-    top: 100%;
+    top: 0;
     margin: 0;
-}
-.browse-menu{
-    display: none;
-    flex-direction: column;
-}
-.about-menu{
-    display: none;
-    flex-direction: column;
+    padding-top: 73px;
+    overflow-x: hidden;
 }
 .plus-icon{
     height: 16px;
@@ -51,10 +62,20 @@
     display: flex;
     justify-content: space-between;
 }
+.menu-overlay{
+    position: fixed;
+    height: 101vh;
+    width: 100vw;
+    background: rgba(0,0,0,.4);
+    transform: translate(0%, 44%);
+    overflow: hidden;
+    transition: 0.5s;
+}
 .dropdownSearch{
-    display: none;
+    display: flex;
     justify-content: space-around;
-    height: 40px;
+    overflow-y: hidden;
+    transition: 0.5s;
 }
 .dropForm{
     position: relative;

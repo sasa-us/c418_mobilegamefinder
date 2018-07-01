@@ -35,6 +35,7 @@ class HeaderBar extends Component {
         event.stopPropagation();
 
         this.state.dropdownsOpen.browse = !this.state.dropdownsOpen.browse;
+        this.state.dropdownsOpen.about = false;
 
         this.setState({
             ...this.state
@@ -43,6 +44,7 @@ class HeaderBar extends Component {
     toggleAboutMenu(event){
         event.stopPropagation();
 
+        this.state.dropdownsOpen.browse = false;
         this.state.dropdownsOpen.about = !this.state.dropdownsOpen.about;
 
         this.setState({
@@ -63,30 +65,40 @@ class HeaderBar extends Component {
     }
 
     render() {
+        const menuOverlayStyle = {
+            background: this.state.dropdownsOpen.main ? "rgba(0,0,0,.5)" : "rgba(0,0,0,0)",
+            "pointer-events": this.state.dropdownsOpen.main ? "auto" : "none"
+        };
+        const mainMenuButtonStyle = {
+            transform: this.state.dropdownsOpen.main ? "translateX(75px)" : "translateX(0px)"
+        };
         const mainMenuStyle = {
-            display: this.state.dropdownsOpen.main ? "flex" : "none"
+            width: this.state.dropdownsOpen.main ? "36%" : "0"
         };
         const browseMenuStyle = {
-            display: this.state.dropdownsOpen.browse ? "flex" : "none"
+            height: this.state.dropdownsOpen.browse ? "90px" : "0",
+            "margin-top": this.state.dropdownsOpen.browse ? "15px" : "0"
         };
         const aboutMenuStyle = {
-            display: this.state.dropdownsOpen.about ? "flex" : "none"
+            height: this.state.dropdownsOpen.about ? "20px" : "0",
+            "margin-top": this.state.dropdownsOpen.about ? "15px" : "0"
         };
         const searchDropDownStyle = {
-            display: this.state.dropdownsOpen.search ? "flex" : "none"
+            height: this.state.dropdownsOpen.search ? "40px" : "0"
         };
 
         return(
             <div>
-                <div className="header">
-                    <img className="menu-icon" src={MenuIcon} alt="A small menu icon" onClick={this.toggleMainMenu.bind(this)}/>
+                <nav className="header">
+                    <div className="menu-overlay" onClick={this.toggleMainMenu.bind(this)} style={menuOverlayStyle}></div>
+                    <img className="menu-icon" src={MenuIcon} alt="menu icon" aria-label="Menu" onClick={this.toggleMainMenu.bind(this)} style={mainMenuButtonStyle}/>
                     <ul className="main-menu" style={mainMenuStyle}>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/search">Search</Link></li>
-                        <li>
-                            <div className="plus-bar">
-                                <Link onClick={this.toggleBrowseMenu.bind(this)} to="/browse">Browse </Link>
-                                <img className="plus-icon" src={Plus} alt="A small plus icon" onClick={this.toggleBrowseMenu.bind(this)}/>
+                        <Link to="/"><li className="nav-text">Home</li></Link>
+                        <Link to="/search"><li className="nav-text">Search</li></Link>
+                        <li className="nav-text">
+                            <div className="plus-bar" onClick={this.toggleBrowseMenu.bind(this)}>
+                                <Link to="/browse">Browse </Link>
+                                <img className="plus-icon" src={Plus} alt="plus icon"/>
                             </div>
                             <ul className="browse-menu" style={browseMenuStyle}>
                                 <li><a>By Popularity</a></li>
@@ -95,11 +107,11 @@ class HeaderBar extends Component {
                                 <li><a>By Developer</a></li>
                             </ul>
                         </li>
-                        <li><Link to="/wizard">Wizard</Link></li>
-                        <li>
-                            <div className="plus-bar">
-                                <Link onClick={this.toggleAboutMenu.bind(this)} to="/about">About </Link>
-                                <img className="plus-icon" src={Plus} alt="A small plus icon" onClick={this.toggleAboutMenu.bind(this)}/>
+                        <Link to="/wizard"><li className="nav-text">Wizard</li></Link>
+                        <li className="nav-text nav-text-bottom">
+                            <div className="plus-bar" onClick={this.toggleAboutMenu.bind(this)}>
+                                <Link to="/about">About </Link>
+                                <img className="plus-icon" src={Plus} alt="plus icon"/>
                             </div>
                             <ul className="about-menu" style={aboutMenuStyle}>
                                 <li><a>Contact Us</a></li>
@@ -107,13 +119,13 @@ class HeaderBar extends Component {
                         </li>
                     </ul>
                     <h2 className="appName">Games Ferret</h2>
-                    <img className="search-icon" src={SearchIcon} alt="A small search icon" onClick={this.toggleSearchBar.bind(this)}/> 
-                </div>
+                    <img className="search-icon" src={SearchIcon} alt="search icon" onClick={this.toggleSearchBar.bind(this)}/> 
+                </nav>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
                     <div>
-                        <form class="form-inline dropForm">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            <input class="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search"/>
+                        <form className="form-inline dropForm">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                            <input className="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search"/>
                         </form>
                     </div>
                 </div>
