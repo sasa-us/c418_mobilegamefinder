@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import MenuIcon from '../assets/images/menu-icon-hamb.png';
 import SearchIcon from '../assets/images/menu-icon-search.png';
 import Plus from '../assets/images/plus.png';
@@ -62,11 +63,11 @@ class HeaderBar extends Component {
             <div className="header col-xs-12">
                 <img className="menu-icon" src={MenuIcon} alt="A small menu icon" onClick={this.toggleMainMenu.bind(this)}/>
                 <ul className="main-menu" style={mainMenuStyle}>
-                    <li><a>Home</a></li>
-                    <li><a>Search</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/search">Search</Link></li>
                     <li>
                         <div className="plus-bar">
-                            <a onClick={this.toggleBrowseMenu.bind(this)}>Browse </a>
+                            <Link onClick={this.toggleBrowseMenu.bind(this)} to="/browse">Browse </Link>
                             <img className="plus-icon" src={Plus} alt="A small plus icon" onClick={this.toggleBrowseMenu.bind(this)}/>
                         </div>
                         <ul className="browse-menu" style={browseMenuStyle}>
@@ -76,10 +77,10 @@ class HeaderBar extends Component {
                             <li><a>By Developer</a></li>
                         </ul>
                     </li>
-                    <li><a>Wizard</a></li>
+                    <li><Link to="/wizard">Wizard</Link></li>
                     <li>
                         <div className="plus-bar">
-                            <a onClick={this.toggleAboutMenu.bind(this)}>About Us </a>
+                            <Link onClick={this.toggleAboutMenu.bind(this)} to="/about">About </Link>
                             <img className="plus-icon" src={Plus} alt="A small plus icon" onClick={this.toggleAboutMenu.bind(this)}/>
                         </div>
                         <ul className="about-menu" style={aboutMenuStyle}>
