@@ -15,12 +15,12 @@ export default props => {
     return (
         <div className='aboutPageContainer'>
             <GeneralText text={genText} />
-            <DevItem src={Steffany} name='Steffany Gross' title='Boss Lady' github='https://github.com/Allurien' linkedin='https://www.linkedin.com/in/steffany-gross-452205a/' email='mailto:steffany.gross@gmail.com' />
-            <DevItem src={Delray} name='Delray Faskey' title='Much programmer wow' github='https://github.com/Raenbow' linkedin='' email='' />
-            <DevItem src={Stephanie} name='Stephanie Lacina' title='Tofutti' github='https://github.com/StephanieLDR' linkedin='' email='' />
-            <DevItem src={Sharry} name='Sharry Lu' title='Nice Programmer Lady' github='https://github.com/sasa-us' linkedin='' email='' />
-            <DevItem src={Martin} name='Martin Rizo' title='Hacker Extraordinaire' github='https://github.com/Martin92571' linkedin='' email='' />
-            <DevItem src={Dan} name='Daniel Stone' title='Hacker Extraordinaire' github='https://github.com/codedaniels' linkedin='' email='' />
+            <DevItem src={Steffany} name='Steffany Gross' title='Boss Lady' site='http://www.steffanygross.com' github='https://github.com/Allurien' linkedin='https://www.linkedin.com/in/steffany-gross-452205a/' email='mailto:steffany.gross@gmail.com' />
+            <DevItem src={Delray} name='Delray Faskey' title='Much programmer wow' site='' github='https://github.com/Raenbow' linkedin='' email='' />
+            <DevItem src={Stephanie} name='Stephanie Lacina' title='Tofutti' site='' github='https://github.com/StephanieLDR' linkedin='' email='' />
+            <DevItem src={Sharry} name='Sharry Lu' title='Nice Programmer Lady' site='' github='https://github.com/sasa-us' linkedin='' email='' />
+            <DevItem src={Martin} name='Martin Rizo' title='Hacker Extraordinaire' site='' github='https://github.com/Martin92571' linkedin='' email='' />
+            <DevItem src={Dan} name='Daniel Stone' title='Hacker Extraordinaire' site='' github='https://github.com/codedaniels' linkedin='' email='' />
         </div>
     )
 }
