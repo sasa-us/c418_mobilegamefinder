@@ -1,7 +1,11 @@
 import React from 'react';
+import GameComponent from './gamecomponent';
 
 export default props => {
     return (
-        <h1>Recommendations Page</h1>
+        <div>
+            <h1>Recommendations Page</h1>
+            <GameComponent />
+        </div>
     )
 }

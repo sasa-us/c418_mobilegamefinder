@@ -7,6 +7,7 @@ import Wizard from './wizard';
 import Search from './search';
 import About from './about';
 import Footer from './footer-bar'
+import Recommendations from './recommendations'
 
 
 
@@ -21,6 +22,7 @@ const App = () => (
             <Route path="/wizard" component={Wizard}/>
             <Route path="/search" component={Search}/>
             <Route path="/about" component={About}/>
+            <Route path="/recommendations" component={Recommendations}/>
 
             </div>
 
