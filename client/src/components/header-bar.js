@@ -83,7 +83,7 @@ class HeaderBar extends Component {
         }
         // -----------------------------------
         const mainMenuStyle = {
-            width: this.state.dropdownsOpen.main ? "45%" : "0"
+            width: this.state.dropdownsOpen.main ? "167px" : "0"
         };
         const browseMenuStyle = {
             height: this.state.dropdownsOpen.browse ? "90px" : "0",
