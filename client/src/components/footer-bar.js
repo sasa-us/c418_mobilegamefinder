@@ -21,7 +21,11 @@ class FooterBar extends Component {
                         <ul>
                             <li id="social">
                                 <img className="social" src={Facebook}/>
+                            </li>
+                            <li>
                                 <img className="social" src={Twitter}/>
+                            </li>
+                            <li>
                                 <img className="social" src={Mail}/>
                             </li>
                         </ul>
