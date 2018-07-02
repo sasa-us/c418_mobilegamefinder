@@ -10,13 +10,43 @@
 .appName{
     margin: 20px 0;
 }
+// -------------------------------------------
 .menu-icon{
     z-index: 2;
-    height: 55px;
-    width: 51px;
     margin-left: 5px;
     transition: 0.5s;
 }
+.hamburger-animation{
+    border: 4px solid #696969;
+    border-radius: 5px;
+    height: 38px;
+    width: 37px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.hamburger-animation div{
+    background: #696969;
+    border-radius: 10px;
+    height: 5px;
+    width: 23px;
+    transition: .5s;
+}
+.hamburger-animation :nth-child(1){
+    margin-top: 3px;
+}
+.hamburger-animation :nth-child(2){
+    transform: initial;
+}
+.hamburger-animation :nth-child(3){
+    position: absolute;
+    top: 17px;
+}
+.hamburger-animation :nth-child(4){
+    margin-bottom: 4px;
+}
+// -------------------------------------------
 .search-icon{
     height: 45px;
     margin-right: 9px;
@@ -37,7 +67,7 @@
     border-bottom: 2px solid gray;
 }
 .browse-menu, .about-menu{
-    margin-top: 0;
+    margin: 15px 0 0 10px;
     height: 0;
     overflow: hidden;
 }
@@ -54,9 +84,9 @@
     padding-top: 73px;
     overflow-x: hidden;
 }
-.plus-icon{
-    height: 16px;
-    margin-right: 7px;
+.glyphicon-plus, .glyphicon-minus{
+    margin-right: 9px;
+    padding-top: 2px;
 }
 .plus-bar{
     display: flex;
