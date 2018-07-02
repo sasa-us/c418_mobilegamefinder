@@ -95,7 +95,7 @@ class Carousel extends Component {
                         <img key={src} src={src} alt={text} className="carousel-img" />
                     </Transition>
                 </div>
-                <h3 className="carousel-text">{text}</h3>
+                <h4 className="carousel-text">{text}</h4>
                 <Indicators onClick={this.directToImage.bind(this)} count={images.length} current={currentIndex} />
                 <button className='btn' onClick={this.changeImg.bind(this, 'previous')}>Previous Game</button>
                 <button className='btn' onClick={this.changeImg.bind(this, 'next')}>Next Game</button>
