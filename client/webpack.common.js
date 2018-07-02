@@ -86,7 +86,7 @@ module.exports = {
                     rel: 'stylesheet'
                 }
             ],
-            title: 'React Starter with SASS'
+            title: 'GamesFerret'
         })
     ]
 };

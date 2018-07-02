@@ -11,6 +11,11 @@
     margin: 20px 0;
 }
 // -------------------------------------------
+.header button{
+    background: transparent;
+    border: none;
+    outline: none;
+}
 .menu-icon{
     z-index: 2;
     margin-left: 5px;
@@ -93,6 +98,7 @@
     justify-content: space-between;
 }
 .menu-overlay{
+    z-index: 1;
     position: fixed;
     height: 101vh;
     width: 100vw;

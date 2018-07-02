@@ -70,7 +70,7 @@ class HeaderBar extends Component {
         };
         // -----------------------------------
         const mainMenuButtonPosition = {
-            transform: this.state.dropdownsOpen.main ? "translateX(75px)" : "translateX(0px)"
+            transform: this.state.dropdownsOpen.main ? "translateX(99px)" : "translateX(0px)"
         };
         const hamburgerXdiv2 = {
             transform: this.state.dropdownsOpen.main ? "rotateZ(-45deg)" : "initial"
@@ -83,7 +83,7 @@ class HeaderBar extends Component {
         }
         // -----------------------------------
         const mainMenuStyle = {
-            width: this.state.dropdownsOpen.main ? "36%" : "0"
+            width: this.state.dropdownsOpen.main ? "45%" : "0"
         };
         const browseMenuStyle = {
             height: this.state.dropdownsOpen.browse ? "90px" : "0",
@@ -109,7 +109,6 @@ class HeaderBar extends Component {
                             <div style={hamburgerXdivFade}></div>
                         </div>
                     </button>
-                    {/* <img className="menu-icon" src={MenuIcon} alt="menu icon" aria-label="Menu" /> */}
                     <ul className="main-menu" style={mainMenuStyle}>
                         <Link to="/"><li className="nav-text">Home</li></Link>
                         <Link to="/search"><li className="nav-text">Search</li></Link>

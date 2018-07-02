@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Game Ferret mobile game finder",
   "main": "index.js",
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:8000"
+    }
+  },
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
@@ -15,6 +20,10 @@
     "url": "https://github.com/Learning-Fuze/c418_mobilegamefinder.git"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
