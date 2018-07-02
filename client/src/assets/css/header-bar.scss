@@ -93,6 +93,7 @@
     justify-content: space-between;
 }
 .menu-overlay{
+    z-index: 1;
     position: fixed;
     height: 101vh;
     width: 100vw;
