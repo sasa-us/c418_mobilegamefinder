@@ -6,12 +6,14 @@ import Browse from './browse';
 import Wizard from './wizard';
 import Search from './search';
 import About from './about';
+import Footer from './footer-bar'
 
 
 
 
 const App = () => (
         <div>
+            <div>
             <Header/>
 
             <Route exact path="/" component={Home}/>
@@ -20,7 +22,15 @@ const App = () => (
             <Route path="/search" component={Search}/>
             <Route path="/about" component={About}/>
 
+            </div>
+
+            <div>
+            <Footer/>
+            </div>
+
         </div>
+
+
         
 );
 

@@ -9,7 +9,7 @@ export default props => {
     const genText = 'General text area. We would have basic info about what the page is for, etc. here.'
     return (
         <div className="homePageContainer">
-            <h1>Home Page</h1>
+            <h3>Home Page</h3>
             <GeneralText text={genText} />
             <Carousel />
         
