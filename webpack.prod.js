@@ -21,8 +21,8 @@ module.exports = merge(common, {
             'dist'
         ],
         {
-            root: resolve(__dirname),
-            exclude: ['react_icon.png']
+            root: resolve(__dirname, 'public'),
+            exclude: []
         }),
         new UglifyJsPlugin({
             sourceMap: true

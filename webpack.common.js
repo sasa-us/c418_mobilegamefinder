@@ -2,13 +2,14 @@ const { resolve } = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const env = process.env.NODE_ENV;
 
 module.exports = {
     output: {
         filename: 'bundle.js',
-        path: resolve(__dirname, 'dist'),
-        publicPath: '/'
+        path: resolve(__dirname, 'public', 'dist'),
+        publicPath: '/dist/'
     },
     context: resolve(__dirname, 'src'),
     module: {
@@ -56,9 +57,11 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
             inject: false,
             template: require('html-webpack-template'),
             appMountId: 'root',
+            filename: '../index.html',
             meta: [
                 // EXAMPLE:
                 // {
@@ -87,6 +90,7 @@ module.exports = {
                 }
             ],
             title: 'GamesFerret'
-        })
+        }),
+        new HtmlWebpackHarddiskPlugin()
     ]
 };
