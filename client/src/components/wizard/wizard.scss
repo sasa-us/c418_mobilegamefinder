@@ -1,26 +1,34 @@
 
-.wizard-container-fluid {
-  height: 132vw;
-  margin-top: 47px;
-}
-.icon {
-  height: 92px;
-  margin: 4px;
-}
-.gameIcons {
+.wizardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  height: 300px;
-  position: relative;
-  left: 10%;
-  top: 20px;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.gameIcons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 53vh;
+  justify-content: space-evenly;
 }
 .game_wiz {
-  width: 100%;
+  height: 9vh;
+
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
 }
 .wizard-button {
-  position: relative;
-  left: 29%;
-  margin: 1% 2%;
+
   -webkit-border-radius: 15%;
   -moz-border-radius: 15%;
   border-radius: 15px;
@@ -34,16 +42,10 @@
   padding: 5px 10px 5px 10px;
   text-decoration: none;
 }
-.well {
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: white;
-  border: 1px solid white;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,0);
-  box-shadow: inset 0 0px 0px rgba(0,0,0,0)
-}
+
 .gameName {
   text-align: center;
+  display: flex;
+  align-items: flex-end;
+  height: 7vh;
 }
