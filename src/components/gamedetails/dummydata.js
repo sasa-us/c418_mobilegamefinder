@@ -1,3 +1,5 @@
+
+export default dummyData;
 let dummyData=[{
     "content_rating": "Everyone 10+",
     "app_name": "Plague Inc.",
