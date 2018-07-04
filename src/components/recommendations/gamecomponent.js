@@ -1,16 +1,19 @@
 import React from 'react';
+import ReactStars from 'react-stars'
+
 
 
 
 export default props => {
-    const data = {
-        "app_name": "Plague Inc.",
-        "icon_url": "https://lh5.ggpht.com/euts6pXFd_m0wFcw8jXtLt_7y7DY3ziJfoZ-5EK_GbLbhLR60NVe8FFtpaxch298Q9b3"
-    };
+    console.log('gamecomponent props', props);
+    const ratingChanged = (newRating) => {
+        //   console.log(newRating)
+        };
     return (
-        <div>
-        <h3>Game Title</h3>
-        <img src="" alt="" srcset=""/>
+        <div className="recItem">
+            <img src={props.details.icon_url} alt={props.details.name} />
+            <ReactStars count={5} size={24} color2={'#ffd700'} value={props.details.all_rating} edit={false}/>
+            <h4>{props.details.app_name}</h4>
         </div>
     )
 }
