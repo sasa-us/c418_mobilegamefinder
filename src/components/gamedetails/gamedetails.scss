@@ -1,6 +1,7 @@
 .singleGamePage{
     display: flex;
     flex-direction: column;
+    height: 185vh;
 }
 .gameTitle{
     background: palevioletred;
@@ -12,16 +13,16 @@
 }
 .gameImg{
     background: palegreen;
-    height: 220px;
-    width: 300px;
+    width: 60%;
 }
 .gameDetailsTop{
     background: pink;
+    width: 40%;
 }
 .getItButtons{
     display: flex;
 }
 .gameDetailsBottom{
     background: plum;
-    height: 39vh;
+    height: 50%;
 }
