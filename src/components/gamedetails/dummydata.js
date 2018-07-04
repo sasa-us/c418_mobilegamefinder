@@ -1,3 +1,4 @@
+
 let dummyData=[{
     "content_rating": "Everyone 10+",
     "app_name": "Plague Inc.",
@@ -4363,4 +4364,7 @@ let dummyData=[{
 }];
 
 
+
 console.log(dummyData);
+export default dummyData;
+
