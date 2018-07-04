@@ -1,7 +1,9 @@
 import React from 'react';
+import dummyData from './dummydata';
 import './gamedetails.scss';
 
 export default ()=> {
+    
     return (
     <div className="singleGamePage">
         <div className="gameTitle">
@@ -9,28 +11,28 @@ export default ()=> {
         </div>
         <div className="upperDisplay">
             <div className="gameImg">
-                icon_url
+                <img src={dummyData[3].icon_url}/>
             </div>
             <div className="gameDetailsTop">
                 <p>
-                    <div>
+                    <span>
                         genre_id
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         publisher_name
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         release_date
-                    </div>
+                    </span>
                 </p>
                 
                 <p>
-                    <div>
+                    <span>
                         content_rating
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         content_rating_info
-                    </div>
+                    </span>
                 </p>
                 <div className="getItButtons">
                     <button type="button">
@@ -41,12 +43,12 @@ export default ()=> {
                     </button>
                 </div>
                 <p>
-                    <div>
+                    <span>
                         all_rating
-                    </div>
-                    <div>
+                    </span>
+                    <span>
                         downloads
-                    </div>
+                    </span>
                 </p>
             </div>
         </div>
@@ -58,15 +60,15 @@ export default ()=> {
                 description
             </p>
             <p>
-                <div>
+                <span>
                     status_date
-                </div>
-                <div>
+                </span>
+                <span>
                     version
-                </div>
-                <div>
+                </span>
+                <span>
                     whats_new
-                </div>
+                </span>
             </p>
             <p>
                 related.related_apps
