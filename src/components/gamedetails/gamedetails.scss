@@ -1,1 +1,28 @@
-// CSS for Game Details Page Component
+.singleGamePage{
+    display: flex;
+    flex-direction: column;
+    height: 185vh;
+}
+.gameTitle{
+    background: palevioletred;
+    display: flex;
+    justify-content: center;
+}
+.upperDisplay{
+    display: flex;
+}
+.gameImg{
+    background: palegreen;
+    width: 60%;
+}
+.gameDetailsTop{
+    background: pink;
+    width: 40%;
+}
+.getItButtons{
+    display: flex;
+}
+.gameDetailsBottom{
+    background: plum;
+    height: 50%;
+}
