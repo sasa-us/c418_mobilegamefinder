@@ -9,6 +9,7 @@ import GameInfo from '../components/gamedetails'
 import About from './about';
 import Footer from './footer-bar'
 import Recommendations from './recommendations'
+import PartialDetails from '../components/modals';
 
 
 
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/about" component={About}/>
             <Route path="/recommendations" component={Recommendations}/>
             <Route path="/search/gamedetails" component={GameInfo}/>
+            <Route path="/search/partialdetails" component={PartialDetails}/>
 
             </div>
 
