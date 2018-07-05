@@ -1,12 +1,14 @@
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
-import SearchList from "../search/searchlist";
+import Results from "./results";
+
 
 export default props => {
+
     return (
         <div>
-            <SearchList  />
+            <Results />
         </div>
-        
+
     )
 }
