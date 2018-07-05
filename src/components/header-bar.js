@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import MenuIcon from '../assets/images/menu-icon-hamb.png';
 import SearchIcon from '../assets/images/menu-icon-search.png';
 import '../assets/css/header-bar.scss'
 

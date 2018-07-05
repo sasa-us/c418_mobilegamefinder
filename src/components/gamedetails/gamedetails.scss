@@ -1,1 +1,108 @@
-// CSS for Game Details Page Component
+.singleGamePage{
+    display: flex;
+    flex-direction: column;
+}
+.gameTitle{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.upperDisplay{
+    display: flex;
+}
+.gameImg{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+.gameImg img{
+    height: 200px;
+}
+.gameDetailsTop{
+    width: 40%;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 15px 0 2px;
+}
+.contentRating{
+    margin-top: 10px;
+}
+.ratedFor{
+    font-size: 10px;
+    opacity: .5;
+}
+.price{
+    margin-bottom: 0;
+}
+.getItButtons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.getItButtons button{
+    // display: flex;
+    // align-items: center;
+    // height: 31px;
+    // background: #ffff99;
+    // border-radius: 5px;
+    // border: 2px outset;
+    outline: unset;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+.iOSButton{
+    height: 20px;
+}
+.androidButton{
+    height: 45px;
+}
+.ratingStars{
+    display: flex;
+    justify-content: center;
+}
+.downloadCount{
+    font-size: 11px;
+    opacity: .5;
+    text-align: center;
+    margin-top: 5px;
+}
+.gameDetailsBottom{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+.detailsBottomInnerBox{
+    width: 90%;
+}
+.summaryHeader{
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 2px solid rgba(175,238,238,0.3);
+}
+.gameDescripOuterBox{
+    display: flex;
+    justify-content: center;
+}
+.gameDescrip{
+    overflow-y: hidden;
+    margin: 0;
+}
+.descripExpandDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+.descripExpandButton{
+    color: paleturquoise;
+}
+.updatesHeader{
+    padding-top: 10px;
+    border-top: 2px solid rgba(175,238,238,0.3);
+}
+.gameUpdateDate, .gameUpdateVersion{
+    opacity: .6;
+}
+.gameUpdateInfo{
+    margin-bottom: 30px;
+}
