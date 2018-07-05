@@ -26,19 +26,41 @@
     justify-content: space-evenly;
     padding: 0 15px 0 2px;
 }
+.contentRating{
+    margin-top: 10px;
+}
 .ratedFor{
     font-size: 10px;
     opacity: .5;
+}
+.price{
+    margin-bottom: 0;
 }
 .getItButtons{
     display: flex;
     justify-content: space-evenly;
 }
 .getItButtons button{
-    background: #ffff99;
-    border-radius: 5px;
-    border: 2px outset;
+    // display: flex;
+    // align-items: center;
+    // height: 31px;
+    // background: #ffff99;
+    // border-radius: 5px;
+    // border: 2px outset;
     outline: unset;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+.iOSButton{
+    height: 20px;
+}
+.androidButton{
+    height: 45px;
+}
+.ratingStars{
+    display: flex;
+    justify-content: center;
 }
 .downloadCount{
     font-size: 11px;
