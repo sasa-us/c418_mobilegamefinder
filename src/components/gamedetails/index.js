@@ -12,7 +12,9 @@ class GameDetailsIndexPage extends Component{
         this.state = {
             infoExpanded: {
                 gameDescripSection: false
-            }
+            },
+            randIndex: 2
+            //Math.floor(Math.random() * 10)
         };
     };
 
@@ -27,16 +29,20 @@ class GameDetailsIndexPage extends Component{
     }
 
     render(){
+        const randIndex = this.state.randIndex;
+
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
             background: this.state.infoExpanded.gameDescripSection ? "transparent" : "linear-gradient(to bottom, rgba(175,238,238,0), rgba(175,238,238,0.2))"
         };
         const expandButton = this.state.infoExpanded.gameDescripSection ? "less.." : "more..";
-        const releaseDate = Data[3].release_date.slice(0, 4);
+
+        const releaseDate = Data[randIndex].release_date.slice(0, 4);
 
         //-------------------------------Description Data Format Conversion---------------------------------
-        const descripParsed = Data[3].description.split('<br>');
-
+        const descripSplitBreak = Data[randIndex].description.split('<br>');
+        //const descripSplitBold = descripSplitBreak.split('<b>');
+        
         const filterDescrip = (string)  => {
             if(string === ""){
                     return false;
@@ -44,7 +50,8 @@ class GameDetailsIndexPage extends Component{
                     return true;
                 }
         }
-        const descripFiltered = descripParsed.filter(filterDescrip)
+        const descripFiltered = descripSplitBreak.filter(filterDescrip)
+        console.log(descripFiltered)
 
         const parseDescrip = (string, index) => {
             return(
@@ -57,19 +64,19 @@ class GameDetailsIndexPage extends Component{
         return(
             <div className="singleGamePage">
                 <div className="gameTitle">
-                    <h2>{Data[3].app_name}</h2>
+                    <h2>{Data[randIndex].app_name}</h2>
                 </div>
                 <div className="upperDisplay">
                     <div className="gameImg">
-                        <img src={Data[3].icon_url}/>
+                        <img src={Data[randIndex].icon_url}/>
                     </div>
                     <div className="gameDetailsTop">
                         <div>
                             {/* <div>
-                                {Data[3].genres}
+                                {Data[randIndex].genres}
                             </div> */}
                             <div>
-                                {Data[3].publisher_name}
+                                {Data[randIndex].publisher_name}
                             </div>
                             <div>
                                 {releaseDate}
@@ -78,15 +85,15 @@ class GameDetailsIndexPage extends Component{
                         
                         <div className="contentRating">
                             <div>
-                                {Data[3].content_rating}
+                                {Data[randIndex].content_rating}
                             </div>
                             <div className="ratedFor">
-                                {Data[3].content_rating_info}
+                                {Data[randIndex].content_rating_info}
                             </div>
                         </div>
                         <div>
                             <h4 className="price">
-                                {Data[3].price}
+                                {Data[randIndex].price}
                             </h4>
                             <div className="getItButtons">
                                 {/* <button type="button">
@@ -97,11 +104,11 @@ class GameDetailsIndexPage extends Component{
                                 </button>
                             </div>
                             <div className="downloadCount">
-                                {Data[3].downloads} Downloads.
+                                {Data[randIndex].downloads} Downloads.
                             </div>
                         </div>
                         <div className="ratingStars">
-                            <ReactStars count={5} size={24} color2={'#ffd700'} value={Data[3].all_rating} edit={false}/>
+                            <ReactStars count={5} size={24} color2={'#ffd700'} value={Data[randIndex].all_rating} edit={false}/>
                         </div>
                         
                     </div>
@@ -126,24 +133,24 @@ class GameDetailsIndexPage extends Component{
                                 Updates
                             </h4>
                             <p className="gameUpdateDate">
-                                {Data[3].status_date}
+                                {Data[randIndex].status_date}
                             </p>
                             <div className="gameUpdateVersion">
-                                Version: {Data[3].version}
+                                Version: {Data[randIndex].version}
                             </div>
                             <p className="gameUpdateInfo">
-                                {Data[3].whats_new}
+                                {Data[randIndex].whats_new}
                             </p>
                         </div>
                         <div>
                             {/* <div>
-                                {Data[3].related.related_apps[Math.floor(Math.random() * 100)]}
+                                {Data[randIndex].related.related_apps[Math.floor(Math.random() * 100)]}
                             </div>
                             <div>
-                                {Data[3].related.related_apps[Math.floor(Math.random() * 100)]}
+                                {Data[randIndex].related.related_apps[Math.floor(Math.random() * 100)]}
                             </div>
                             <div>
-                                {Data[3].related.related_apps[Math.floor(Math.random() * 100)]}
+                                {Data[randIndex].related.related_apps[Math.floor(Math.random() * 100)]}
                             </div> */}
                         </div>
                     </div>
