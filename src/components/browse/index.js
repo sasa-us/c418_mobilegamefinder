@@ -6,7 +6,6 @@ export default props => {
     console.log('Browse PROPS:', props);
     return (
         <div>
-            <h1>Browse Category Page</h1>
             <CategoryList path={props.match.path} />
         </div>
         

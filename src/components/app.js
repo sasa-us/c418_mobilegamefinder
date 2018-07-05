@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import Header from './header-bar';
 import Home from './home';
 import Browse from './browse';
-import Wizard from './wizard';
+import Wizard from './wizard/wizard2';
 import Search from './search';
 import About from './about';
 import Footer from './footer-bar'

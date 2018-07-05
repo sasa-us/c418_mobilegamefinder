@@ -1,0 +1,33 @@
+
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.resultsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.resultsIcons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 75vh;
+  justify-content: space-evenly;
+}
+
+.result_icon {
+  height: 9vh;
+
+}
+.resultsGreeting {
+  text-align: center;
+}
+
+.resultsTitle {
+  text-align: center;
+}
