@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import ReactStars from 'react-stars';
 import Data from './dummydata';
+import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
+import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 
 class GameDetailsIndexPage extends Component{
@@ -31,6 +34,26 @@ class GameDetailsIndexPage extends Component{
         const expandButton = this.state.infoExpanded.gameDescripSection ? "less.." : "more..";
         const releaseDate = Data[3].release_date.slice(0, 4);
 
+        //----------------------------------------------------------------Description Data Format Conversion
+        const descripParsed = Data[3].description.split('<br>');
+
+        const filterDescrip = (string)  => {
+            if(string === ""){
+                    return false;
+                } else {
+                    return true;
+                }
+        }
+        const descripFiltered = descripParsed.filter(filterDescrip)
+
+        const parseDescrip = (string, index) => {
+            return(
+                <p key={index}>{string}</p>
+            )
+        }
+        const formattedDescription = descripFiltered.map(parseDescrip);
+        //-----------------------------------------------------------------
+        
         return(
             <div className="singleGamePage">
                 <div className="gameTitle">
@@ -53,7 +76,7 @@ class GameDetailsIndexPage extends Component{
                             </div>
                         </div>
                         
-                        <div>
+                        <div className="contentRating">
                             <div>
                                 {Data[3].content_rating}
                             </div>
@@ -62,32 +85,36 @@ class GameDetailsIndexPage extends Component{
                             </div>
                         </div>
                         <div>
+                            <h4 className="price">
+                                {Data[3].price}
+                            </h4>
                             <div className="getItButtons">
+                                {/* <button type="button">
+                                    <img src={iOS} className="iOSButton"/>
+                                </button> */}
                                 <button type="button">
-                                    {Data[3].price}
-                                </button>
-                                <button type="button">
-                                    {Data[3].price}
+                                    <img src={Android} className="androidButton"/>
                                 </button>
                             </div>
                             <div className="downloadCount">
                                 {Data[3].downloads} Downloads.
                             </div>
                         </div>
-                        <div>
-                            {Data[3].all_rating}
+                        <div className="ratingStars">
+                            <ReactStars count={5} size={24} color2={'#ffd700'} value={Data[3].all_rating} edit={false}/>
                         </div>
+                        
                     </div>
                 </div>
                 <div className="gameDetailsBottom">
                     <div className="detailsBottomInnerBox">
-                        <h4 className="summaryHeader">
-                            Summary
+                        <h4 className="descripHeader">
+                            Description
                         </h4>
                         <div className="gameDescripOuterBox">
-                            <p className="gameDescrip" style={gameDescripExpand}>
-                                {Data[3].description}
-                            </p>
+                            <div className="gameDescrip" style={gameDescripExpand}>
+                                {formattedDescription}
+                            </div>
                         </div>
                         <div className="descripExpandDiv">
                             <button className="descripExpandButton" type="button" onClick={this.toggleDescriptionExpand.bind(this)}>
