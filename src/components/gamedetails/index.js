@@ -34,7 +34,7 @@ class GameDetailsIndexPage extends Component{
         const expandButton = this.state.infoExpanded.gameDescripSection ? "less.." : "more..";
         const releaseDate = Data[3].release_date.slice(0, 4);
 
-        //----------------------------------------------------------------Description Data Format Conversion
+        //-------------------------------Description Data Format Conversion---------------------------------
         const descripParsed = Data[3].description.split('<br>');
 
         const filterDescrip = (string)  => {
@@ -52,7 +52,7 @@ class GameDetailsIndexPage extends Component{
             )
         }
         const formattedDescription = descripFiltered.map(parseDescrip);
-        //-----------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------
         
         return(
             <div className="singleGamePage">
