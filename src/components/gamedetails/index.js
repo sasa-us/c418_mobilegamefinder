@@ -13,8 +13,7 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
-            randIndex: 2
-            //Math.floor(Math.random() * 10)
+            randIndex: Math.floor(Math.random() * 10)
         };
     };
 
@@ -39,27 +38,7 @@ class GameDetailsIndexPage extends Component{
 
         const releaseDate = Data[randIndex].release_date.slice(0, 4);
 
-        //-------------------------------Description Data Format Conversion---------------------------------
-        const descripSplitBreak = Data[randIndex].description.split('<br>');
-        //const descripSplitBold = descripSplitBreak.split('<b>');
-        
-        const filterDescrip = (string)  => {
-            if(string === ""){
-                    return false;
-                } else {
-                    return true;
-                }
-        }
-        const descripFiltered = descripSplitBreak.filter(filterDescrip)
-        console.log(descripFiltered)
-
-        const parseDescrip = (string, index) => {
-            return(
-                <p key={index}>{string}</p>
-            )
-        }
-        const formattedDescription = descripFiltered.map(parseDescrip);
-        //----------------------------------------------------------------------------------------------------
+        const { description } = Data[randIndex];
         
         return(
             <div className="singleGamePage">
@@ -82,46 +61,42 @@ class GameDetailsIndexPage extends Component{
                                 {releaseDate}
                             </div>
                         </div>
-                        
                         <div className="contentRating">
                             <div>
-                                {Data[randIndex].content_rating}
+                                Rated: {Data[randIndex].content_rating}
                             </div>
                             <div className="ratedFor">
                                 {Data[randIndex].content_rating_info}
                             </div>
                         </div>
-                        <div>
-                            <h4 className="price">
+                        <h4 className="price">
                                 {Data[randIndex].price}
-                            </h4>
-                            <div className="getItButtons">
-                                {/* <button type="button">
-                                    <img src={iOS} className="iOSButton"/>
-                                </button> */}
-                                <button type="button">
-                                    <img src={Android} className="androidButton"/>
-                                </button>
-                            </div>
-                            <div className="downloadCount">
+                        </h4>
+                        <div className="downloadCount">
                                 {Data[randIndex].downloads} Downloads.
-                            </div>
                         </div>
                         <div className="ratingStars">
                             <ReactStars count={5} size={24} color2={'#ffd700'} value={Data[randIndex].all_rating} edit={false}/>
                         </div>
-                        
                     </div>
                 </div>
                 <div className="gameDetailsBottom">
                     <div className="detailsBottomInnerBox">
+                        <div>
+                            <div className="getItButtons">
+                                <button type="button">
+                                    <img src={iOS} className="iOSButton"/>
+                                </button>
+                                <button type="button">
+                                    <img src={Android} className="androidButton"/>
+                                </button>
+                            </div>
+                        </div>
                         <h4 className="descripHeader">
                             Description
                         </h4>
                         <div className="gameDescripOuterBox">
-                            <div className="gameDescrip" style={gameDescripExpand}>
-                                {formattedDescription}
-                            </div>
+                            <div dangerouslySetInnerHTML={{__html: description}} className="gameDescrip" style={gameDescripExpand} />
                         </div>
                         <div className="descripExpandDiv">
                             <button className="descripExpandButton" type="button" onClick={this.toggleDescriptionExpand.bind(this)}>
