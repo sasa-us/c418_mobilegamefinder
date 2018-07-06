@@ -1,11 +1,11 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
-import SearchList from "../search/searchlist";
+import Results from "../results"
 
 export default props => {
+    const pageText = 'Here are your search results';
     return (
         <div>
-            <SearchList  />
+            <Results title='Search Results' text={pageText}/>
         </div>
         
     )

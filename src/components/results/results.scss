@@ -1,33 +1,38 @@
-
-.resultsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+// CSS for Recommendations Page Component
+.resContainer{
+    text-align: center;
 }
 
-.resultsRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.detailContainer {
+    display: flex;
+    width: 100%;
+    // height: 100%;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
-
-.resultsIcons {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 75vh;
-  justify-content: space-evenly;
+.resItem {
+    width: 28%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 5%;
 }
-
-.result_icon {
-  height: 9vh;
-
+.resItem h4 {
+    margin-top: 0;
 }
-.resultsGreeting {
-  text-align: center;
+.resItemImg {
+    width: 100%;
+    margin-bottom: 10%;
 }
-
-.resultsTitle {
-  text-align: center;
+.resRow{
+    flex-direction: column;
 }
+@media only screen and (min-width: 600px) {
+    .detailContainer{
+        width: 50%;
+        margin: auto;
+        
+  }
+  
+  }
