@@ -1,15 +1,18 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+require_once('mysql_connect.php');
 
 
-// $request = json_decode($_GET);
-$request = 'com.rovio.baba';
+$request = ($_POST['searchrequest']);
 
-
+$output = [
+    'success' => false
+];
 
 $query = "SELECT *
-FROM `game_ajax_content` 
-WHERE `game_id` = '$request'";
+    FROM `game_ajax_content` 
+    WHERE `game_id` = '$request'";
+
 $result = mysqli_query($conn, $query);
 
 if(empty($result)) {
@@ -26,4 +29,6 @@ if(empty($result)) {
     }
 }
 
+$output_json = json_encode($output);
+print($output_json);
 ?>

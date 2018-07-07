@@ -1,11 +1,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script>
-
-// how to call the search and details page is the same only difference 
-// the endpoint address:
-// for search it's post_searchpage.php
-// for details it's post_detailspage.php
-
+// how to call the wizard page 
+// the endpoint address: post_wizardpage.php
+// can have platform right now on the post since it won't be used
+// but on backend platform does NOT work yet because we do not 
+// have that column in the table yet (will be inputted on Monday)
 
 // use the function below to auto generate stuff 
 // when doing the front end calls 
@@ -20,11 +19,20 @@
 
 //     return params;
 // }
-
     const params = new URLSearchParams();
 
-params.append('searchrequest', 'angry');
-    axios.post('post_searchpage.php', params).then(resp => {
+    params.append(
+        'genre', 'board'
+    );
+    params.append(
+        'platform', 'android'
+    )
+    params.append(
+        'price_value', 'free'
+    )
+
+
+    axios.post('post_wizardpage.php', params).then(resp => {
         console.log('GET RESPONSE:', resp);
     }).catch(function(error){
         console.log(error)});
