@@ -100,10 +100,10 @@
 .menu-overlay{
     z-index: 1;
     position: fixed;
-    height: 101vh;
+    height: 105vh;
     width: 100vw;
     background: rgba(0,0,0,.4);
-    transform: translate(0%, 44%);
+    transform: translate(0%, 40%);
     overflow: hidden;
     transition: 0.5s;
 }

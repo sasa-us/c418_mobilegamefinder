@@ -5,7 +5,10 @@
 .gameTitle{
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin: 0 5%;
+}
+.gameTitle h2{
+    margin-bottom: 15px;
 }
 .upperDisplay{
     display: flex;
@@ -38,7 +41,8 @@
 }
 .getItButtons{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    border-bottom: 2px solid rgba(175,238,238,.3);
 }
 .getItButtons button{
     // display: flex;
@@ -51,12 +55,13 @@
     border: none;
     background: transparent;
     padding: 0;
+    margin: 20px 15px 15px 15px;
 }
 .iOSButton{
-    height: 20px;
+    height: 37px;
 }
 .androidButton{
-    height: 45px;
+    height: 53px;
 }
 .ratingStars{
     display: flex;
