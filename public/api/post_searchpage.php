@@ -1,14 +1,22 @@
 <?php
-$requested = json_decode($_GET);
+header('Access-Control-Allow-Origin: *');
+require_once('mysql_connect.php');
 
-$query = "SELECT * ,
+
+$request = ($_POST['searchrequest']);
+
+$output = [
+    'success' => false
+];
+
+$query = ("SELECT * ,
     MATCH(
     `app_name`,
     `genre`,
     `genres`,
     `publisher_name`,
     `description`
-    ) AGAINST('$requested')
+    ) AGAINST('$request')
     FROM
     `game_ajax_content`
     WHERE
@@ -18,7 +26,7 @@ $query = "SELECT * ,
     `genres`,
     `publisher_name`,
     `description`
-    ) AGAINST('$requested')
+    ) AGAINST('$request')
     ORDER BY
     MATCH(
     `app_name`,
@@ -26,9 +34,8 @@ $query = "SELECT * ,
     `genres`,
     `publisher_name`,
     `description`
-    ) AGAINST('$requested') DESC
-    LIMIT 25";
-
+    ) AGAINST('$request') DESC
+    LIMIT 25");
 
 $result = mysqli_query($conn, $query);
 
@@ -46,4 +53,6 @@ if(empty($result)) {
     }
 }
 
+$output_json = json_encode($output);
+print($output_json);
 ?>
