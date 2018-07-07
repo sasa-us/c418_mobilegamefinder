@@ -1,10 +1,15 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 
-$query = "SELECT `app_name`, `all_rating`, `description`, `icon_url`, `screenshot_urls`, `price_value`
-    FROM `game_ajax_content` 
-    WHERE `genre` = 'Action' 
-    ORDER BY RAND()
-    LIMIT 1";
+
+// $request = json_decode($_GET);
+$request = 'com.rovio.baba';
+
+
+
+$query = "SELECT *
+FROM `game_ajax_content` 
+WHERE `game_id` = '$request'";
 $result = mysqli_query($conn, $query);
 
 if(empty($result)) {
