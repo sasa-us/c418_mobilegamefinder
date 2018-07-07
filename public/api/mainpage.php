@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-if(empty($_POST['action'])){
+if(empty($_GET['action'])){
 	exit('no action specified');
 }
 
@@ -13,18 +13,18 @@ $output = [
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-switch($_POST['action']) {
+switch($_GET['action']) {
     case 'get_mainpage':
 		include 'get/get_mainpage.php';
         break;
 
-    case 'get_detailspage':
-        include 'get/get_detailspage.php';
-        break;
+    // case 'get_detailspage':
+    //     include 'get/get_detailspage.php';
+    //     break;
 
-    case 'get_searchpage';
-        include 'get/get_searchpage.php';
-        break;
+    // case 'get_searchpage';
+    //     include 'get/get_searchpage.php';
+    //     break;
 
     default: 
         $output['error'] ="unknown request method: $method";
