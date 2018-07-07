@@ -8,7 +8,7 @@ $query = "SELECT * ,
     `genres`,
     `publisher_name`,
     `description`
-    ) AGAINST('action')
+    ) AGAINST('$requested')
     FROM
     `game_ajax_content`
     WHERE
@@ -18,7 +18,7 @@ $query = "SELECT * ,
     `genres`,
     `publisher_name`,
     `description`
-    ) AGAINST('action')
+    ) AGAINST('$requested')
     ORDER BY
     MATCH(
     `app_name`,
@@ -26,7 +26,7 @@ $query = "SELECT * ,
     `genres`,
     `publisher_name`,
     `description`
-    ) AGAINST('action') DESC
+    ) AGAINST('$requested') DESC
     LIMIT 25";
 
 
