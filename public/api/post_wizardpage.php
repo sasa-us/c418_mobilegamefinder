@@ -11,32 +11,45 @@ $genre = ($_POST['genre']);
 // wizard will currently work only w/ the price, genre(s)
 //        -- AND `platform` = '$platform'
 
+if(!$price_value) {
+    $output['errors'][] = 'no price_value';
+}
+if(!$genre) {
+    $output['errors'][] = 'no genre';
+}
+// if(!$platform) {
+//     $output['errors'][] = 'no platform';
+// }
 
 $output = [
     'success' => false
 ];
 
-$query = ("SELECT * FROM `game_ajax_content`
+if(empty($output['error'])) { 
+
+    $query = ("SELECT * FROM `game_ajax_content`
         WHERE `price_value` = '$price_value'
         AND `genre` = '$genre'
         LIMIT 25");
 
-$result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
 
-if(empty($result)) {
-    $output['error'][] = mysqli_error($conn);
-} else {
-    if(mysqli_num_rows($result) > 0) {
-        $output['success'] = true;
-        while($row = mysqli_fetch_assoc($result)) {
-            $output['data'][] = $row;
-        }
-        
+    if(empty($result)) {
+        $output['error'][] = mysqli_error($conn);
     } else {
-        $output['error'][] = 'no result';
+        if(mysqli_num_rows($result) > 0) {
+            $output['success'] = true;
+            while($row = mysqli_fetch_assoc($result)) {
+              $output['data'][] = $row;
+            }
+        
+        } else {
+            $output['error'][] = 'no result';
+        }
     }
+
+    $output_json = json_encode($output);
+    print($output_json);
 }
 
-$output_json = json_encode($output);
-print($output_json);
 ?>
