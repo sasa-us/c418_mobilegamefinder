@@ -5,6 +5,8 @@ import Transition from 'react-transition-group/CSSTransitionGroup';
 import Indicators from './indicators';
 import imageData from '../../assets/images/carousel';
 import './carousel.css';
+import axios from 'axios';
+
 
 class Carousel extends Component {
     constructor(props){
@@ -23,10 +25,19 @@ class Carousel extends Component {
         this.getImageData();
     }
 
-    getImageData(){
-        // This is where you would make an API call to get image data
+    async getImageData(){
+        const resp = await axios.get('api/mainpage.php', {
+            params: {
+                action: 'get_mainpage'
+            }
+        });
+
+        console.log('Get Image Resp:',resp);
+        //console.log('Get Image :',resp.data.data[icon_url]);
         this.setState({
-            images: imageData
+            // Can't see call data, so this will need to be changed to the appropriate string
+            images: resp.data.data
+            //images: resp.data.data[icon_url]
         });
     }
 
