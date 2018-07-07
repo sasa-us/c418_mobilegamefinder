@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 header('Access-Control-Allow-Origin: *');
 
 if(empty($_GET['action'])){
@@ -47,4 +47,4 @@ switch($_GET['action']) {
 
 $output_json = json_encode($output);
 print($output_json);
-?>
+?> -->
