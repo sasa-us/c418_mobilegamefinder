@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {formatPostData} from '../helpers';
 import SearchIcon from '../assets/images/menu-icon-search.png';
 import '../assets/css/header-bar.scss'
 
@@ -73,8 +74,12 @@ class HeaderBar extends Component {
     handleSearchSubmit(event){
         event.preventDefault();
 
-        axios.post('/api/post_searchpage.php', {
+        axios.post('/api/gameapp.php', formatPostData({
             searchrequest: this.state.searchTerm
+        }), {
+            params: {
+                action: 'search'
+            }
         })
         .then(response => {
             console.log(response)
