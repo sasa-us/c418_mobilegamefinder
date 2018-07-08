@@ -6,6 +6,7 @@ import Indicators from './indicators';
 import imageData from '../../assets/images/carousel';
 import './carousel.css';
 import axios from 'axios';
+import ferret from '../../assets/images/ferretgif.gif';
 
 class Carousel extends Component {
     constructor(props){
@@ -97,7 +98,9 @@ class Carousel extends Component {
         if(!images.length){
             return (
                 <div className="carousel-container">
-                    <h1 className="">Loading Images</h1>
+                    <div className="loadingImage">
+                        <img src={ferret} alt="Loading Images" />
+                    </div>
                 </div>
             )
         }
