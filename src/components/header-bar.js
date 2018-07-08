@@ -75,7 +75,7 @@ class HeaderBar extends Component {
         event.preventDefault();
 
         axios.post('/api/gameapp.php', formatPostData({
-            searchrequest: this.state.searchTerm
+            search_term: this.state.searchTerm
         }), {
             params: {
                 action: 'search'
