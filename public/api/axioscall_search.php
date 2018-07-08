@@ -2,7 +2,7 @@
 <script>
 
     const newItem = {
-        game_id: 'com.rovio.baba',
+        search_term: 'com.rovio.baba',
     };
     const postnewItem = formatPostData(newItem);
    // axios.get('mainpage.php', {

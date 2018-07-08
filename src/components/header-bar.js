@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {formatPostData} from '../helpers';
 import SearchIcon from '../assets/images/menu-icon-search.png';
 import '../assets/css/header-bar.scss'
 
@@ -13,7 +15,8 @@ class HeaderBar extends Component {
                 browse: false,
                 about: false,
                 search: false
-            }
+            },
+            searchTerm: ""
         };
     }
 
@@ -61,7 +64,31 @@ class HeaderBar extends Component {
             ...this.state
         });
     }
+    // -------------------------------------------------------------------------------------
+    async handleSearchInputChange(event){
+        await this.setState({
+            ...this.state,
+            searchTerm: event.target.value
+        });
+    }
+    handleSearchSubmit(event){
+        event.preventDefault();
 
+        axios.post('/api/gameapp.php', formatPostData({
+            search_term: this.state.searchTerm
+        }), {
+            params: {
+                action: 'search'
+            }
+        })
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error)
+        });
+    }
+    // -------------------------------------------------------------------------------------
     render() {
         const menuOverlayStyle = {
             background: this.state.dropdownsOpen.main ? "rgba(0,0,0,.5)" : "rgba(0,0,0,0)",
@@ -139,9 +166,9 @@ class HeaderBar extends Component {
                 </nav>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
                     <div>
-                        <form className="form-inline dropForm">
+                        <form className="form-inline dropForm" onSubmit={this.handleSearchSubmit.bind(this)}>
                             <i className="fa fa-search" aria-hidden="true"></i>
-                            <input className="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search"/>
+                            <input className="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search" onChange={this.handleSearchInputChange.bind(this)} value={this.state.searchTerm}/>
                         </form>
                     </div>
                 </div>
