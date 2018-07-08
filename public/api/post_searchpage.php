@@ -2,8 +2,15 @@
 header('Access-Control-Allow-Origin: *');
 require_once('mysql_connect.php');
 
+$contentType = explode(';', $_SERVER['CONTENT_TYPE']);
 
-$request = ($_POST['searchrequest']);
+if (array_search('application/json', $contentType) !== FALSE){
+    $request = json_decode(file_get_contents('php://input'), true);
+} else {
+    $request = $_POST;
+}
+
+$request = ($request['searchrequest']);
 
 $output = [
     'success' => false
