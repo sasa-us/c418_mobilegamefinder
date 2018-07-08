@@ -23,7 +23,7 @@ class Carousel extends Component {
     componentDidMount(){
         this.getImageData();
     }
-
+  
     async dataForClick(){
         const params = new URLSearchParams();
         const {currentIndex, images} = this.state;
@@ -35,18 +35,19 @@ class Carousel extends Component {
                 console.log('GET RESPONSE:', resp);}).catch(function(error){
                     console.log(error)});
     }
-
-
+  
     async getImageData(){
         const resp = await axios.get('api/mainpage.php', {
             params: {
                 action: 'get_mainpage'
             }
         });
- 
-        console.log('Get Image Resp:', resp);
+
+      console.log('Get Image Resp:',resp);
+        //console.log('Get Image :',resp.data.data[icon_url]);
         this.setState({
             images: resp.data.data
+            //images: resp.data.data[icon_url]
         });
     }
 
