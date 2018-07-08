@@ -23,8 +23,11 @@
 
     const params = new URLSearchParams();
 
-params.append('searchrequest', 'angry');
-    axios.post('post_searchpage.php', params).then(resp => {
+
+params.append('searchrequest', 'com.rovio.baba');
+    axios.post('post_detailspage.php', params).then(resp => {
+
+
         console.log('GET RESPONSE:', resp);
     }).catch(function(error){
         console.log(error)});

@@ -6,6 +6,7 @@ import Indicators from './indicators';
 import imageData from '../../assets/images/carousel';
 import './carousel.css';
 import axios from 'axios';
+import ferret from '../../assets/images/ferretgif.gif';
 
 class Carousel extends Component {
     constructor(props){
@@ -23,7 +24,7 @@ class Carousel extends Component {
     componentDidMount(){
         this.getImageData();
     }
-
+  
     async dataForClick(){
         const params = new URLSearchParams();
         const {currentIndex, images} = this.state;
@@ -35,18 +36,19 @@ class Carousel extends Component {
                 console.log('GET RESPONSE:', resp);}).catch(function(error){
                     console.log(error)});
     }
-
-
+  
     async getImageData(){
         const resp = await axios.get('api/mainpage.php', {
             params: {
                 action: 'get_mainpage'
             }
         });
- 
-        console.log('Get Image Resp:', resp);
+
+      console.log('Get Image Resp:',resp);
+        //console.log('Get Image :',resp.data.data[icon_url]);
         this.setState({
             images: resp.data.data
+            //images: resp.data.data[icon_url]
         });
     }
 
@@ -96,7 +98,9 @@ class Carousel extends Component {
         if(!images.length){
             return (
                 <div className="carousel-container">
-                    <h1 className="">Loading Images</h1>
+                    <div className="loadingImage">
+                        <img src={ferret} alt="Loading Images" />
+                    </div>
                 </div>
             )
         }
