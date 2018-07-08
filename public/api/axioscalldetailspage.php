@@ -25,8 +25,11 @@
 
 params.append('searchrequest', 'happy');
     axios.post('post_searchpage.php', params).then(resp => {
+// =====change to search call
 // params.append('searchrequest', 'com.rovio.baba');
 //     axios.post('post_detailspage.php', params).then(resp => {
+// =====end search call
+
         console.log('GET RESPONSE:', resp);
     }).catch(function(error){
         console.log(error)});

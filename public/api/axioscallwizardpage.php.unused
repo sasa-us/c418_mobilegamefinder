@@ -20,7 +20,7 @@
 //     return params;
 // }
     const params = new URLSearchParams();
-
+   
     params.append(
         'genre', 'board'
     );
@@ -31,8 +31,8 @@
         'price_value', 'free'
     )
 
-
-    axios.post('post_wizardpage.php', params).then(resp => {
+    axios.post('gameapp.php', params).then(resp => {
+   // axios.post('post_wizardpage.php', params).then(resp => {
         console.log('GET RESPONSE:', resp);
     }).catch(function(error){
         console.log(error)});
