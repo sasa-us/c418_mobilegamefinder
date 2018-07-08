@@ -4,6 +4,7 @@ import Data from './dummydata';
 import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
+import { formatPostData} from '../../helpers';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){

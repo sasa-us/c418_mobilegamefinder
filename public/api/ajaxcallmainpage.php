@@ -10,5 +10,4 @@
     }).then(resp => {
         console.log('GET RESPONSE:', resp);
     });
-
 </script>

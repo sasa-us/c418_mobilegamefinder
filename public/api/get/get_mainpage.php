@@ -7,9 +7,6 @@ $query = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
          LIMIT 1";
 getDB($conn, $query);
 
-
- 
-
 $query1 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
          FROM `game_ajax_content` 
          WHERE `genre` = 'Puzzle'
