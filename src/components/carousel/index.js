@@ -7,7 +7,6 @@ import imageData from '../../assets/images/carousel';
 import './carousel.css';
 import axios from 'axios';
 
-
 class Carousel extends Component {
     constructor(props){
         super(props);
@@ -24,7 +23,19 @@ class Carousel extends Component {
     componentDidMount(){
         this.getImageData();
     }
-
+  
+    async dataForClick(){
+        const params = new URLSearchParams();
+        const {currentIndex, images} = this.state;
+        console.log('name', images[currentIndex].game_id);
+        const game_id = images[currentIndex].game_id;
+            params.append('searchrequest', game_id);
+            console.log('params', params);
+            await axios.post('api/post_detailspage.php', params).then(resp => {
+                console.log('GET RESPONSE:', resp);}).catch(function(error){
+                    console.log(error)});
+    }
+  
     async getImageData(){
         const resp = await axios.get('api/mainpage.php', {
             params: {
@@ -32,10 +43,9 @@ class Carousel extends Component {
             }
         });
 
-        console.log('Get Image Resp:',resp);
+      console.log('Get Image Resp:',resp);
         //console.log('Get Image :',resp.data.data[icon_url]);
         this.setState({
-            // Can't see call data, so this will need to be changed to the appropriate string
             images: resp.data.data
             //images: resp.data.data[icon_url]
         });
@@ -92,7 +102,9 @@ class Carousel extends Component {
             )
         }
 
-        const { src, text } = images[currentIndex];
+        const { icon_url, app_name } = images[currentIndex];
+        const src= icon_url;
+        const text = app_name
 
         return (
             <div className="center-all">
@@ -103,7 +115,7 @@ class Carousel extends Component {
                         transitionEnterTimeout={transitionTime}
                         transitionLeaveTimeout={transitionTime}
                     >
-                        <img key={src} src={src} alt={text} className="carousel-img" />
+                        <img key={src} src={src} alt={text} onClick={this.dataForClick.bind(this)} className="carousel-img" />
                     </Transition>
                 </div>
                 <h4 className="carousel-text">{text}</h4>
