@@ -120,7 +120,17 @@
   background: #718694;
   text-decoration: none;
 }
-
+.loadingImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loadingImage img {
+  transform: translateY(25%);
+}
+.modal {
+  background-color: lime;
+}
 
 @media only screen and (max-width: 600px) {
   .carousel-container {
