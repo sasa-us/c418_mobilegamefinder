@@ -2,7 +2,6 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import Header from './header-bar';
 import Home from './home';
-
 import Browse from './browse';
 import Wizard from './wizard/price';
 import Platform from "./wizard/platform";
@@ -22,7 +21,7 @@ const App = () => (
             <Header/>
 
             <Route exact path="/" component={Home}/>
-            <Route path="/browse/results" component={BrowseResult}/>
+            <Route path="/browse/" component={Browse}/>
             <Route path="/wizard" component={Wizard}/>
             <Route path="/platform" component={Platform}/>
                 <Route path="/genre" component={Genre}/>
