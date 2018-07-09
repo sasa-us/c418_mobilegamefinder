@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
 import Wizard from './wizard'
-import Platform from './platform'
+import { formatPostData} from '../../helpers'
+
 
 class Wizard extends Component {
     constructor(props) {
