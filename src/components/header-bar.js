@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {formatPostData} from '../helpers';
+import {withRouter} from 'react-router-dom';
 import SearchIcon from '../assets/images/menu-icon-search.png';
 import '../assets/css/header-bar.scss'
 
@@ -74,19 +73,9 @@ class HeaderBar extends Component {
     handleSearchSubmit(event){
         event.preventDefault();
 
-        axios.post('/api/gameapp.php', formatPostData({
-            search_term: this.state.searchTerm
-        }), {
-            params: {
-                action: 'search'
-            }
-        })
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-        });
+        const location = `/search/results?search_term=${this.state.searchTerm}`;
+
+        this.props.history.push(location);
     }
     // -------------------------------------------------------------------------------------
     render() {
@@ -137,7 +126,6 @@ class HeaderBar extends Component {
                     </button>
                     <ul className="main-menu" style={mainMenuStyle}>
                         <Link to="/"><li className="nav-text">Home</li></Link>
-                        <Link to="/search"><li className="nav-text">Search</li></Link>
                         <li className="nav-text">
                             <div className="plus-bar" onClick={this.toggleBrowseMenu.bind(this)}>
                                 <Link to="/browse">Browse </Link>
@@ -177,4 +165,4 @@ class HeaderBar extends Component {
     }
 }
 
-export default HeaderBar;
+export default withRouter(HeaderBar);

@@ -17,21 +17,22 @@ import Footer from './footer-bar'
 const App = () => (
         <div>
             <div>
-            <Header/>
 
-            <Route exact path="/" component={Home}/>
-            <Route path="/browse/results" component={BrowseResult}/>
-            <Route path="/wizard" component={Wizard}/>
-            <Route path="/wizardresults" component={WizardResults}/>
-            <Route exact path="/search" component={Search}/> 
-            <Route path="/about" component={About}/>
-            <Route path="/search/results" component={Search}/>
-            <Route path="/search/gamedetails" component={GameInfo}/>
+                <Header/>
+
+                <Route exact path="/" component={Home}/>
+                <Route path="/browse/results" component={BrowseResult}/>
+                <Route path="/wizard" component={Wizard}/>
+                <Route path="/wizardresults" component={WizardResults}/>
+                <Route exact path="/search" component={Search}/> 
+                <Route path="/about" component={About}/>
+                <Route path="/search/results" component={Search}/>
+                <Route path="/search/gamedetails" component={GameInfo}/>
 
             </div>
 
             <div>
-            <Footer/>
+                <Footer/>
             </div>
 
         </div>
