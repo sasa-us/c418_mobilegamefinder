@@ -7,6 +7,8 @@ import imageData from '../../assets/images/carousel';
 import './carousel.css';
 import axios from 'axios';
 import ferret from '../../assets/images/ferretgif.gif';
+import {connect} from 'react-redux';
+import {viewDetails} from '../../actions/';
 
 class Carousel extends Component {
     constructor(props){
@@ -23,18 +25,19 @@ class Carousel extends Component {
 
     componentDidMount(){
         this.getImageData();
+        
     }
   
-    async dataForClick(){
-        const params = new URLSearchParams();
-        const {currentIndex, images} = this.state;
-        console.log('name', images[currentIndex].game_id);
-        const game_id = images[currentIndex].game_id;
-            params.append('searchrequest', game_id);
-            console.log('params', params);
-            await axios.post('api/post_detailspage.php', params).then(resp => {
-                console.log('GET RESPONSE:', resp);}).catch(function(error){
-                    console.log(error)});
+    dataForClick(){
+        const { images, currentIndex } = this.state;
+        this.props.viewDetails(images[currentIndex].game_id);
+        if (!this.props.details){
+            alert('loading')
+        } else {
+            console.log('loaded');
+            alert(this.props.details.genre)
+            console.log('props', this.props)
+        }
     }
   
     async getImageData(){
@@ -131,4 +134,11 @@ class Carousel extends Component {
     }
 }
 
-export default Carousel;
+function mapStateToProps(state){
+    console.log('REDUX STATE:', state);
+    return {
+        details: state.game.details
+    }
+}
+export default connect(mapStateToProps, {viewDetails})(Carousel);
+
