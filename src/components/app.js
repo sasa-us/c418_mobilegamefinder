@@ -9,7 +9,8 @@ import Genre from "./wizard/genre";
 import Search from './search';
 import GameInfo from '../components/gamedetails'
 import About from './about';
-import Footer from './footer-bar'
+import Footer from './footer-bar';
+import WizardResults from "./wizard/wizardresults"
 // import PartialDetails from '../components/modals';
 
 
@@ -24,7 +25,8 @@ const App = () => (
             <Route path="/browse/" component={Browse}/>
             <Route path="/wizard" component={Wizard}/>
             <Route path="/platform" component={Platform}/>
-                <Route path="/genre" component={Genre}/>
+            <Route path="/genre" component={Genre}/>
+            <Route path="/wizardresults" component={WizardResults}/>
             <Route exact path="/search" component={Search}/>
             <Route path="/about" component={About}/>
             <Route path="/search/results" component={Search}/>

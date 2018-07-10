@@ -16,7 +16,8 @@ class Genre extends Component {
     constructor(props) {
         super(props);
         this.state={
-            genre:"",
+            genre:""
+
 
         };
 
@@ -96,9 +97,8 @@ class Genre extends Component {
                 <Link to="/platform">
                     <button className="wizard-button" type="button">Back</button>
                 </Link>
-
-                <Link to="/recommendations">
-                    <button className="wizard-button" type="button">Next</button>
+                <Link to="/wizardresults">
+                    <button className="wizard-button" type="button" onClick={this.getDataFromLocalStorage}>Next</button>
                 </Link>
             </div>
 
