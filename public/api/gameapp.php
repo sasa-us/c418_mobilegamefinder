@@ -15,7 +15,6 @@ switch($method) {
           include "get/$action.php";      
           break;
     case 'POST': 
-          //$output['msg'] = 'POST used';
           include "post/$action.php";
           break;
 //     case 'PUT': 

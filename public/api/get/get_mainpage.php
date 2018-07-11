@@ -32,7 +32,7 @@ $query1 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query1);
 
 $query2 = "SELECT gac.*
     FROM (
@@ -49,7 +49,7 @@ $query2 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query2);
 
 $query3 = "SELECT gac.*
     FROM (
@@ -66,7 +66,7 @@ $query3 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query3);
 
 $query4 = "SELECT gac.*
     FROM (
@@ -83,7 +83,7 @@ $query4 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query4);
 
 $query5 = "SELECT gac.*
     FROM (
@@ -100,7 +100,7 @@ $query5 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query5);
 
 $query6 = "SELECT gac.*
     FROM (
@@ -117,7 +117,7 @@ $query6 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query6);
 
 $query7 = "SELECT gac.*
     FROM (
@@ -134,7 +134,7 @@ $query7 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query7);
 
 $query8 = "SELECT gac.*
     FROM (
@@ -151,7 +151,7 @@ $query8 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query8);
 
 $query9 = "SELECT gac.*
     FROM (
@@ -168,7 +168,7 @@ $query9 = "SELECT gac.*
         LIMIT 1
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
-    getDB($conn, $query);
+    getDB($conn, $query9);
 
 
 function getDB($conn, $query) {
