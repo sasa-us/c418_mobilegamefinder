@@ -16,7 +16,7 @@ export function searchResults(terms){
     // params.append('searchrequest', terms);
     // const resp = axios.post('/api/post_searchpage.php', params);
     const newItem = {
-        searchrequest: terms
+        search_term: terms
     };
     const postItem = formatPostData(newItem);
     const resp = axios.post('/api/gameapp.php', postItem, {
