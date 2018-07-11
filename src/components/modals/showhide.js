@@ -5,11 +5,11 @@ import React from 'react';
   
     return (
       <div className={showHideClassName}>
-        <section className='modal-main'>
+        <div className='modal-main'>
           {children}
           <button className='detailsButton'>View Game Details</button>
           <button className='detailsButton' onClick={handleClose}>Continue Browsing</button>
-        </section>
+        </div>
       </div>
     );
   };

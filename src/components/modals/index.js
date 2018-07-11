@@ -17,7 +17,7 @@ class Modal extends Component {
   hideModal = () => {
     this.setState({ show: false });
   };
-
+  
   render() {
     return (
       <div >
