@@ -1,5 +1,5 @@
 <?php
-$request = $_POST['search_term'];
+$request = $_POST['searchrequest'];
 if(!$request ) {
     $output['errors'][] = 'no search information provided';
 }

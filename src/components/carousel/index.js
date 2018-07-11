@@ -41,7 +41,7 @@ class Carousel extends Component {
     }
   
     async getImageData(){
-        const resp = await axios.get('api/mainpage.php', {
+        const resp = await axios.get('api/gameapp.php', {
             params: {
                 action: 'get_mainpage'
             }
