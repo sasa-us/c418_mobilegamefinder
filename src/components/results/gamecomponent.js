@@ -5,9 +5,7 @@ import Modal from '../modals';
 
 
 export default props => {
-    console.log('gamecomponent props', props);
     const ratingChanged = (newRating) => {
-        //   console.log(newRating)
         };
     return (
         <div className="resItem">

@@ -2,23 +2,23 @@
 $genre = $_POST['genre']; 
 $platform = $_POST['platform'];
 $price_value = $_POST['price_value'];
-//
-//if(!$genre ) {
-//    $output['errors'][] = 'no genre provided';
-//}
-//
-//if(!$platform ) {
-//    $output['errors'][] = 'no platform provided';
-//}
-//
-//if(!$price_value ) {
-//    $output['errors'][] = 'no price_value provided';
-//}
+
+if(!$genre ) {
+   $output['errors'][] = 'no genre provided';
+}
+
+if(!$platform ) {
+   $output['errors'][] = 'no platform provided';
+}
+
+if(!$price_value ) {
+   $output['errors'][] = 'no price_value provided';
+}
 
 if(empty($output['error'])) {
     $query = ("SELECT * FROM `game_ajax_content`
         WHERE `price_value` = '$price_value'
-        OR `genre` = '$genre'
+        AND `genre` = '$genre'
         LIMIT 25");
 
     $result = mysqli_query($conn, $query);
