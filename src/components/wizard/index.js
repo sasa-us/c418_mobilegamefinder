@@ -4,39 +4,72 @@ import Wizard from './wizard'
 import { formatPostData} from '../../helpers'
 
 
-class Wizard extends Component {
+class WizardResults extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            genre:"",
+            platform:"",
+            price_value:""
+        }
     }
 
-    setPrice(price){
-        this.setState({price});
-    }
-
-    setPlatform(platform) {
-        this.setState({platform});
-    }
-
-    setGenre(genre) {
-        this.setState({genre})
+    componentDidMount() {
+        this.getDataFromLocalStorage;
     }
 
 
-    render(){
-        return(
-        <div>
-            <Route path="/wizard/price" render={ props => {
-                return <Wizard {...props} handleIconClick={this.setPrice.bind(this)}/>
-            }}/>
-            <Route path="/wizard/platform" render={ props => {
-                return <Wizard {...props} handleIconClick={this.setPlatform.bind(this)}/>
-            }}/>
+    getDataFromLocalStorage() {
+        var priceData = JSON.parse(localStorage.getItem('price'));
+        var platformData = JSON.parse(localStorage.getItem('platform'));
+        var genreData = JSON.parse(localStorage.getItem('genre'));
 
-            <Route path="/wizard/genre" render={ props => {
-                return <Wizard {...props} handleIconClick={this.setGenre.bind(this)}/>
-            }}/>
+        console.log("wizard data: ", priceData.price, platformData.platform, genreData.genre);
 
-        </div>
-        )
+        this.setState({
+            price: priceData.price,
+            platform: platformData.platform,
+            genre: genreData.genre
+        });
+
+
+        const newItem = {
+            genre: 'board',
+            platform:  'android',
+            price_value: 'free'
+        };
+        const postnewItem = formatPostData(newItem);
+        // axios.get('mainpage.php', {
+        axios.post('/api/gameapp.php', postnewItem, {
+            params: {
+                action: 'wizardpage'
+            }
+        }).then(resp => {
+            console.log('POST RESPONSE:', resp);
+        });
+
+        function formatPostData(data){
+            const params = new URLSearchParams();
+
+            for(let [k, v] of Object.entries(data)){
+                params.append(k, v);
+            }
+
+            return params;
+        }
+
+
+    }
+
+
+    render() {
+        console.log("state: ", this.state)
+        return <div>it worked</div>
     }
 }
+
+
+
+
+
+
