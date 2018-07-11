@@ -1,5 +1,4 @@
 <?php
-
 $query = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -16,7 +15,6 @@ $query = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query);
-
 $query1 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -33,7 +31,6 @@ $query1 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query1);
-
 $query2 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -50,7 +47,6 @@ $query2 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query2);
-
 $query3 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -67,7 +63,6 @@ $query3 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query3);
-
 $query4 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -84,7 +79,6 @@ $query4 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query4);
-
 $query5 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -101,7 +95,6 @@ $query5 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query5);
-
 $query6 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -118,7 +111,6 @@ $query6 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query6);
-
 $query7 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -135,7 +127,6 @@ $query7 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query7);
-
 $query8 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -152,7 +143,6 @@ $query8 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query8);
-
 $query9 = "SELECT gac.*
     FROM (
         SELECT MIN(gac.id) AS id
@@ -169,8 +159,6 @@ $query9 = "SELECT gac.*
     ) AS gac_random
     JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query9);
-
-
 function getDB($conn, $query) {
     $result = mysqli_query($conn, $query);
     global $output;
@@ -187,5 +175,4 @@ function getDB($conn, $query) {
         }
     }
 } //end getDB() 
-
 ?>
