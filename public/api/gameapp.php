@@ -18,9 +18,10 @@ switch($method) {
           //$output['msg'] = 'POST used';
           include "post/$action.php";
           break;
-    case 'PUT': 
-          $output['msg'] = 'PUT used';
-          break;
+//     case 'PUT': 
+//           $output['msg'] = 'PUT used';
+//           break;
+// for future use with user logins
           
     default: 
           $output['error'] ="unknown request method: $method";

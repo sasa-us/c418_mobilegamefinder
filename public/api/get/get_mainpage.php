@@ -1,74 +1,174 @@
 <?php
 
-$query = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Action' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query);
-
-$query1 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Puzzle'
-         ORDER BY RAND()  
-         LIMIT 1";
-getDB($conn, $query1);
-
-$query2 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id` 
+$query = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
             FROM `game_ajax_content` 
-            WHERE `genre` = 'Adventure' 
-            ORDER BY RAND() 
-            LIMIT 1";
-getDB($conn, $query2);
+            WHERE genre = 'Action'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Action'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query3 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Simulation' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query3);
+$query1 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Puzzle'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Puzzle'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query4 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Strategy' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query4);
+$query2 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Adventure'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Adventure'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query5 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Role Playing' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query5);
+$query3 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Simulation'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Simulation'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query6 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Racing' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query6);
+$query4 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Strategy'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Strategy'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query7 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Arcade'
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query7);
+$query5 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Role Playing'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Role Playing'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query8 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Adventure' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query8);
+$query6 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Racing'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Racing'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
-$query9 = "SELECT `app_name`, `all_rating`, `icon_url`, `genre`, `game_id`
-         FROM `game_ajax_content` 
-         WHERE `genre` = 'Board' 
-         ORDER BY RAND() 
-         LIMIT 1";
-getDB($conn, $query9);
+$query7 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Arcade'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Arcade'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
+
+$query8 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Trivia'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Trivia'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
+
+$query9 = "SELECT gac.*
+    FROM (
+        SELECT MIN(gac.id) AS id
+        FROM (
+            SELECT CEIL(RAND() * MAX(id)) AS id
+            FROM `game_ajax_content` 
+            WHERE genre = 'Board'
+            GROUP BY genre
+        ) AS gac_random
+        JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+        WHERE gac.genre = 'Board'
+        GROUP BY gac.genre
+        LIMIT 1
+    ) AS gac_random
+    JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+    getDB($conn, $query);
 
 
 function getDB($conn, $query) {
