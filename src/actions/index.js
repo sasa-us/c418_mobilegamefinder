@@ -29,21 +29,13 @@ export function searchResults(terms){
         payload: resp
     }
 }
-export function wizardResults(terms){
-    const newItem = {
-        genre: 'board',
-        platform:  'android',
-        price_value: 'free'
-    };
-    const postnewItem = formatPostData(newItem);
-    // axios.get('mainpage.php', {
-    axios.post('/api/gameapp.php', postnewItem, {
+export function wizardResults(results){
+    const postnewItem = formatPostData(results);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
         params: {
             action: 'wizardpage'
         }
-    }).then(resp => {
-        console.log('POST RESPONSE:', resp);
-    });
+    })
 
     return {
         type: types.WIZARD_RESULTS,

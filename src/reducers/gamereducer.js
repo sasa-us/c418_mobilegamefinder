@@ -1,7 +1,6 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    gamelist: null,
     details: null
 }
 

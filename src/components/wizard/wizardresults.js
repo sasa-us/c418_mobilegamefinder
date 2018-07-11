@@ -5,6 +5,12 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 import { formatPostData} from '../../helpers'
+import GeneralText from '../multiuse/generaltext';
+import '../results/results.scss';
+import GameComponent from '../results/gamecomponent';
+import {wizardResults} from '../../actions/';
+import {connect} from 'react-redux';
+import ferret from '../../assets/images/ferretgif.gif';
 import Data from "../gamedetails/dummydata";
 
 
@@ -13,9 +19,8 @@ class WizardResults extends Component {
     constructor(props) {
         super(props);
         //data call return info should be in state
-        this.state={
-
-        }
+        // this.state={
+        // }
     }
 
     componentDidMount() {
@@ -29,118 +34,49 @@ class WizardResults extends Component {
         var genreData = JSON.parse(localStorage.getItem('genre'));
 
         console.log("this is the wizard data: ", priceData.price, platformData.platform, genreData.genre);
-
-        this.setState({
-
-        });
-
-
         const newItem = {
-            genre: 'board'
-            // platform:  'android',
-            // price_value: 'free'
+            genre: genreData.genre,
+            platform:  platformData.platform,
+            price_value: priceData.price
         };
-        const postnewItem = formatPostData(newItem);
-        // axios.get('mainpage.php', {
-        axios.post('/api/gameapp.php', postnewItem, {
-            params: {
-                action: 'wizardpage'
-            }
-        }).then(resp => {
-            console.log('POST RESPONSE:', resp);
-        });
-
-        function formatPostData(data){
-            const params = new URLSearchParams();
-
-            for(let [k, v] of Object.entries(data)){
-                params.append(k, v);
-            }
-
-            return params;
-        }
-
-
+        this.props.wizardResults(newItem)
     }
 
 
     render() {
-        return(
-
-            <div className="resultsContainer">
-
-                <div className="resultsIcons">
-
-                    <h3 className='resultsGreeting'>Your search results...</h3>
-
-                    <div className="resultsRow">
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[1].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[1].app_name}</div>
-                        </div>
-
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[2].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[2].app_name}</div>
-                        </div>
-
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[3].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[3].app_name}</div>
-                        </div>
-                    </div>
-
-                    <div className="resultsRow">
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[4].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[4].app_name}</div>
-                        </div>
-
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[5].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[5].app_name}</div>
-                        </div>
-
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[6].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[6].app_name}</div>
-                        </div>
-                    </div>
-
-                    <div className="resultsRow">
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[7].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[7].app_name}</div>
-                        </div>
-
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[8].icon_url}/>
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[8].app_name}</div>
-                        </div>
-
-                        <div className="icon">
-                            <img className="result_icon" src ={Data[9].icon_url} />
-                            <ReactStars count={5} size={14} color2={'#ffd700'} value={5} edit={false}/>
-                            <div className="resultsTitle">{Data[9].app_name}</div>
-                        </div>
+        if (!this.props.wizard){
+            return (
+                <div className="carousel-container">
+                    <div className="loadingImage">
+                        <img src={ferret} alt="Loading Images" />
                     </div>
                 </div>
+            )
+        } else {
+            console.log('loaded');
+            console.log('props', this.props)
+    }
+    const data = this.props.wizard.data;
+    const text = 'Based on your choices, we think you would enjoy these games.';
+        return (
+            <div className="resContainer">
+                <h2>Our Recommendations</h2>
+                <GeneralText text={text} />
+                <div className="detailContainer">
+                    {data.map(game => <GameComponent key={game.game_id} details={game}/>)}
+                </div>
             </div>
-
         )
     }
-
 }
 
-export default WizardResults;
+function mapStateToProps(state){
+    console.log('REDUX STATE:', state);
+    return {
+        wizard: state.wizard.wizardresults
+    }
+}
+export default connect(mapStateToProps, {wizardResults})(WizardResults);
 
 
 
