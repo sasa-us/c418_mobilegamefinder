@@ -11,6 +11,7 @@ import GameInfo from '../components/gamedetails'
 import About from './about';
 import Footer from './footer-bar';
 import WizardResults from "./wizard/wizardresults"
+import '../assets/css/app.scss';
 // import PartialDetails from '../components/modals';
 
 
@@ -20,7 +21,9 @@ const App = () => (
         <div>
             <div>
             <Header/>
+            </div>
 
+            <div className="mainBody">
             <Route exact path="/" component={Home}/>
             <Route path="/browse/" component={Browse}/>
             <Route path="/wizard" component={Wizard}/>
@@ -31,10 +34,7 @@ const App = () => (
             <Route path="/about" component={About}/>
             <Route path="/search/results" component={Search}/>
             <Route path="/search/gamedetails" component={GameInfo}/>
-
-            </div>
-
-            <div>
+            
             <Footer/>
             </div>
 
