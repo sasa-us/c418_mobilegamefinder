@@ -81,6 +81,10 @@ module.exports = {
                     rel: 'stylesheet'
                 },
                 {
+                    href: 'https://fonts.googleapis.com/css?family=Ubuntu',
+                    rel: 'stylesheet'
+                },
+                {
                     href: 'https://use.fontawesome.com/releases/v5.1.0/css/all.css',
                     rel: 'stylesheet'
                 },
