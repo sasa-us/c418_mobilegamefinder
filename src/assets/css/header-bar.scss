@@ -2,7 +2,9 @@
     background: paleturquoise;
 }
 .header{
-    position: relative;
+    position: fixed;
+    z-index: 3;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,6 +110,10 @@
     transition: 0.5s;
 }
 .dropdownSearch{
+    position: fixed;
+    top: 73px;
+    width: 100vw;
+    z-index: 1;
     display: flex;
     justify-content: space-around;
     overflow-y: hidden;
@@ -125,6 +131,6 @@
 }
 .dropdownInput{
     height: 30px;
-    width: 230px;
+    width: 260px;
     padding-left: 30px;
 }
