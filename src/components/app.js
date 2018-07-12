@@ -17,7 +17,7 @@ import '../assets/css/app.scss';
 
 
 const App = () => (
-        <div>
+        <div className="appOuterDiv">
             <div>
             <Header/>
             </div>
