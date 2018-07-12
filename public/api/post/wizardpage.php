@@ -23,6 +23,11 @@ if(empty($output['error'])) {
         ORDER BY RAND()
         LIMIT 25");
 
+        // run original query
+        // if original query returns 0 results then run a secondary query without price_value
+        // add in $output['firstsearch']=true if original yields results
+        // change to false if it does not and a second query had to be run
+
     $result = mysqli_query($conn, $query);
     if(empty($result)) {
     $output['error'][] = mysqli_error($conn);
