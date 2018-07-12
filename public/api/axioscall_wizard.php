@@ -4,7 +4,7 @@
     const newItem = {
         genre: 'board',
         platform:  'android',
-        price_value: 'free'
+        price_value: 'paid'
     };
     const postnewItem = formatPostData(newItem);
    // axios.get('mainpage.php', {
