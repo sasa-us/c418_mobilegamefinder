@@ -12,7 +12,6 @@ import About from './about';
 import Footer from './footer-bar';
 import WizardResults from "./wizard/wizardresults"
 import '../assets/css/app.scss';
-// import PartialDetails from '../components/modals';
 
 
 
@@ -34,7 +33,7 @@ const App = () => (
             <Route path="/about" component={About}/>
             <Route path="/search/results" component={Search}/>
             <Route path="/search/gamedetails" component={GameInfo}/>
-            
+            <Route path='/game/:game_details' component={GameInfo} />
             <Footer/>
             </div>
 
