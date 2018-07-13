@@ -3,9 +3,15 @@ import axios from 'axios';
 import { formatPostData} from '../../src/helpers';
 
 export function viewDetails(gameid){
-    const params = new URLSearchParams();
-    params.append('searchrequest', gameid);
-    const resp = axios.post('/api/post_detailspage.php', params)
+    // const params = new URLSearchParams();
+    // params.append('searchrequest', gameid);
+    const newItem = {searchrequest: gameid};
+    const postItem = formatPostData(newItem);
+    const resp = axios.post('/api/gameapp.php', postItem, {
+        params: {
+            action: 'details'
+        }
+    })
     return {
         type: types.VIEW_DETAILS,
         payload: resp

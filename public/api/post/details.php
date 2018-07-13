@@ -26,6 +26,6 @@ if(empty($result)) {
     }
 }
 
-$output_json = json_encode($output);
-print($output_json);
+// $output_json = json_encode($output);
+// print($output_json);
 ?>
