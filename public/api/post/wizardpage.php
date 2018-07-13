@@ -27,6 +27,7 @@ if(empty($output['error'])) {
         WHERE `price_value` = '$price_value'
         AND `genre` = '$genre'
         AND `platform` = '$platform'
+        OR `platform` = 'both'
         ORDER BY RAND()
         LIMIT 25");
         getWizardResult($conn, $query);
@@ -35,6 +36,7 @@ if(empty($output['error'])) {
                     WHERE `price_value` <> 'free'
                     AND `genre` = '$genre'
                     AND `platform` = '$platform'
+                    OR `platform` = 'both'
                     ORDER BY RAND()
                     LIMIT 25");
         getWizardResult($conn, $query2);
