@@ -1,6 +1,8 @@
 // CSS for About Page Component
 .aboutPageContainer {
     text-align: center;
+    color: #457B9D;
+    background: white;
 }
 .devItem{
     display: flex;
@@ -9,7 +11,7 @@
     margin: auto;
     text-align: left;
     // flex-direction: column;
-    background-color: rgb(175, 238, 238);
+    background-color: #EAF9F5;
     margin-top: 2%;
     margin-bottom: 2%;
     padding: 1% .0;

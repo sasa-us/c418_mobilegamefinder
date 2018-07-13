@@ -7,7 +7,7 @@ $output = [
 ];
 
 $query = "SELECT *
-    FROM `game_ajax_content` 
+    FROM `combined_game_content` 
     WHERE `game_id` = '$request'";
 
 $result = mysqli_query($conn, $query);
@@ -26,6 +26,6 @@ if(empty($result)) {
     }
 }
 
-$output_json = json_encode($output);
-print($output_json);
+// $output_json = json_encode($output);
+// print($output_json);
 ?>
