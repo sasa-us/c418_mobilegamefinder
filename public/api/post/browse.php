@@ -7,7 +7,7 @@ if(empty($output['error'])) {
     $query = ("SELECT * FROM `game_ajax_content`
         WHERE `price_value` = '$price_value'
         OR `genre` = '$genre'
-        -- OR `platform` = '$platform'
+        OR `platform` = '$platform'
         ORDER BY RAND ()
         LIMIT 25");
 
