@@ -21,8 +21,8 @@ if(empty($output['error'])) {
         $query = ("SELECT * FROM `combined_game_content`
         WHERE `price_value` = '$price_value'
         AND `genre` = '$genre'
-        AND `platform` = '$platform'
-        OR `platform` = 'both'
+        AND (`platform` = '$platform'
+        OR `platform` = 'both')
         ORDER BY RAND()
         LIMIT 27");
         getWizardResult($conn, $query);
@@ -30,8 +30,8 @@ if(empty($output['error'])) {
         $query2 = ("SELECT * FROM `combined_game_content`
                     WHERE `price_value` <> 'free'
                     AND `genre` = '$genre'
-                    AND `platform` = '$platform'
-                    OR `platform` = 'both'
+                    AND (`platform` = '$platform'
+                    OR `platform` = 'both')
                     ORDER BY RAND()
                     LIMIT 27");
         getWizardResult($conn, $query2);
@@ -53,7 +53,8 @@ function getWizardResult($conn, $query) {
     } else if (mysqli_num_rows($result) === 0){
         $queryAlt = ("SELECT * FROM `combined_game_content`
             AND `genre` = '$genre'
-            AND `platform` = '$platform'
+            AND (`platform` = '$platform'
+            OR `platform` = 'both')
             ORDER BY RAND()
             LIMIT 27");
         getWizardAltResult($conn,$queryAlt);
