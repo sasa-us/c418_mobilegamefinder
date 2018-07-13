@@ -16,11 +16,6 @@ if(!$price_value ) {
    $output['errors'][] = 'no price_value provided';
 }
 
-// run the FULL query
-// if the FULL query gives 0 rows as a result
-// THEN RUN the other way
-// NOT if free run one way and if paid another
-
 if(empty($output['error'])) {
     if($price_value == 'free') {
         $query = ("SELECT * FROM `combined_game_content`
