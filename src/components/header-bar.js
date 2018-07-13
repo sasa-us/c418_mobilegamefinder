@@ -91,7 +91,7 @@ class HeaderBar extends Component {
     // -------------------------------------------------------------------------------------
     render() {
         const menuOverlayStyle = {
-            background: this.state.dropdownsOpen.main ? "rgba(0,0,0,.5)" : "rgba(0,0,0,0)",
+            background: this.state.dropdownsOpen.main ? "rgba(255,255,255,.5)" : "rgba(0,0,0,0)",
             "pointerEvents": this.state.dropdownsOpen.main ? "auto" : "none"
         };
         // -----------------------------------
@@ -109,7 +109,8 @@ class HeaderBar extends Component {
         }
         // -----------------------------------
         const mainMenuStyle = {
-            width: this.state.dropdownsOpen.main ? "167px" : "0"
+            width: this.state.dropdownsOpen.main ? "167px" : "0",
+            "borderRight": this.state.dropdownsOpen.main ? "1px solid #F25B43" : "none"
         };
         const browseMenuStyle = {
             height: this.state.dropdownsOpen.browse ? "90px" : "0",
@@ -120,7 +121,8 @@ class HeaderBar extends Component {
             "marginTop": this.state.dropdownsOpen.about ? "15px" : "0"
         };
         const searchDropDownStyle = {
-            height: this.state.dropdownsOpen.search ? "40px" : "0"
+            height: this.state.dropdownsOpen.search ? "40px" : "0",
+            "borderBottom": this.state.dropdownsOpen.search ? "1px dashed #F25B43" : "none"
         };
 
         return(

@@ -1,12 +1,12 @@
 .footerContainer{
   position: relative;
+  background: #457B9D;
+  color: #A8DADC;
 }
 .footer {
   display: flex;
   flex-direction: column;
-  background-color: paleturquoise;
   font-size: .7em;
-  color: dimgray;
 }
 .footer ul {
   display: flex;
@@ -19,5 +19,4 @@
   display: flex;
   justify-content: center;
   margin: 0 0 8px;
-  background-color: #afeeee;
 }

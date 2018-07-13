@@ -1,5 +1,9 @@
 .header, .main-menu, .dropdownSearch{
-    background: paleturquoise;
+    background: #457B9D;
+    color: #A8DADC;
+}
+:any-link{
+    color: #A8DADC;
 }
 .header{
     position: fixed;
@@ -12,6 +16,8 @@
 }
 .appName{
     margin: 20px 0;
+    color: white;
+    text-shadow: 0 0 3px #A8DADC;
 }
 // -------------------------------------------
 .header button{
@@ -25,7 +31,7 @@
     transition: 0.5s;
 }
 .hamburger-animation{
-    border: 4px solid #696969;
+    border: 4px solid #A8DADC;
     border-radius: 5px;
     height: 38px;
     width: 37px;
@@ -35,9 +41,9 @@
     justify-content: space-around;
 }
 .hamburger-animation div{
-    background: #696969;
+    background: #A8DADC;
     border-radius: 10px;
-    height: 5px;
+    height: 4px;
     width: 23px;
     transition: .5s;
 }
@@ -69,10 +75,10 @@
 .nav-text{
     padding: 15px 0 15px 10px;
     font-size: 18px;
-    border-top: 2px solid gray;
+    border-top: 1px dashed #F25B43;
 }
 .nav-text-bottom{
-    border-bottom: 2px solid gray;
+    border-bottom: 1px dashed #F25B43;
 }
 .browse-menu, .about-menu{
     margin: 15px 0 0 10px;
