@@ -4,10 +4,10 @@ $platform = $_POST['platform'];
 $price_value = $_POST['price_value'];
 
 if(empty($output['error'])) {
-    $query = ("SELECT * FROM `game_ajax_content`
+    $query = ("SELECT * FROM `combined_game_content`
         WHERE `price_value` = '$price_value'
         OR `genre` = '$genre'
-        -- OR `platform` = '$platform'
+        OR `platform` = '$platform'
         ORDER BY RAND ()
         LIMIT 25");
 

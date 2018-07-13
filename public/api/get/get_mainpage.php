@@ -7,16 +7,16 @@ foreach($genres as $genre) {
                 SELECT MIN(gac.id) AS id
                 FROM (
                     SELECT CEIL(RAND() * MAX(id)) AS id
-                    FROM `game_ajax_content` 
+                    FROM `combined_game_content` 
                     WHERE genre = '$genre'
                     GROUP BY genre
                 ) AS gac_random
-                JOIN game_ajax_content AS gac ON gac_random.id <= gac.id
+                JOIN combined_game_content AS gac ON gac_random.id <= gac.id
                 WHERE gac.genre = '$genre'
                 GROUP BY gac.genre
                 LIMIT 1
                 ) AS gac_random
-                JOIN game_ajax_content AS gac ON gac_random.id = gac.id";
+                JOIN combined_game_content AS gac ON gac_random.id = gac.id";
     getDB($conn, $query);
 }
 
