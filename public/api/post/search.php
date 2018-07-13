@@ -34,7 +34,7 @@ if(empty($output['error'])) {
     `description`,
     `platform`
     ) AGAINST('$request') DESC
-    LIMIT 25");
+    LIMIT 27");
 
     $result = mysqli_query($conn, $query);
 
