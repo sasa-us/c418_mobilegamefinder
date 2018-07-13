@@ -11,17 +11,19 @@ if(empty($output['error'])) {
     `genre`,
     `genres`,
     `publisher_name`,
-    `description`
+    `description`,
+    `platform`
     ) AGAINST('$request')
     FROM
-    `game_ajax_content`
+    `combined_game_content`
     WHERE
     MATCH(
     `app_name`,
     `genre`,
     `genres`,
     `publisher_name`,
-    `description`
+    `description`,
+    `platform`
     ) AGAINST('$request')
     ORDER BY
     MATCH(
@@ -29,7 +31,8 @@ if(empty($output['error'])) {
     `genre`,
     `genres`,
     `publisher_name`,
-    `description`
+    `description`,
+    `platform`
     ) AGAINST('$request') DESC
     LIMIT 25");
 

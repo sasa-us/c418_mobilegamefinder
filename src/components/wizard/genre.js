@@ -72,7 +72,7 @@ class Genre extends Component {
                         </div>
 
                         <div className="icon">
-                            <img className="game_wiz" src ={RolePlaying} onClick={(e) => this.handleIconClick(e, 'roleplaying')}/>
+                            <img className="game_wiz" src ={RolePlaying} onClick={(e) => this.handleIconClick(e, 'role playing')}/>
                             <div className="genreTitle">Role Playing</div>
                         </div>
                     </div>

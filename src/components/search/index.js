@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Results from "../results"
 import { formatPostData} from '../../helpers'
+import './search.scss';
 
 
 class SearchResults extends Component {
