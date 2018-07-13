@@ -24,7 +24,7 @@ if(empty($output['error'])) {
         AND `platform` = '$platform'
         OR `platform` = 'both'
         ORDER BY RAND()
-        LIMIT 27");
+        LIMIT 25");
         getWizardResult($conn, $query);
     }else if($price_value == 'paid') {
         $query2 = ("SELECT * FROM `combined_game_content`
@@ -33,7 +33,7 @@ if(empty($output['error'])) {
                     AND `platform` = '$platform'
                     OR `platform` = 'both'
                     ORDER BY RAND()
-                    LIMIT 27");
+                    LIMIT 25");
         getWizardResult($conn, $query2);
     }
     
