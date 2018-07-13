@@ -3,6 +3,7 @@ import ReactStars from 'react-stars'
 import '../modals/modal.scss'
 import Modal from 'react-modal';
 import {Link} from 'react-router-dom';
+import { removePeriods } from '../../helper';
 
 
 class GameResult extends Component {
@@ -35,7 +36,8 @@ class GameResult extends Component {
                 background: 'rgba(0, 0, 0, 0.7)',
                 zIndex: '5',
             }
-          }
+        }
+
         return (
             <div className="resItem">
                 <div className='gameBlock' onClick={this.openModal}>
@@ -58,12 +60,12 @@ class GameResult extends Component {
                                 <img className='modalImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
                                 <div className="infoColumn">
                                     <p>{ ((this.props.details.description).length > 120) ? (((this.props.details.description).substring(0,60-3)) + '...') : this.props.description }</p>
-                                    <ReactStars count={5} size={24} color2={'#ffd700'} value={this.props.details.all_rating} edit={false}/>
+                                    <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
                                     <h4>Price: {this.props.details.price_value}</h4>
                                 </div>
                             </div>
                             <div className="modalRow">
-                                <button className='detailsButton'><Link to={`/game/${this.props.details.game_id}`}>View Game Details</Link></button>
+                                <button className='detailsButton'><Link to={`/game/${this.props.details.game_id}/gamedetails`}>View Game Details</Link></button>
                                 <button className='detailsButton' onClick={this.closeModal}>Continue Browsing</button>
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import GameComponent from '../results/gamecomponent';
 import '../results/results.scss';
-import Data from '../gamedetails/dummydata';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
 import {searchResults} from '../../actions/';
@@ -15,10 +14,13 @@ class SearchResults extends Component {
         this.props.searchResults(search_term);
     }
     componentWillReceiveProps(newProps){
+        if(newProps.location.search === this.props.location.search){
+            return;
+        } else {
         const search_term = new URLSearchParams(newProps.location.search).get('search_term');
         this.props.searchResults(search_term);
+        }
     }
-
     render(){
         if (!this.props.gamelist){
             return (
@@ -28,10 +30,8 @@ class SearchResults extends Component {
                     </div>
                 </div>
             )
-        } else {
-            console.log('loaded search');
-    }
-    const data = this.props.gamelist.data;
+        }
+        const data = this.props.gamelist.data;
         return (
             <div className="resContainer">
                 <h2>{this.props.title}</h2>
@@ -43,10 +43,7 @@ class SearchResults extends Component {
         )
     }
 }
-
-
 function mapStateToProps(state){
-    console.log('REDUX STATE:', state);
     return {
         gamelist: state.search.gamelist
     }

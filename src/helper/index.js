@@ -7,3 +7,11 @@ export function formatPostData(data){
 
     return params;
 }
+
+export function removePeriods(str){
+    return str.replace(/\./g, '%2E');
+}
+  
+export function addPeriods(str){
+    return str.replace(/\%2E/g, '.');
+}
