@@ -1,7 +1,7 @@
 <?php
 //browse rating: will send back `all_rating`=5 & 27pc
 if(isset($_POST['all_rating'])) {
-    $query = "SELECT `all_rating`, `genre`, `app_name`, `icon_url`, `game_id`
+    $query = "SELECT `all_rating`, `genre`, `app_name`, `icon_url`, `game_id`, `price_value`
                 FROM `combined_game_content` 
                 WHERE `all_rating`=5 
                 ORDER BY RAND()
@@ -11,7 +11,7 @@ if(isset($_POST['all_rating'])) {
 
 //==============================  genre  =========================================
 else if(isset($_POST['genre'])) {
-    $query = "SELECT `genre`, `app_name`, `icon_url`, `game_id`, `all_rating` 
+    $query = "SELECT `genre`, `app_name`, `icon_url`, `game_id`, `all_rating`, `price_value` 
                 FROM `combined_game_content`
                 WHERE `genre` = '{$_POST['genre']}'
                 ORDER BY RAND()
@@ -36,10 +36,7 @@ else if(isset($_POST['price_value'])) {
     }
 
     getBrowseData($conn, $query);
-    
-}
-
-//===========
+}//end if(price_value)
 
 function getBrowseData($conn, $query) {
     $result = mysqli_query($conn, $query);
