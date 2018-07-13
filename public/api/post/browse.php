@@ -1,20 +1,33 @@
 <?php
-$all_rating = $_POST['all_rating'];
-$genre = $_POST['genre']; 
-$price_value = $_POST['price_value'];
-
 //browse rating: will send back `all_rating`=5 & 27pc
-if($all_rating) {
+if(isset($_POST['all_rating'])) {
     $query = "SELECT `genre`, `app_name`, `icon_url`, `game_id`, `all_rating` 
                 FROM `combined_game_content` 
                 WHERE `all_rating`=5 
+                ORDER BY RAND()
                 LIMIT 27";
      getBrowseData($conn, $query);
-} else if($genre) {
-    $query = "";
+} //end if($all_rating)
+
+//==============================  genre  =========================================
+else if(isset($_POST['genre'])) {
+    // SELECT genre, MAX(all_rating) FROM combined_game_content GROUP BY genre
+    $query = "SELECT `genre`, `app_name`, `icon_url`, `game_id`, `all_rating` 
+                FROM `combined_game_content`
+                WHERE `genre` = '{$_POST['genre']}'
+                ORDER BY RAND()
+                LIMIT 25";
+    getBrowseData($conn, $query);
+   
+}//end if($genre)
+
+//==============================  price_value  ==================================
+
+else if(isset($_POST['price_value'])) {
+
 }
 
-
+//===========
 
 function getBrowseData($conn, $query) {
     $result = mysqli_query($conn, $query);
@@ -32,8 +45,5 @@ function getBrowseData($conn, $query) {
         }
     }
 } //end getBrowseData() 
-
-
-
 
 ?>
