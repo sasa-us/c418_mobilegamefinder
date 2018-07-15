@@ -3,8 +3,10 @@
     font-family: 'Ubuntu', sans-serif;
 }
 .mainBody{
-    top: 73px;
-    position: relative;
+    padding-top: 73px;
     color: #1D3557;
-    // background: #EAF9F5;
+}
+body{
+    width: 100vw;
+    height: 97vh;
 }
