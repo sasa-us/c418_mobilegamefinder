@@ -60,7 +60,7 @@ class GameResult extends Component {
                                 <img className='modalImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
                                 <div className="infoColumn">
                                     <p>{ ((this.props.details.description).length > 120) ? (((this.props.details.description).substring(0,60-3)) + '...') : this.props.description }</p>
-                                    <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
+                                    <ReactStars count={5} size={18} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
                                     <h4>Price: {this.props.details.price_value}</h4>
                                 </div>
                             </div>
