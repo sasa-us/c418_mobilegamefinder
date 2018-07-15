@@ -43,7 +43,7 @@ class GameResult extends Component {
                 <div className='gameBlock' onClick={this.openModal}>
                     <img className='resItemImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
                     <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
-                    <h3>{this.props.details.app_name}</h3>
+                    <h4>{this.props.details.app_name}</h4>
                 </div>
                 <Modal 
                     isOpen={this.state.modalIsOpen}
