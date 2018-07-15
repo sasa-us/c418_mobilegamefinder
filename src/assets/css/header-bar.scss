@@ -13,7 +13,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // background: linear-gradient(to bottom right, #07A0C3, #00A7E1);
 }
 .appName{
     margin: 20px 0;
@@ -94,7 +93,11 @@
     overflow: hidden;
 }
 .browse-menu li, .about-menu li{
+    text-shadow: 0 0 0 #086788;
     font-size: 16px;
+}
+.browse-menu a, .about-menu a{
+    color: snow;
 }
 .main-menu{
     z-index: 1;
@@ -138,15 +141,37 @@
 .dropForm{
     position: relative;
 }
-.search-button{
+.search-button-outer{
+    position: absolute;
+    background: transparent;
+    border: none;
+    border-left: 2px solid #f0c808;
+    right: 1px;
+    top: 1px;
+    height: 28px;
+    width: 45px;
+    opacity: .6;
+}
+.search-button-outer:focus{
+    outline: none;
+}
+.search-button-inner{
+    color: #f0c808;
     position: absolute;
     pointer-events: none;
-    left: 10px;
     top: 8px;
-    opacity: .5;
+    right: 15px;
 }
+// .search-button-line{
+//     position: absolute;
+//     right: 45px;
+//     top: 3px;
+//     height: 25px;
+//     border-left: 2px solid #f0c808;
+//     opacity: .5;
+// }
 .dropdownInput{
     height: 30px;
     width: 260px;
-    padding-left: 30px;
+    padding-left: 15px;
 }

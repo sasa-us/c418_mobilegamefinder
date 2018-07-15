@@ -88,7 +88,7 @@
 }
 
 .indicators .dot {
-    border: 2px solid #F25B43;
+    border: 2px solid #F0C808;
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
@@ -98,41 +98,12 @@
 }
 
 .indicators .dot.active {
-    background-color: #F25B43;
+    background-color: #F0C808;
 }
 
-.btn {
-  /* margin: 1% 2%;
-  -webkit-border-radius: 15;
-  -moz-border-radius: 15;
-  border-radius: 15px;
-  text-shadow: 1px 2px 3px #666666;
-  -webkit-box-shadow: 0px 1px 3px #666666;
-  -moz-box-shadow: 0px 1px 3px #666666;
-  box-shadow: 0px 1px 3px #666666;
-  font-family: Arial;
-  color: #ffffff;
-  background: #a6aeb3;
-  padding: 5px 10px 5px 10px; */
-  background: transparent;
-  text-decoration: none;
-  border: none;
-  outline: none;
-}
-.btn:hover {
-  /* background: #718694; */
-  text-decoration: none;
-  outline: none;
-}
-.btn:focus{
-  outline: none;
-}
-.btn:active:focus{
-  outline: none;
-}
-.btn i{
+button i{
   font-size: 50px;
-  color: #A8DADC;
+  color: #086788;
   margin: 0 12px;
 }
 .loadingImage {
@@ -143,9 +114,9 @@
 .loadingImage img {
   transform: translateY(25%);
 }
-.modal {
+/* .modal {
   background-color: lime;
-}
+} */
 
 @media only screen and (max-width: 600px) {
   .carousel-container {

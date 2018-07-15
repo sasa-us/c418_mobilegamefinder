@@ -127,10 +127,10 @@ class Carousel extends Component {
                 </div>
                 <h4 className="carousel-text">{text}</h4>
                 <Indicators onClick={this.directToImage.bind(this)} count={images.length} current={currentIndex} />
-                <button className='btn' onClick={this.changeImg.bind(this, 'previous')}>
+                <button onClick={this.changeImg.bind(this, 'previous')}>
                     <i className="fa fa-arrow-alt-circle-left"></i>
                 </button>
-                <button className='btn' onClick={this.changeImg.bind(this, 'next')}>
+                <button onClick={this.changeImg.bind(this, 'next')}>
                     <i className="fa fa-arrow-alt-circle-right"></i>
                 </button>
                 
