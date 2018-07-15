@@ -34,9 +34,9 @@ const App = () => (
             <Route path="/search/results" component={Search}/>
             {/* <Route path="/search/gamedetails" component={GameInfo}/> */}
             <Route path='/game/:game_details' component={GameInfo} />
-            <Footer/>
+            
             </div>
-
+            <Footer/>
         </div>
 
 

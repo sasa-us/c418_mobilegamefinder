@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
-import SearchIcon from '../assets/images/menu-icon-search.png';
 import '../assets/css/header-bar.scss'
 
 class HeaderBar extends Component {
@@ -77,6 +76,20 @@ class HeaderBar extends Component {
         this.props.history.push(location);
     }
     // -------------------------------------------------------------------------------------
+    componentDidUpdate(prevProps){
+        if (this.props.location !== prevProps.location){
+
+            this.state.dropdownsOpen.main = false;
+            this.state.dropdownsOpen.browse = false;
+            this.state.dropdownsOpen.about = false;
+            this.state.dropdownsOpen.search = false;
+
+            this.setState({
+                ...this.state
+            });
+        }
+    }
+
     render() {
         const menuOverlayStyle = {
             background: this.state.dropdownsOpen.main ? "rgba(255,255,255,.5)" : "rgba(0,0,0,0)",
@@ -132,10 +145,9 @@ class HeaderBar extends Component {
                                 <span className={`glyphicon glyphicon-${this.state.dropdownsOpen.browse ? "minus" : "plus"}`} alt="list expand icon" aria-expanded={`${this.state.dropdownsOpen.browse ? "true" : "false"}`} aria-label="Browse-Menu expansion"></span>
                             </div>
                             <ul className="browse-menu" style={browseMenuStyle}>
-                                <li><a>By Popularity</a></li>
                                 <li><a>By Genre</a></li>
                                 <li><a>By Price</a></li>
-                                <li><a>By Developer</a></li>
+                                <li><a>By Rating</a></li>
                             </ul>
                         </li>
                         <Link to="/wizard"><li className="nav-text">Wizard</li></Link>
