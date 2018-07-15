@@ -98,7 +98,7 @@ class HeaderBar extends Component {
         // -----------------------------------
         const mainMenuStyle = {
             width: this.state.dropdownsOpen.main ? "167px" : "0",
-            "borderRight": this.state.dropdownsOpen.main ? "1px solid #F25B43" : "none"
+            "borderRight": this.state.dropdownsOpen.main ? "1px solid #F0C808" : "none"
         };
         const browseMenuStyle = {
             height: this.state.dropdownsOpen.browse ? "90px" : "0",
@@ -109,8 +109,7 @@ class HeaderBar extends Component {
             "marginTop": this.state.dropdownsOpen.about ? "15px" : "0"
         };
         const searchDropDownStyle = {
-            height: this.state.dropdownsOpen.search ? "40px" : "0",
-            "borderBottom": this.state.dropdownsOpen.search ? "1px dashed #F25B43" : "none"
+            height: this.state.dropdownsOpen.search ? "40px" : "0"
         };
 
         return(
@@ -151,12 +150,14 @@ class HeaderBar extends Component {
                         </li>
                     </ul>
                     <h2 className="appName">Games Ferret</h2>
-                    <img className="search-icon" src={SearchIcon} alt="search icon" onClick={this.toggleSearchBar.bind(this)}/> 
+                    <div className="fas fa-search search-icon" onClick={this.toggleSearchBar.bind(this)}></div> 
                 </nav>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
                     <div>
                         <form className="form-inline dropForm" onSubmit={this.handleSearchSubmit.bind(this)}>
-                            <i className="fa fa-search" aria-hidden="true"></i>
+                            <button className="search-button-outer" type="submit">
+                                <div className="fa fa-search search-button-inner" aria-hidden="true"></div>
+                            </button>
                             <input className="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search" onChange={this.handleSearchInputChange.bind(this)} value={this.state.searchTerm}/>
                         </form>
                     </div>
