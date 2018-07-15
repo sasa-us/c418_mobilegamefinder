@@ -6,7 +6,7 @@ import GeneralText from '../multiuse/generaltext';
 
 
 export default props => {
-    const genText = 'General text area. We would have basic info about what the page is for, etc. here.'
+    const genText = 'Welcome to GamesFerret!'
     return (
         <div className="homePageContainer">
             <h3>Home Page</h3>
