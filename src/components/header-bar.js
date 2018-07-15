@@ -14,7 +14,8 @@ class HeaderBar extends Component {
                 about: false,
                 search: false
             },
-            searchTerm: ""
+            searchTerm: "",
+            searchInputClicks: 0
         };
     }
 
@@ -74,6 +75,23 @@ class HeaderBar extends Component {
 
         const location = `/search/results?search_term=${this.state.searchTerm}`;
         this.props.history.push(location);
+
+        this.state.searchInputClicks = 0;
+        this.setState({
+            ...this.state
+        });
+    }
+    handleSearchTextClick(event){
+        event.preventDefault();
+
+        this.state.searchInputClicks++
+        this.setState({
+            ...this.state
+        });
+
+        if (this.state.searchInputClicks < 2){
+            event.target.select();
+        }
     }
     // -------------------------------------------------------------------------------------
     componentDidUpdate(prevProps){
@@ -124,6 +142,7 @@ class HeaderBar extends Component {
         const searchDropDownStyle = {
             height: this.state.dropdownsOpen.search ? "40px" : "0"
         };
+        
 
         return(
             <div>
@@ -170,7 +189,7 @@ class HeaderBar extends Component {
                             <button className="search-button-outer" type="submit">
                                 <div className="fa fa-search search-button-inner" aria-hidden="true"></div>
                             </button>
-                            <input className="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search" onChange={this.handleSearchInputChange.bind(this)} value={this.state.searchTerm}/>
+                            <input className="dropdownInput form-control form-control-sm ml-3 w-75" type="text" placeholder="Search..." aria-label="Search" onChange={this.handleSearchInputChange.bind(this)} onClick={this.handleSearchTextClick.bind(this)} value={this.state.searchTerm}/>
                         </form>
                     </div>
                 </div>
