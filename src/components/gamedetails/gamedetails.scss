@@ -14,15 +14,16 @@
     display: flex;
 }
 .gameImg{
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 .gameImg img{
-    height: 200px;
+    height: 250px;
 }
+//-------------------------------------------------------------
 .gameDetailsTop{
-    width: 40%;
+    // width: 40%;
     font-size: 12px;
     display: flex;
     flex-direction: column;
@@ -67,12 +68,12 @@
     display: flex;
     justify-content: center;
 }
-.downloadCount{
-    font-size: 11px;
-    opacity: .5;
-    text-align: center;
-    margin-top: 5px;
-}
+// .downloadCount{
+//     font-size: 11px;
+//     opacity: .5;
+//     text-align: center;
+//     margin-top: 5px;
+// }
 .gameDetailsBottom{
     height: 50%;
     display: flex;
@@ -81,11 +82,11 @@
 .detailsBottomInnerBox{
     width: 90%;
 }
-.summaryHeader{
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 2px solid rgba(175,238,238,0.3);
-}
+// .summaryHeader{
+//     margin-top: 20px;
+//     padding-top: 10px;
+//     border-top: 2px solid rgba(175,238,238,0.3);
+// }
 .gameDescripOuterBox{
     display: flex;
     justify-content: center;
@@ -101,13 +102,17 @@
 .descripExpandButton{
     color: paleturquoise;
 }
-.updatesHeader{
-    padding-top: 10px;
-    border-top: 2px solid rgba(175,238,238,0.3);
-}
-.gameUpdateDate, .gameUpdateVersion{
-    opacity: .6;
-}
-.gameUpdateInfo{
-    margin-bottom: 30px;
+// .updatesHeader{
+//     padding-top: 10px;
+//     border-top: 2px solid rgba(175,238,238,0.3);
+// }
+// .gameUpdateDate, .gameUpdateVersion{
+//     opacity: .6;
+// }
+// .gameUpdateInfo{
+//     margin-bottom: 30px;
+// }
+.relatedCarosel{
+    background: cadetblue;
+    height: 200px;
 }
