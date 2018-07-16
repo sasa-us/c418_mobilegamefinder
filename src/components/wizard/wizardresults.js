@@ -52,9 +52,6 @@ class WizardResults extends Component {
                     </div>
                 </div>
             )
-        } else {
-            console.log('loaded');
-            console.log('props', this.props)
     }
     const data = this.props.wizard.data;
     const text = 'Based on your choices, we think you would enjoy these games.';
@@ -71,7 +68,6 @@ class WizardResults extends Component {
 }
 
 function mapStateToProps(state){
-    console.log('REDUX STATE:', state);
     return {
         wizard: state.wizard.wizardresults
     }

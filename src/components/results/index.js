@@ -11,7 +11,6 @@ class ResultsList extends Component {
 
 
     componentDidMount(){
-        console.log("search", this.props.search)
         this.getResultData(this.props.search);
     }
     getResultData(){
@@ -28,12 +27,8 @@ class ResultsList extends Component {
                     </div>
                 </div>
             )
-        } else {
-            console.log('loaded');
-            console.log('props', this.props.gamelist)
     }
     const data = this.props.gamelist.data;
-    console.log("Data", data);
         return (
             <div className="resContainer">
                 <h2>{this.props.title}</h2>
@@ -49,7 +44,6 @@ class ResultsList extends Component {
 
 
 function mapStateToProps(state){
-    console.log('REDUX STATE:', state);
     return {
         gamelist: state.search.gamelist
     }

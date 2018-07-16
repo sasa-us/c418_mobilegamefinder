@@ -114,9 +114,9 @@ button i{
 .loadingImage img {
   transform: translateY(25%);
 }
-/* .modal {
-  background-color: lime;
-} */
+.genreLabel {
+  font-weight: bold;
+}
 
 @media only screen and (max-width: 600px) {
   .carousel-container {

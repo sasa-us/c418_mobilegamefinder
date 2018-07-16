@@ -61,8 +61,6 @@ class GameDetailsIndexPage extends Component{
                 </div>
             )
         } else {
-            console.log('loaded');
-            console.log('props', this.props.details)
     }
         const gameDetails = this.props.details;
         return(
@@ -102,7 +100,7 @@ class GameDetailsIndexPage extends Component{
                                 {gameDetails.downloads} Downloads.
                         </div> */}
                         <div className="ratingStars">
-                            <ReactStars count={5} size={24} color2={'#ffd700'} value={gameDetails.all_rating} edit={false}/>
+                            <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(gameDetails.all_rating)} edit={false}/>
                         </div>
                     </div>
                 </div>
@@ -161,7 +159,6 @@ class GameDetailsIndexPage extends Component{
     }
 }
 function mapStateToProps(state){
-    console.log('REDUX STATE:', state);
     return {
         details: state.game.details
     }

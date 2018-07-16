@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars'
 import '../modals/modal.scss'
+import '../gamedetails/gamedetails.scss'
 import Modal from 'react-modal';
 import {Link} from 'react-router-dom';
-import { removePeriods } from '../../helper';
 
 
 class GameResult extends Component {
@@ -59,8 +59,10 @@ class GameResult extends Component {
                             <div className="modalRow">
                                 <img className='modalImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
                                 <div className="infoColumn">
-                                    <p>{ ((this.props.details.description).length > 120) ? (((this.props.details.description).substring(0,60-3)) + '...') : this.props.description }</p>
-                                    <ReactStars count={5} size={18} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
+                                    <p>{ ((this.props.details.description).length > 60) ? (((this.props.details.description).substring(0,60-3)) + '...') : this.props.description }</p>
+                                    <div className="ratingStars">
+                                        <ReactStars count={5} size={18} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
+                                    </div>
                                     <h4>Price: {this.props.details.price_value}</h4>
                                 </div>
                             </div>
