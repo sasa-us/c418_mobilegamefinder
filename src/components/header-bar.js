@@ -157,7 +157,7 @@ class HeaderBar extends Component {
                         </div>
                     </button>
                     <ul className="main-menu" style={mainMenuStyle}>
-                        <Link to="#"><li className="nav-text">Home</li></Link>
+                        <Link to="/"><li className="nav-text">Home</li></Link>
                         <li className="nav-text">
                             <div className="plus-bar" onClick={this.toggleBrowseMenu.bind(this)}>
                                 Browse
