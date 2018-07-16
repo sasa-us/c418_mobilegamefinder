@@ -3,12 +3,15 @@ import React, { Component } from 'react';
 // npm install --save react-addons-css-transition-group
 import Transition from 'react-transition-group/CSSTransitionGroup';
 import Indicators from './indicators';
-import imageData from '../../assets/images/carousel';
 import './carousel.css';
 import axios from 'axios';
 import ferret from '../../assets/images/ferretgif.gif';
 import {connect} from 'react-redux';
 import {viewDetails} from '../../actions/';
+import Modal from 'react-modal';
+import {Link} from 'react-router-dom';
+import ReactStars from 'react-stars'
+import '../modals/modal.scss'
 
 
 class Carousel extends Component {
@@ -20,10 +23,19 @@ class Carousel extends Component {
             images: [],
             direction: 'next',
             transitionTime: 500,
-            canClick: true
+            canClick: true,
+            modalIsOpen: false
         }
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
-
+    openModal() {
+        this.setState({modalIsOpen: true});
+        this.dataForClick();
+      }
+    closeModal() {
+        this.setState({modalIsOpen: false});
+      }
     componentDidMount(){
         this.getImageData();
         
@@ -33,11 +45,13 @@ class Carousel extends Component {
         const { images, currentIndex } = this.state;
         this.props.viewDetails(images[currentIndex].game_id);
         if (!this.props.details){
-            alert('loading')
-        } else {
-            console.log('loaded');
-            alert(this.props.details.genre)
-            console.log('props', this.props)
+            return (
+                <div className="carousel-container">
+                    <div className="loadingImage">
+                        <img src={ferret} alt="Loading Images" />
+                    </div>
+                </div>
+            )  
         }
     }
   
@@ -47,9 +61,6 @@ class Carousel extends Component {
                 action: 'get_mainpage'
             }
         });
-
-      console.log('Get Image Resp:',resp);
-        //console.log('Get Image :',resp.data.data[icon_url]);
         this.setState({
             images: resp.data.data
             //images: resp.data.data[icon_url]
@@ -98,6 +109,18 @@ class Carousel extends Component {
 
     render(){
         const { direction, currentIndex, images, transitionTime } = this.state;
+        Modal.setAppElement(document.getElementById('root'));
+        Modal.defaultStyles={
+            overlay: {
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                width:'100%',
+                height: '100%',
+                background: 'rgba(0, 0, 0, 0.7)',
+                zIndex: '5',
+            }
+        }
 
         if(!images.length){
             return (
@@ -109,9 +132,13 @@ class Carousel extends Component {
             )
         }
 
-        const { icon_url, app_name } = images[currentIndex];
+        const { icon_url, app_name, description, all_rating, price_value, game_id, genre } = images[currentIndex];
         const src= icon_url;
         const text = app_name
+        const rating = all_rating;
+        const price = price_value;
+        const id = game_id;
+        const descrip = description;
 
         return (
             <div className="center-all">
@@ -122,9 +149,40 @@ class Carousel extends Component {
                         transitionEnterTimeout={transitionTime}
                         transitionLeaveTimeout={transitionTime}
                     >
-                        <img key={src} src={src} alt={text} onClick={this.dataForClick.bind(this)} className="carousel-img" />
+                        <img key={src} src={src} alt={text} onClick={this.openModal} className="carousel-img" />
+                        <Modal 
+                            isOpen={this.state.modalIsOpen}
+                            onAfterOpen={this.afterOpenModal}
+                            onRequestClose={this.closeModal} 
+                            shouldCloseOnOverlayClick={true} 
+                            contentLabel="Game Details Modal"
+                            className='modal-main'
+                            >
+                            <div className="modalContainer">
+                                <div className="modalDetails">
+                                <h3>{text}</h3>
+                                <div className="modalRow">
+                                    <img className='modalImg' src={src} alt={text} />
+                                    <div className="infoColumn">
+                                        <p>{ (descrip.length > 60) ? ((descrip.substring(0,60-3)) + '...') : descrip }</p>
+                                        <div className="ratingStars">
+                                            <ReactStars count={5} size={18} color2={'#ffd700'} value={parseFloat(rating)} edit={false}/>
+                                        </div>
+                             
+                                        <h4>Price: {price}</h4>
+                                    </div>
+                                </div>
+                                <div className="modalRow">
+                                <Link to={`/game/${id}/gamedetails`}><button className='detailsButton'>View Game Details</button></Link>
+                                    <button className='detailsButton' onClick={this.closeModal}>Continue Browsing</button>
+                                </div>
+                            </div>
+                            </div>
+                        </Modal>
+
                     </Transition>
                 </div>
+                <h4 className="genreLabel">Recommended {genre} Game</h4>
                 <h4 className="carousel-text">{text}</h4>
                 <Indicators onClick={this.directToImage.bind(this)} count={images.length} current={currentIndex} />
                 <button onClick={this.changeImg.bind(this, 'previous')}>
@@ -140,7 +198,6 @@ class Carousel extends Component {
 }
 
 function mapStateToProps(state){
-    console.log('REDUX STATE:', state);
     return {
         details: state.game.details
     }
