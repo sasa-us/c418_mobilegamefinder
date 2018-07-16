@@ -101,16 +101,19 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.publisher_name}
                                     </div>
                                     <div>
-                                        {gameDetails.release_date}
+                                        {gameDetails.release_date.slice(0, 4)}
+                                    </div>
+                                </div>
+                                <div className="genre">
+                                    <div>
+                                        Genre: 
+                                    </div>
+                                    <div>
+                                        {gameDetails.genres.replace(/,/g ,", ")}
                                     </div>
                                 </div>
                                 <div>
-                                    Genre: {gameDetails.genres}
-                                </div>
-                                <div className="contentRating">
-                                    <div>
-                                        Rated: {gameDetails.content_rating}
-                                    </div>
+                                    Rated: {gameDetails.content_rating}
                                 </div>
                             </div>
                         </div>

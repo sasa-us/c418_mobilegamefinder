@@ -11,6 +11,7 @@
     margin-bottom: 15px;
     text-align: center;
 }
+//-------------------------------------------------------------
 .upperDisplay{
     display: flex;
     flex-direction: column;
@@ -62,18 +63,25 @@
     display: flex;
     justify-content: center;
 }
+.detailsBottomInnerBox{
+    width: 90%;
+}
 //----------------------------
 .gameDetailsTiny{
-    // width: 40%;
     font-size: 12px;
     display: flex;
-    // flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 0 15px 0 2px;
-    border-bottom: 2px solid rgba(175,238,238,.3);
+    border-bottom: 2px solid rgba(175,238,238,.8);
+    margin-bottom: 10px;
+    opacity: .5;
 }
-.contentRating{
-    margin-top: 10px;
+.genre{
+    width: 40%;
+    display: flex;
+}
+.genre :nth-child(1){
+    padding-right: 5px;
 }
 //---------------------------------------------
 .screenshots{
@@ -82,9 +90,6 @@
     width: 100%;
 }
 //---------------------------------------------
-.detailsBottomInnerBox{
-    width: 90%;
-}
 .gameDescripOuterBox{
     display: flex;
     justify-content: center;
