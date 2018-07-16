@@ -28,6 +28,9 @@
 .resRow{
     flex-direction: column;
 }
+.titleLabel {
+    text-transform:capitalize;
+}
 @media only screen and (min-width: 600px) {
     .detailContainer{
         width: 50%;

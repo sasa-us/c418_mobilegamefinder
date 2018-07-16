@@ -3,26 +3,24 @@ import GameComponent from '../results/gamecomponent';
 import '../results/results.scss';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
-import {searchResults} from '../../actions/';
+import {browseResults} from '../../actions/';
 import ferret from '../../assets/images/ferretgif.gif';
 
-class SearchResults extends Component {
-
+class GenreResultsList extends Component {
 
     componentDidMount(){
-        const search_term = new URLSearchParams(this.props.location.search).get('search_term');
-        this.props.searchResults(search_term);
+        this.getData();
     }
-    componentWillReceiveProps(newProps){
-        if(newProps.location.search === this.props.location.search){
-            return;
-        } else {
-        const search_term = new URLSearchParams(newProps.location.search).get('search_term');
-        this.props.searchResults(search_term);
-        }
+    getData() {
+        console.log("this is the browse data: ", this.props.match.params.genre);
+        const newItem = {
+            genre: this.props.match.params.genre,
+        };
+        this.props.browseResults(newItem)
     }
+    
     render(){
-        if (!this.props.gamelist){
+        if (!this.props.browseresult){
             return (
                 <div className="carousel-container">
                     <div className="loadingImage">
@@ -31,11 +29,12 @@ class SearchResults extends Component {
                 </div>
             )
         }
-        const data = this.props.gamelist.data;
-        const text = 'Here are your search results!';
+    const data = this.props.browseresult.data;
+    const genreName = this.props.match.params.genre;
+    const text = 'Here are some games we think you would like!';
         return (
             <div className="resContainer">
-                <h2>Search Results</h2>
+                <h2 className="titleLabel">{`${genreName} Games`}</h2>
                 <GeneralText text={text} />
                 <div className="detailContainer">
                     {data.map(game => <GameComponent key={game.game_id} details={game}/>)}
@@ -46,7 +45,7 @@ class SearchResults extends Component {
 }
 function mapStateToProps(state){
     return {
-        gamelist: state.search.gamelist
+        browseresult: state.browse.browseresult
     }
 }
-export default connect(mapStateToProps, {searchResults})(SearchResults);
+export default connect(mapStateToProps, {browseResults})(GenreResultsList);

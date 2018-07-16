@@ -3,6 +3,14 @@ import {Route} from 'react-router-dom';
 import Header from './header-bar';
 import Home from './home';
 import Browse from './browse';
+import BrowseGenre from './browse/genreoptions';
+import BrowseGenreResults from './browse/genreresults';
+import BrowsePrice from './browse/price';
+import BrowsePriceResults from './browse/priceresults';
+import BrowsePlatform from './browse/platform';
+import BrowsePlatformResults from './browse/platformresults';
+// import BrowseRating from './browse/rating';
+import BrowseRatingResults from './browse/ratingresults';
 import Wizard from './wizard/price';
 import Platform from "./wizard/platform";
 import Genre from "./wizard/genre";
@@ -14,8 +22,6 @@ import WizardResults from "./wizard/wizardresults"
 import '../assets/css/app.scss';
 
 
-
-
 const App = () => (
         <div className="appOuterDiv">
             <div>
@@ -24,7 +30,15 @@ const App = () => (
 
             <div className="mainBody">
             <Route exact path="/" component={Home}/>
-            <Route path="/browse/" component={Browse}/>
+            <Route exact path="/browse/" component={Browse}/>
+            <Route exact path="/browse/genre" component={BrowseGenre}/>
+            <Route path="/browse/genre/:genre" component={BrowseGenreResults}/>
+            {/* <Route exact path="/browse/rating" component={BrowseRating}/> */}
+            <Route path="/browse/rating/results" component={BrowseRatingResults}/>
+            <Route exact path="/browse/price" component={BrowsePrice}/>
+            <Route path="/browse/price/:price" component={BrowsePriceResults}/>
+            <Route exact path="/browse/platform" component={BrowsePlatform}/>
+            <Route path="/browse/platform/:platform" component={BrowsePlatformResults}/>
             <Route path="/wizard" component={Wizard}/>
             <Route path="/platform" component={Platform}/>
             <Route path="/genre" component={Genre}/>
@@ -32,7 +46,6 @@ const App = () => (
             <Route exact path="/search" component={Search}/>
             <Route path="/about" component={About}/>
             <Route path="/search/results" component={Search}/>
-            {/* <Route path="/search/gamedetails" component={GameInfo}/> */}
             <Route path='/game/:game_details' component={GameInfo} />
             
             </div>

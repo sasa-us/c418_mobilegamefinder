@@ -9,7 +9,7 @@ import RolePlaying from "../../assets/images/wizard-icons/roleplaying.png"
 import Arcade from "../../assets/images/wizard-icons/arcade.png";
 import Simulation from "../../assets/images/wizard-icons/simulation.png";
 import Racing from "../../assets/images/wizard-icons/racing.png";
-import "./wizard.scss";
+import "../wizard/wizard.scss";
 
 
 class Genre extends Component {
