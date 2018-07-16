@@ -1,12 +1,17 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './browse.scss';
+import '../../assets/css/header-bar.scss';
 
 export default props => {
-    console.log('Browse PROPS:', props);
     return (
         <div className="browseMain">
-            Browse Results here.
+            <h2>Browse By:</h2>
+            <ul>
+                <li><Link className='blueLink' to='/browse/genre'>Genre</Link></li>
+                <li><Link className='blueLink' to='/browse/price'>Price</Link></li>
+                <li><Link className='blueLink' to='/browse/rating/results'>Rating</Link></li>
+            </ul>
         </div>
         
     )

@@ -1,24 +1,25 @@
 import React, {Component} from 'react';
-import GameComponent from './gamecomponent';
-import './results.scss';
+import GameComponent from '../results/gamecomponent';
+import '../results/results.scss';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
-import {searchResults} from '../../actions/';
+import {browseResults} from '../../actions/';
 import ferret from '../../assets/images/ferretgif.gif';
 
-class ResultsList extends Component {
-
+class PriceResultsList extends Component {
 
     componentDidMount(){
-        this.getResultData(this.props.search);
+        this.getData();
     }
-    getResultData(){
-        this.props.searchResults(this.props.search);
-       
+    getData() {
+        const newItem = {
+            price_value: this.props.match.params.price,
+        };
+        this.props.browseResults(newItem)
     }
-
+    
     render(){
-        if (!this.props.gamelist){
+        if (!this.props.browseresult){
             return (
                 <div className="carousel-container">
                     <div className="loadingImage">
@@ -26,25 +27,23 @@ class ResultsList extends Component {
                     </div>
                 </div>
             )
-    }
-    const data = this.props.gamelist.data;
+        }
+    const data = this.props.browseresult.data;
+    const text = 'Here are some results we think you would like!';
         return (
             <div className="resContainer">
-                <h2>{this.props.title}</h2>
-                <GeneralText text={this.props.text} />
+                <h2 className="titleLabel">{`${this.props.match.params.price} Games`}</h2>
+                <GeneralText text={text} />
                 <div className="detailContainer">
                     {data.map(game => <GameComponent key={game.game_id} details={game}/>)}
                 </div>
-                <h1>test header</h1>
             </div>
         )
     }
 }
-
-
 function mapStateToProps(state){
     return {
-        gamelist: state.search.gamelist
+        browseresult: state.browse.browseresult
     }
 }
-export default connect(mapStateToProps, {searchResults})(ResultsList);
+export default connect(mapStateToProps, {browseResults})(PriceResultsList);
