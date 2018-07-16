@@ -2,7 +2,7 @@
 $genres = array('Action', 'Puzzle', 'Adventure', 'Simulation', 'Strategy', 'Role Playing', 'Racing', 'Arcade', 'Trivia', 'Board');
 
 foreach($genres as $genre) {
-    $query = "SELECT gac.id , gac.genre, gac.app_name, gac.icon_url, gac.game_id, gac.content_rating, gac.price_value, gac_description, gac.all_rating
+    $query = "SELECT gac.id , gac.genre, gac.app_name, gac.icon_url, gac.game_id, gac.content_rating, gac.price_value, gac.description, gac.all_rating
                 FROM (
                     SELECT MIN(gac.id) AS id
                     FROM (
