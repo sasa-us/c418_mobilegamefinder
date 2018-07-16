@@ -9,12 +9,15 @@
 }
 .gameTitle h2{
     margin-bottom: 15px;
+    text-align: center;
 }
 .upperDisplay{
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .gameImg{
-    width: 100%;
+    width: 75%;
     display: flex;
     justify-content: center;
 }
@@ -22,36 +25,25 @@
     height: 250px;
 }
 //-------------------------------------------------------------
-.gameDetailsTop{
-    // width: 40%;
-    font-size: 12px;
+.priceAndRating{
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 0 15px 0 2px;
+    justify-content: space-between;
+    padding: 10px 25px 0;
 }
-.contentRating{
-    margin-top: 10px;
+.ratingNum{
+    padding-right: 5px;
 }
-.ratedFor{
-    font-size: 10px;
-    opacity: .5;
-}
-.price{
-    margin-bottom: 0;
-}
-.getItButtons{
+.ratingStars{
     display: flex;
     justify-content: center;
+}
+.getItHere{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
     border-bottom: 2px solid rgba(175,238,238,.3);
 }
 .getItButtons button{
-    // display: flex;
-    // align-items: center;
-    // height: 31px;
-    // background: #ffff99;
-    // border-radius: 5px;
-    // border: 2px outset;
     outline: unset;
     border: none;
     background: transparent;
@@ -64,29 +56,35 @@
 .androidButton{
     height: 53px;
 }
-.ratingStars{
-    display: flex;
-    justify-content: center;
-}
-// .downloadCount{
-//     font-size: 11px;
-//     opacity: .5;
-//     text-align: center;
-//     margin-top: 5px;
-// }
+//-------------------------------------------------------------
 .gameDetailsBottom{
     height: 50%;
     display: flex;
     justify-content: center;
 }
+//----------------------------
+.gameDetailsTiny{
+    // width: 40%;
+    font-size: 12px;
+    display: flex;
+    // flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 15px 0 2px;
+    border-bottom: 2px solid rgba(175,238,238,.3);
+}
+.contentRating{
+    margin-top: 10px;
+}
+//---------------------------------------------
+.screenshots{
+    background: cadetblue;
+    height: 200px;
+    width: 100%;
+}
+//---------------------------------------------
 .detailsBottomInnerBox{
     width: 90%;
 }
-// .summaryHeader{
-//     margin-top: 20px;
-//     padding-top: 10px;
-//     border-top: 2px solid rgba(175,238,238,0.3);
-// }
 .gameDescripOuterBox{
     display: flex;
     justify-content: center;
@@ -98,20 +96,12 @@
 .descripExpandDiv{
     display: flex;
     justify-content: flex-end;
+    border-bottom: 2px solid rgba(175,238,238,.3);
 }
 .descripExpandButton{
     color: paleturquoise;
 }
-// .updatesHeader{
-//     padding-top: 10px;
-//     border-top: 2px solid rgba(175,238,238,0.3);
-// }
-// .gameUpdateDate, .gameUpdateVersion{
-//     opacity: .6;
-// }
-// .gameUpdateInfo{
-//     margin-bottom: 30px;
-// }
+//-------------------------------------------------
 .relatedCarosel{
     background: cadetblue;
     height: 200px;
