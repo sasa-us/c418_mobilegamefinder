@@ -2,10 +2,10 @@
 <script>
 // By Rating, By Genre, By Price (Free or Paid)
     const newItem = {
-        //all_rating: '5',
+        all_rating: '5',
         //genre:  'board',
         //price_value: 'paid'
-        price_value: 'free'
+        //price_value: 'free'
     };
     const postnewItem = formatPostData(newItem);
    // axios.get('mainpage.php', {
