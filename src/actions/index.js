@@ -48,3 +48,17 @@ export function wizardResults(results){
         payload: resp
     }
 }
+
+export function triggerModal(text){
+    return {
+        type: types.TRIGGER_MODAL,
+        payload: text
+    }
+}
+
+export function clearModal(){
+    return {
+        type: types.CLEAR_MODAL,
+        payload: null
+    }
+}
