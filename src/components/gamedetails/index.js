@@ -152,12 +152,12 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
-                        <h4>Related Games</h4>
+                        {/* <h4>Related Games</h4> */}
                     </div> 
                 </div>       
-                <div className="relatedCarosel">
+                {/* <div className="relatedCarosel">
                     
-                </div>
+                </div> */}
             </div>
         );
     }

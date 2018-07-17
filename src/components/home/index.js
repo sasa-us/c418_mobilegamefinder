@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {triggerModal, clearModal} from '../../actions/';
 import FirstTimeModal from '../modals/firstTimeModal';
 import Carousel from '../carousel';
-import './home.scss';
 import GeneralText from '../multiuse/generaltext';
 
 
@@ -28,13 +27,10 @@ class HomePage extends Component {
                 <GeneralText text={genText}/>
                 <Carousel/>
             </div>
-
         )
     }
 }
-
 const mapStateToProps = (state) => ({
     modal: state.modal
 });
-
 export default connect(mapStateToProps,{ triggerModal, clearModal })(HomePage);

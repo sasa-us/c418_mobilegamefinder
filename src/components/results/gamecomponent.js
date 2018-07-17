@@ -42,7 +42,10 @@ class GameResult extends Component {
             <div className="resItem">
                 <div className='gameBlock' onClick={this.openModal}>
                     <img className='resItemImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
-                    <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
+                    <div className="stars">
+                        <ReactStars count={5}  color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
+                    </div>
+                    
                     <h4>{this.props.details.app_name}</h4>
                 </div>
                 <Modal 
@@ -60,8 +63,8 @@ class GameResult extends Component {
                                 <img className='modalImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
                                 <div className="infoColumn">
                                     <p>{ ((this.props.details.description).length > 60) ? (((this.props.details.description).substring(0,60-3)) + '...') : this.props.description }</p>
-                                    <div className="ratingStars">
-                                        <ReactStars count={5} size={18} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
+                                    <div className="stars">
+                                        <ReactStars count={5} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
                                     </div>
                                     <h4>Price: {this.props.details.price_value}</h4>
                                 </div>
