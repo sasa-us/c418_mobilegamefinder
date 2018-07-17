@@ -44,17 +44,17 @@
     padding-bottom: 5px;
     border-bottom: 2px solid rgba(175,238,238,.3);
 }
-.getItButtons button{
+.iOSButton, .androidButton{
     outline: unset;
     border: none;
     background: transparent;
     padding: 0;
     margin: 20px 15px 15px 15px;
 }
-.iOSButton{
+.iOSButtonImg{
     height: 37px;
 }
-.androidButton{
+.androidButtonImg{
     height: 53px;
 }
 //-------------------------------------------------------------
