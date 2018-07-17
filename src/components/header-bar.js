@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
+import {NavLink, Link, withRouter} from 'react-router-dom';
 import '../assets/css/header-bar.scss'
+import {signIn, signOut} from "../actions";
+import { connect } from "react-redux";
 
 class HeaderBar extends Component {
     constructor(props){
@@ -108,6 +109,32 @@ class HeaderBar extends Component {
         }
     }
 
+
+
+    renderLinks() {
+        if(this.props.auth) {
+            return (
+                <Fragment>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to ="/favorites">Favorites</NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                        <NavLink onClick={this.props.signOut} className="nav-link" to ="signin">SignOut</NavLink>
+                    </li>
+                </Fragment>
+
+            )
+        }
+        return(
+            <Fragment>
+                <li className="nav-item nav-text">
+                    <NavLink className="nav-link" to ="/sign-in">Sign In</NavLink>
+                </li>
+            </Fragment>
+        )
+    }
+
     render() {
         const menuOverlayStyle = {
             background: this.state.dropdownsOpen.main ? "rgba(255,255,255,.5)" : "rgba(0,0,0,0)",
@@ -142,7 +169,7 @@ class HeaderBar extends Component {
         const searchDropDownStyle = {
             height: this.state.dropdownsOpen.search ? "40px" : "0"
         };
-        
+
 
         return(
             <div>
@@ -180,9 +207,10 @@ class HeaderBar extends Component {
                                 <li><a>Contact Us</a></li>
                             </ul>
                         </li>
+                        {this.renderLinks()}
                     </ul>
                     <h2 className="appName">Games Ferret</h2>
-                    <div className="fas fa-search search-icon" onClick={this.toggleSearchBar.bind(this)}></div> 
+                    <div className="fas fa-search search-icon" onClick={this.toggleSearchBar.bind(this)}></div>
                 </nav>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
                     <div>
@@ -195,8 +223,13 @@ class HeaderBar extends Component {
                     </div>
                 </div>
             </div>
-        )  
+        )
+    }
+}
+function mapStateToProps(state) {
+    return {
+        auth: state.user.auth
     }
 }
 
-export default withRouter(HeaderBar);
+export default withRouter (connect(mapStateToProps, {signIn: signIn, signOut: signOut})(HeaderBar));

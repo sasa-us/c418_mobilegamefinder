@@ -2,6 +2,10 @@ import types from './types';
 import axios from 'axios';
 import { formatPostData} from '../../src/helpers';
 
+//what is address for doing call for BASE_URL?
+
+const BASE_URL = 'http://api.reactprototypes.com';
+
 export function viewDetails(gameid){
     const newItem = {searchrequest: gameid};
     const postItem = formatPostData(newItem);
@@ -73,3 +77,40 @@ export function browseResults(terms){
     }
 }
 
+export function createAccount(userInfo){
+    return async (dispatch) => {
+        try {
+            const resp = await axios.post(`${BASE_URL}/signup`, userInfo);
+
+            localStorage.setItem("token", resp.data.token);
+
+            dispatch ({type: types.SIGN_UP});
+        } catch(err) {
+            console.log('SIGN UP ERROR:', err.message);
+        }
+    }
+}
+
+export function accountSignIn(userInfo){
+    return async dispatch => {
+        try {
+            const resp = await axios.post(`${BASE_URL}/signin`, userInfo);
+
+            console.log('Sign In:', resp.data.token);
+
+            localStorage.setItem("token", resp.data.token);
+            dispatch({type: types.SIGN_IN});
+            console.log(localStorage);
+
+        } catch(err) {
+            console.log("error signing in: ", err.message)
+        }
+
+    }
+}
+
+export function signOut(){
+    localStorage.removeItem('token');
+    console.log(localStorage);
+    return{type: types.SIGN_OUT};
+}
