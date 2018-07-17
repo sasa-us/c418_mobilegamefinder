@@ -1,0 +1,40 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+
+}
+
+.welcome-main {
+
+    align-items: center;
+    position:fixed;
+    background: white;
+    width: 80%;
+    height: 70%;
+    margin-left: 10%;
+    margin-top: 20%;
+    border-radius: 10px;
+}
+:focus {
+    outline: -webkit-focus-ring-color #333 auto 5px;
+}
+
+.modalContainer {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    margin: auto;
+}
+
+.modal-visible {
+    display: block;
+}
+
+.welcomeModal {
+    width: 100%;
+}
+

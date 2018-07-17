@@ -42,6 +42,18 @@ export function wizardResults(results){
         payload: resp
     }
 }
+export function triggerModal(text){
+    return {
+        type: types.TRIGGER_MODAL,
+        payload: text
+    }
+}
+export function clearModal(){
+    return {
+        type: types.CLEAR_MODAL,
+        payload: null
+    }
+}
 export function browseResults(terms){
     const newItem = {
         //all_rating: ‘5’,
@@ -60,3 +72,4 @@ export function browseResults(terms){
         payload: resp
     }
 }
+
