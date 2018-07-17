@@ -1,0 +1,113 @@
+.singleGamePage{
+    display: flex;
+    flex-direction: column;
+}
+.gameTitle{
+    display: flex;
+    justify-content: center;
+    margin: 0 5%;
+}
+.gameTitle h2{
+    margin-bottom: 15px;
+    text-align: center;
+}
+//-------------------------------------------------------------
+.upperDisplay{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gameImg{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+}
+.gameImg img{
+    height: 250px;
+}
+//-------------------------------------------------------------
+.priceAndRating{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px 0;
+}
+.ratingNum{
+    padding-right: 5px;
+}
+.ratingStars{
+    display: flex;
+    justify-content: center;
+}
+.getItHere{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(175,238,238,.3);
+}
+.iOSButton, .androidButton{
+    outline: unset;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 20px 15px 15px 15px;
+}
+.iOSButtonImg{
+    height: 37px;
+}
+.androidButtonImg{
+    height: 53px;
+}
+//-------------------------------------------------------------
+.gameDetailsBottom{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+.detailsBottomInnerBox{
+    width: 90%;
+}
+//----------------------------
+.gameDetailsTiny{
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 0 2px;
+    border-bottom: 2px solid rgba(175,238,238,.8);
+    margin-bottom: 10px;
+    opacity: .5;
+}
+.genre{
+    width: 40%;
+    display: flex;
+}
+.genre :nth-child(1){
+    padding-right: 5px;
+}
+//---------------------------------------------
+.screenshots{
+    background: cadetblue;
+    height: 200px;
+    width: 100%;
+}
+//---------------------------------------------
+.gameDescripOuterBox{
+    display: flex;
+    justify-content: center;
+}
+.gameDescrip{
+    overflow-y: hidden;
+    margin: 0;
+}
+.descripExpandDiv{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 2px solid rgba(175,238,238,.3);
+}
+.descripExpandButton{
+    color: #086788;
+}
+//-------------------------------------------------
+.relatedCarosel{
+    background: cadetblue;
+    height: 200px;
+}

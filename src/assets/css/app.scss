@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+//Main Wrapper and Overall Elements
+body{
+    width: 100%;
+    height: 100%;
+}
+button {
+    outline: none;
+    background: transparent;
+    border: none;
+}
+.appOuterDiv{
+    font-family: 'Ubuntu', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.mainBody{
+    padding-top: 73px;
+    color: #1D3557;
+    flex: 1;
+}
+//404 Page
+.notFound{
+    text-align: center;
+    margin: 10%;
+}
+.notFound img {
+    max-width: 70%;
+}
+.notFound :any-link {
+    color: rgb(8, 103, 136);
+  }
+//Home Page
+.homePageContainer {
+    // height: 78vh;
+    text-align: center;
+    color: #1d3557;
+    margin-bottom: 5%;
+}
+//Results
+.resContainer h2 {
+    width:80%;
+    text-align: center;
+    margin: auto;
+}
+
+
+
+//Footer
+.footerContainer{
+    width: 100%;
+    background: #00A7E1;
+    color: snow;
+    flex-shrink: 0;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    font-size: .7em;
+  }
+  .footer ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 7px 0;
+  }
+  .footer p {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 8px;
+  }
+//Media Queries
+@media only screen and (max-width: 360px) {
+    .stars>div>span{
+        font-size: 18px;    
+    }
+}
+@media only screen and (min-width: 361px) {
+    .stars>div>span{
+        font-size: 24px;   
+    }
+}
+@media only screen and (min-width: 750px) {
+    .stars>div>span{
+        font-size: 40px;
+    }
+    .resItemImg {
+        margin-bottom: 5%;
+    }
+    .resContainer {
+        margin-top:2%;
+    }
+    .devItem{
+        width: 50%;
+        margin-bottom: 1%;
+  }
+}

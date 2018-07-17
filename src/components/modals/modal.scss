@@ -1,0 +1,72 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+
+  }
+  
+  .modal-main {
+    display: flex;
+    align-items: center;
+    position:fixed;
+    background: white;
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    margin-top: 20%;
+    border-radius: 10px;
+  }
+ :focus {
+    outline: -webkit-focus-ring-color #333 auto 5px;
+}
+  .modal-button {
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  .modal-button h3 {
+    margin-top: 5%;     
+  }
+
+  .modalContainer {
+      display: flex;
+      width: 90%;
+      flex-direction: column;
+      margin: auto;
+  }
+  .modalDetails{
+    margin-bottom: 5%;
+  
+  }
+  .modalDetails h3 {
+    text-align: center;
+  }
+  .modalImg {
+    width: 45%;
+    height: 45%;
+    margin: 3%;
+  }
+  .modalRow {
+    display: flex;  
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .detailsButton {
+    background: transparent;
+    border: none;
+    outline: none; 
+    margin: 1%;
+    font-weight: bold;
+    color: rgb(8, 103, 136);
+  }
+  .detailsButton :any-link {
+    color: rgb(8, 103, 136);
+  }
+  .infoColumn{
+    // margin-left: 2%;
+    width:47%
+  }
