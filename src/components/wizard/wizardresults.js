@@ -57,7 +57,7 @@ class WizardResults extends Component {
     const text = 'Based on your choices, we think you would enjoy these games.';
         return (
             <div className="resContainer">
-                <h2>Our Recommendations</h2>
+                <h2>Recommendations</h2>
                 <GeneralText text={text} />
                 <div className="detailContainer">
                     {data.map(game => <GameComponent key={game.game_id} details={game}/>)}

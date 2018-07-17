@@ -14,7 +14,7 @@ export default props => {
     const genText = 'Our dev tem, who while not ferrets, are still equally cool.'
     return (
         <div className='aboutPageContainer'>
-            <h4 className='aboutLabel'>Meet our dev tem, who while not ferrets, are still equally cool.</h4>
+            <h4 className='aboutLabel'>Meet our dev tem, who while not ferrets, are equally cool.</h4>
             <DevItem src={Steffany} name='Steffany Gross' title='Boss Lady' site='http://www.steffanygross.com' github='https://github.com/Allurien' linkedin='https://www.linkedin.com/in/steffany-gross-452205a/' email='mailto:steffany.gross@gmail.com' />
             <DevItem src={Delray} name='Delray Faskey' title='Much programmer wow' site='' github='https://github.com/Raenbow' linkedin='' email='' />
             <DevItem src={Stephanie} name='Stephanie Lacina' title='Tofutti' site='' github='https://github.com/StephanieLDR' linkedin='' email='' />
