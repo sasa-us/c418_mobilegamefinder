@@ -13,9 +13,7 @@ class FirstTimeModal extends Component {
             <div className={showHideClassName} onClick={handleClose}>
                 <div className='welcome-main'>
                 <img className="welcomeModal" src={WelcomeScreen}/>
-                    {/*<h3>Welcome to Games Ferret!</h3>*/}
-                    {/*<h5>Your source for custom game recommendations.</h5>*/}
-                    {/*<p>Use our menu to navigate to our Game </p>*/}
+
             </div>
             </div>
         );

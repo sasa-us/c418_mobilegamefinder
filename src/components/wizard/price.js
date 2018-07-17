@@ -11,6 +11,7 @@ class Wizard extends Component {
         super(props);
         this.state={
             price:"",
+            disabled: "disabled"
 
     };
         this.handleIconClick = this.handleIconClick.bind(this);
@@ -18,14 +19,18 @@ class Wizard extends Component {
 
     handleIconClick(e, title) {
         let price = {
-            price: title
+            price: title,
+            disabled: ""
         };
+
         this.setState(price);
         localStorage.setItem('price', JSON.stringify(price));
         console.log(localStorage);
+
     }
 
     render() {
+
 
         return(
 
@@ -49,7 +54,7 @@ class Wizard extends Component {
                 </div>
                 <div className="buttonContainer">
                     <Link to="/platform">
-                        <button className="wizard-button" type="button">Next</button>
+                        <button className="wizard-button" type="button" disabled={this.state.disabled}>Next</button>
                     </Link>
                 </div>
             </div>

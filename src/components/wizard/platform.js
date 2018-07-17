@@ -10,6 +10,7 @@ class Platform extends Component {
         super(props);
         this.state={
             price:"",
+            disabled: "disabled"
 
         };
         this.handleIconClick = this.handleIconClick.bind(this);
@@ -17,8 +18,10 @@ class Platform extends Component {
 
     handleIconClick(e, title) {
         let platform = {
-            platform: title
+            platform: title,
+            disabled: ""
         };
+
         this.setState(platform);
         localStorage.setItem('platform', JSON.stringify(platform));
         console.log(localStorage);
@@ -46,12 +49,12 @@ class Platform extends Component {
                     </div>
                 </div>
                 <div className="buttonContainer">
-                    <Link to="/price">
+                    <Link to="/wizard">
                         <button className="wizard-button" type="button">Back</button>
                     </Link>
 
                     <Link to="/genre">
-                        <button className="wizard-button" type="button">Next</button>
+                        <button className="wizard-button" type="button" disabled={this.state.disabled}>Next</button>
                     </Link>
                 </div>
             </div>

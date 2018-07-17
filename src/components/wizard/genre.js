@@ -16,9 +16,8 @@ class Genre extends Component {
     constructor(props) {
         super(props);
         this.state={
-            genre:""
-
-
+            genre:"",
+            disabled: "disabled"
         };
 
         this.handleIconClick = this.handleIconClick.bind(this);
@@ -27,8 +26,10 @@ class Genre extends Component {
 
     handleIconClick(e, title) {
         let genre = {
-            genre: title
+            genre: title,
+            disabled: ""
         };
+
         this.setState(genre);
         localStorage.setItem('genre', JSON.stringify(genre));
         console.log(localStorage);
@@ -98,7 +99,7 @@ class Genre extends Component {
                     <button className="wizard-button" type="button">Back</button>
                 </Link>
                 <Link to="/wizardresults">
-                    <button className="wizard-button" type="button" onClick={this.getDataFromLocalStorage}>Next</button>
+                    <button className="wizard-button" type="button" disabled={this.state.disabled} onClick={this.getDataFromLocalStorage}>Next</button>
                 </Link>
             </div>
 
