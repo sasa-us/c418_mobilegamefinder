@@ -6,8 +6,14 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import Promise from 'redux-promise';
 import rootReducer from './reducers/';
+import think from "./middleware/think"
+import types from "../../scratchpad/redux-user-auth-GF/src/actions/types";
 
-const store = createStore(rootReducer, {}, applyMiddleware(Promise));
+const store = createStore(rootReducer, {}, applyMiddleware(Promise, think));
+
+if(localStorage.getItem("token")) {
+    store.dispatch({type: types.SIGN_IN})
+}
 
 ReactDOM.render(
     <Provider store={store}>

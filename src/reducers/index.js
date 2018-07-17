@@ -4,12 +4,14 @@ import searchReducer from './searchreducer';
 import wizardReducer from './wizardreducer';
 import modalReducer from './modalReducer';
 import browseReducer from './browsereducer';
+import userReducer from './user_reducer';
 
 const rootReducer = combineReducers({
     game: gameReducer,
     search: searchReducer,
     wizard: wizardReducer,
     modal: modalReducer,
-    browse: browseReducer
+    browse: browseReducer,
+    user: userReducer
 });
 export default rootReducer;
