@@ -41,7 +41,6 @@ class GameDetailsIndexPage extends Component{
         
     }
     render(){
-        // const randIndex = this.state.randIndex;
         console.log('props', this.props);
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
@@ -73,49 +72,52 @@ class GameDetailsIndexPage extends Component{
                     <div className="gameImg">
                         <img src={gameDetails.icon_url}/>
                     </div>
-                    <div className="gameDetailsTop">
-                        <div>
-                            {/* <div>
-                                {Data[randIndex].genres}
-                            </div> */}
-                            <div>
-                                {gameDetails.publisher_name}
-                            </div>
-                            <div>
-                                {gameDetails.releaseDate}
-                            </div>
-                        </div>
-                        <div className="contentRating">
-                            <div>
-                                Rated: {gameDetails.content_rating}
-                            </div>
-                            {/* <div className="ratedFor">
-                                {Data[randIndex].content_rating_info}
-                            </div> */}
-                        </div>
-                        <h4 className="price">
-                                {gameDetails.price_value}
-                        </h4>
-                        {/* <div className="downloadCount">
-                                {gameDetails.downloads} Downloads.
-                        </div> */}
-                        <div className="ratingStars">
-                            <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(gameDetails.all_rating)} edit={false}/>
-                        </div>
-                    </div>
                 </div>
                 <div className="gameDetailsBottom">
                     <div className="detailsBottomInnerBox">
-                        <div>
-                            <div className="getItButtons">
-                                <button type="button">
-                                    <img src={iOS} className="iOSButton"/>
-                                </button>
-                                <button type="button">
-                                    <img src={Android} className="androidButton"/>
-                                </button>
+                        <div className="priceAndRating">
+                            <h4>
+                                {gameDetails.price_value}
+                            </h4>
+                            <div className="ratingStars">
+                                <h5 className="ratingNum">
+                                    {gameDetails.all_rating} 
+                                </h5>
+                                <ReactStars count={5} size={24} color2={'#ffd700'} value={parseFloat(gameDetails.all_rating)} edit={false}/>
                             </div>
                         </div>
+                        <div className="getItHere">
+                            <button type="button">
+                                <img src={iOS} className="iOSButton"/>
+                            </button>
+                            <button type="button">
+                                <img src={Android} className="androidButton"/>
+                            </button>
+                        </div>
+                        <div>
+                            <div className="gameDetailsTiny">
+                                <div>
+                                    <div>
+                                        {gameDetails.publisher_name}
+                                    </div>
+                                    <div>
+                                        {gameDetails.release_date.slice(0, 4)}
+                                    </div>
+                                </div>
+                                <div className="genre">
+                                    <div>
+                                        Genre: 
+                                    </div>
+                                    <div>
+                                        {gameDetails.genres.replace(/,/g ,", ")}
+                                    </div>
+                                </div>
+                                <div>
+                                    Rated: {gameDetails.content_rating}
+                                </div>
+                            </div>
+                        </div>
+                            <div className="screenshots"></div>
                         <h4 className="descripHeader">
                             Description
                         </h4>
@@ -127,32 +129,11 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
-                        <div>
-                            <h4 className="updatesHeader">
-                                Updates
-                            </h4>
-                            <p className="gameUpdateDate">
-                                {gameDetails.status_date}
-                            </p>
-                            <div className="gameUpdateVersion">
-                                Version: {gameDetails.version}
-                            </div>
-                            <p className="gameUpdateInfo">
-                                {gameDetails.whats_new}
-                            </p>
-                        </div>
-                        <div>
-                            {/* <div>
-                                {Data[randIndex].related.related_apps[Math.floor(Math.random() * 100)]}
-                            </div>
-                            <div>
-                                {Data[randIndex].related.related_apps[Math.floor(Math.random() * 100)]}
-                            </div>
-                            <div>
-                                {Data[randIndex].related.related_apps[Math.floor(Math.random() * 100)]}
-                            </div> */}
-                        </div>
-                    </div>
+                        <h4>Related Games</h4>
+                    </div> 
+                </div>       
+                <div className="relatedCarosel">
+                    
                 </div>
             </div>
         );

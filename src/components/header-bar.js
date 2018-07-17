@@ -160,13 +160,14 @@ class HeaderBar extends Component {
                         <Link to="/"><li className="nav-text">Home</li></Link>
                         <li className="nav-text">
                             <div className="plus-bar" onClick={this.toggleBrowseMenu.bind(this)}>
-                                <Link to="/browse">Browse </Link>
+                                Browse
                                 <span className={`glyphicon glyphicon-${this.state.dropdownsOpen.browse ? "minus" : "plus"}`} alt="list expand icon" aria-expanded={`${this.state.dropdownsOpen.browse ? "true" : "false"}`} aria-label="Browse-Menu expansion"></span>
                             </div>
                             <ul className="browse-menu" style={browseMenuStyle}>
-                                <li><a>By Genre</a></li>
-                                <li><a>By Price</a></li>
-                                <li><a>By Rating</a></li>
+                                <Link to='/browse/genre'><li>By Genre</li></Link>
+                                <Link to='/browse/platform'><li>By Platform</li></Link>
+                                <Link to='/browse/price'><li>By Price</li></Link>
+                                <Link to='/browse/rating/results'><li>By Rating</li></Link>
                             </ul>
                         </li>
                         <Link to="/wizard"><li className="nav-text">Wizard</li></Link>

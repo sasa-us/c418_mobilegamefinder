@@ -28,7 +28,6 @@ class HomePage extends Component {
                 <h3>Home Page</h3>
                 <GeneralText text={genText}/>
                 <Carousel/>
-
             </div>
 
         )

@@ -11,3 +11,13 @@ body{
     width: 100vw;
     height: 97vh;
 }
+.notFound{
+    text-align: center;
+    margin: 10%;
+}
+.notFound img {
+    max-width: 70%;
+}
+.notFound :any-link {
+    color: rgb(8, 103, 136);
+  }

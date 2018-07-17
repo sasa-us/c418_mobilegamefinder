@@ -3,8 +3,6 @@ import axios from 'axios';
 import { formatPostData} from '../../src/helpers';
 
 export function viewDetails(gameid){
-    // const params = new URLSearchParams();
-    // params.append('searchrequest', gameid);
     const newItem = {searchrequest: gameid};
     const postItem = formatPostData(newItem);
     const resp = axios.post('/api/gameapp.php', postItem, {
@@ -18,9 +16,6 @@ export function viewDetails(gameid){
     }
 }
 export function searchResults(terms){
-    // const params = new URLSearchParams();
-    // params.append('searchrequest', terms);
-    // const resp = axios.post('/api/post_searchpage.php', params);
     const newItem = {
         search_term: terms
     };
@@ -42,23 +37,39 @@ export function wizardResults(results){
             action: 'wizardpage'
         }
     })
-
     return {
         type: types.WIZARD_RESULTS,
         payload: resp
     }
 }
-
 export function triggerModal(text){
     return {
         type: types.TRIGGER_MODAL,
         payload: text
     }
 }
-
 export function clearModal(){
     return {
         type: types.CLEAR_MODAL,
         payload: null
     }
 }
+export function browseResults(terms){
+    const newItem = {
+        //all_rating: ‘5’,
+        //genre:  ‘board’,
+        //price_value: ‘paid’
+        // price_value: 'free'
+    };
+    const postnewItem = formatPostData(terms);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
+            params: {
+                action: 'browse'
+            }
+    })
+    return {
+        type: types.BROWSE_RESULTS,
+        payload: resp
+    }
+}
+
