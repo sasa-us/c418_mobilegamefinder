@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
     game: gameReducer,
     search: searchReducer,
     wizard: wizardReducer,
-    modal: modalReducer
+    modal: modalReducer,
     browse: browseReducer
 });
 export default rootReducer;
