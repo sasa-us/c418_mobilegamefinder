@@ -16,7 +16,7 @@ class PriceOptions extends Component {
                         <Link to='/browse/price/free'>
                             <div className="icon" >
                                 <img className="game_wiz" src ={Free} />
-                                <div>Free</div>
+                                <div className="genreTitle">Free</div>
                             </div>
                         </Link>
                         <Link to='/browse/price/paid'>
