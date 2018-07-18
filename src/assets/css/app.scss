@@ -84,7 +84,7 @@ button {
 }
 @media only screen and (min-width: 750px) {
     .stars>div>span{
-        font-size: 40px;
+        font-size: 30px;
     }
     .resItemImg {
         margin-bottom: 5%;
@@ -96,4 +96,25 @@ button {
         width: 50%;
         margin-bottom: 1%;
   }
+    .resItem {
+        width: 21%;
+    }
+    .detailContainer{
+        width: 80%;
+        margin: auto;     
+    }
+    .modal-main {
+        margin-top: 8%;
+        width: 60%;
+        margin-left: 20%;
+      }
+    .carousel-container {
+        width: 400px;
+        height: auto;
+        margin: auto;
+    }
+    .indicators{
+        width: 20%;
+        margin-top: 2%;
+    }
 }
