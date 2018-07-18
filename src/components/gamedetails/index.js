@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars';
-// import Data from './dummydata';
 import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
 import ferret from '../../assets/images/ferretgif.gif';
 import {viewDetails} from '../../actions/';
-// import {formatPostData} from '../../helper';
-// import axios from 'axios';
+import Screenshots from '../carousel/screenshot-carousel';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -17,7 +15,7 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
-            randIndex: Math.floor(Math.random() * 10)
+            screenshots: []
         };
     };
     toggleDescriptionExpand(event){
@@ -27,22 +25,27 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
-    componentDidMount(){
-        if(!this.props.viewDetails){
-            const newItem = {searchrequest: this.props.match.params.game_details};
-            const postItem = formatPostData(newItem);
-            const resp = axios.post('/api/gameapp.php', postItem, {
-                params: {
-                    action: 'details'
-                }
-            })
-        } else {
+    async componentDidMount(){
+        if(!Object.keys(this.props.details).length){
             this.props.viewDetails(this.props.match.params.game_details);
         }
     }
+    //---------------------
+    componentDidUpdate(prevProps){
+        if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length){
+            this.splitScreenshots(this.props.details.screenshot_urls);
+        }
+    }
+    splitScreenshots(str){
+        var screenshotsSplit = str.split(',');
+        this.setState({
+            screenshots: screenshotsSplit
+            });
+    }
+    //----------------------
 
     render(){
-        if (!this.props.details){
+        if (!Object.keys(this.props.details).length){
             return (
                 <div className="carousel-container">
                     <div className="loadingImage">
@@ -53,8 +56,6 @@ class GameDetailsIndexPage extends Component{
         }
 
         const gameDetails = this.props.details;
-
-        console.log('props', this.props);
 
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
@@ -140,7 +141,14 @@ class GameDetailsIndexPage extends Component{
                                 </div>
                             </div>
                         </div>
-                            <div className="screenshots"></div>
+                    </div>
+                </div>
+                <div className="screenshots">
+                    <Screenshots images={this.state.screenshots}/>
+                </div>
+
+                <div className="gameDetailsBottom">
+                    <div className="detailsBottomInnerBox">
                         <h4 className="descripHeader">
                             Description
                         </h4>
@@ -152,12 +160,8 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
-                        <h4>Related Games</h4>
                     </div> 
                 </div>       
-                <div className="relatedCarosel">
-                    
-                </div>
             </div>
         );
     }
