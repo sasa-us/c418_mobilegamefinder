@@ -9,7 +9,9 @@ class Platform extends Component {
     constructor(props) {
         super(props);
         this.state={
-            price:"",
+            platform: "",
+            disabled:"disabled",
+            styling: "inactive-wizard-button"
 
         };
         this.handleIconClick = this.handleIconClick.bind(this);
@@ -22,6 +24,10 @@ class Platform extends Component {
         this.setState(platform);
         localStorage.setItem('platform', JSON.stringify(platform));
         console.log(localStorage);
+        this.setState({
+            disabled: "",
+            styling: "active-wizard-button"
+        })
     }
 
     render() {
@@ -36,22 +42,22 @@ class Platform extends Component {
 
                     <div className="flexColumn">
                         <div className="icon">
-                            <img className="game_wiz" src ={Apple} onClick={(e) => this.handleIconClick(e, 'apple')}/>
+                            <img className="lg_icon_wiz" src ={Apple} onClick={(e) => this.handleIconClick(e, 'apple')}/>
                         </div>
 
                         <div className="icon">
-                            <img className="game_wiz" src ={Android} onClick={(e) => this.handleIconClick(e, 'android')}/>
+                            <img className="lg_icon_wiz" src ={Android} onClick={(e) => this.handleIconClick(e, 'android')}/>
                         </div>
 
                     </div>
                 </div>
                 <div className="buttonContainer">
-                    <Link to="/price">
-                        <button className="wizard-button" type="button">Back</button>
+                    <Link to="/wizard">
+                        <button className="active-wizard-button" type="button">Back</button>
                     </Link>
 
                     <Link to="/genre">
-                        <button className="wizard-button" type="button">Next</button>
+                        <button className={this.state.styling} disabled={this.state.disabled} type="button">Next</button>
                     </Link>
                 </div>
             </div>

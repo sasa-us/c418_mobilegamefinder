@@ -16,9 +16,9 @@ class Genre extends Component {
     constructor(props) {
         super(props);
         this.state={
-            genre:""
-
-
+            genre:"",
+            disabled: "disabled",
+            styling: "inactive-wizard-button"
         };
 
         this.handleIconClick = this.handleIconClick.bind(this);
@@ -29,9 +29,14 @@ class Genre extends Component {
         let genre = {
             genre: title
         };
-        this.setState(genre);
+        this.setState(genre)
         localStorage.setItem('genre', JSON.stringify(genre));
         console.log(localStorage);
+        this.setState({
+            disabled: "",
+            styling: "active-wizard-button"
+        })
+
     }
 
     render() {
@@ -73,7 +78,8 @@ class Genre extends Component {
 
                         <div className="icon">
                             <img className="game_wiz" src ={RolePlaying} onClick={(e) => this.handleIconClick(e, 'role playing')}/>
-                            <div className="genreTitle">Role Playing</div>
+                            <div className="genreTitle">Role</div>
+                            <div className="genreTitle">Playing</div>
                         </div>
                     </div>
 
@@ -98,7 +104,7 @@ class Genre extends Component {
                     <button className="wizard-button" type="button">Back</button>
                 </Link>
                 <Link to="/wizardresults">
-                    <button className="wizard-button" type="button" onClick={this.getDataFromLocalStorage}>Next</button>
+                    <button className={this.state.styling} disabled={this.state.disabled} type="button" onClick={this.getDataFromLocalStorage}>Next</button>
                 </Link>
             </div>
 
