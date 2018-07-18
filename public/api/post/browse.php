@@ -6,7 +6,6 @@ if(isset($_POST['all_rating'])) {
                 WHERE `all_rating`=5 
                 ORDER BY RAND()
                 LIMIT 27";
-     getBrowseData($conn, $query);
 } //end if($all_rating)
 
 //==============================  genre  =========================================
@@ -16,8 +15,6 @@ else if(isset($_POST['genre'])) {
                 WHERE `genre` = '{$_POST['genre']}'
                 ORDER BY RAND()
                 LIMIT 27";
-    getBrowseData($conn, $query);
-   
 }//end if($genre)
 //==============================  platform  =========================================
 else if(isset($_POST['platform'])) {
@@ -26,8 +23,6 @@ else if(isset($_POST['platform'])) {
                 WHERE `platform` = '{$_POST['platform']}'
                 ORDER BY RAND()
                 LIMIT 27";
-    getBrowseData($conn, $query);
-   
 }//end if($platform)
 //==============================  price_value  ==================================
 else if(isset($_POST['price_value'])) {
@@ -44,15 +39,14 @@ else if(isset($_POST['price_value'])) {
                 ORDER BY RAND()
                 LIMIT 27";
     }
-
-    getBrowseData($conn, $query);
 }//end if(price_value)
 
-function getBrowseData($conn, $query) {
+
     $result = mysqli_query($conn, $query);
-    global $output;
+
+
     if(empty($result)) {
-        $output['error'][] = mysqli_error($conn);
+        $output['error'][] = 'There was an error'; //mysqli_error($conn);
     } else {
         if(mysqli_num_rows($result) > 0) {
             $output['success'] = true;
@@ -63,6 +57,4 @@ function getBrowseData($conn, $query) {
             $output['error'][] = 'no result';
         }
     }
-} //end getBrowseData() 
-
-?>
+// } //end getBrowseData() 
