@@ -24,6 +24,7 @@ class HomePage extends Component {
         return (
             <div className="homePageContainer">
                 <FirstTimeModal parentComponent={genText} content={firstModal} handleClose={() => this.handleModalClose()} />
+                <div className="wizard">Wizard goes here</div>
                 <GeneralText text={genText}/>
                 <Carousel/>
             </div>
