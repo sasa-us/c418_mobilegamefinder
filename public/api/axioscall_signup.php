@@ -1,27 +1,29 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script>
 
-    const newItem = {
-        genre: 'board',
-        platform:  'android',
-        //price_value: 'free'
-        price_value: 'paid'
+   const newItem = {
+        username: 'aa',
+        email:  'aa',
+        password: 'aa'
     };
     const postnewItem = formatPostData(newItem);
+   // axios.get('mainpage.php', {
     axios.post('/api/gameapp.php', postnewItem, {
             params: {
-                action: 'wizardpage'
+                action: 'signup'
             }
     }).then(resp => {
         console.log('POST RESPONSE:', resp);
     });
 
     function formatPostData(data){
-        const params = new URLSearchParams();
-        for(let [k, v] of Object.entries(data)){
-            params.append(k, v);
-        }
-        return params;
+    const params = new URLSearchParams();
+
+    for(let [k, v] of Object.entries(data)){
+        params.append(k, v);
+    }
+
+    return params;
 }
 
 

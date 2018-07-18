@@ -7,7 +7,6 @@ session_start();
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     
-    //print_r($_POST);
     $email = $_POST['email'];
     //print($email);
    // $password = sha1($_POST['password']);
@@ -40,9 +39,8 @@ session_start();
     
             $output['success'] = true;
             $_SESSION['valid'] = true;
-            print_r($_SESSION);
-            //if member, will go to index page 
-            //header('Location: ../index.html');
+            //print_r($_SESSION);  //[userID] => 1  [valid] => 1
+      
         } else {
            
             $output['error'] = 'invalide username or password';
@@ -51,7 +49,13 @@ session_start();
         $output['error'] = 'you are not regeistered';
     }
 
-
+//will send back as json string obj as 
+//{  "success": true,
+//   "user": {"email":"bb",
+        //   "password":"$2y$10$whyyoulookatmypassworOe89WBzFc6cXgwC1ZnpaKlAmY8j0LYjK",
+        //    "id":"1",
+        //    "username":"bb"}
+        // }
 
 
 
