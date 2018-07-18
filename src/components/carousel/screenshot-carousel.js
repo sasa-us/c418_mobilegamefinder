@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Transition from 'react-transition-group/CSSTransitionGroup';
-import Indicators from './indicators';
+import Indicators from './screenshot-indicators';
 import './screenshot-carousel.css';
 import axios from 'axios';
 import ferret from '../../assets/images/ferretgif.gif';
