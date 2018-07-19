@@ -116,12 +116,12 @@ class HeaderBar extends Component {
         if(this.props.auth) {
             return (
                 <Fragment>
-                    <li className="nav-item">
-                        <NavLink className="nav-text nav-text-bottom" to ="/favorites">Favorites</NavLink>
+                    <li className="nav-text nav-text-bottom">
+                        <NavLink to ="/favorites">Favorites</NavLink>
                     </li>
 
-                    <li className="nav-item">
-                        <NavLink onClick={this.props.signOut} className="nav-text nav-text-bottom" to ="sign-in">SignOut</NavLink>
+                    <li className="nav-text nav-text-bottom">
+                        <NavLink onClick={this.props.signOut} to ="sign-in">Sign Out</NavLink>
                     </li>
                 </Fragment>
 
@@ -208,6 +208,7 @@ class HeaderBar extends Component {
                                 <li><a>Contact Us</a></li>
                             </ul>
                         </li>
+                        <Link to="/sign-up"><li className="nav-text">Sign Up</li></Link>
                         {this.renderLinks()}
                     </ul>
                     <h2 className="appName">Games Ferret</h2>

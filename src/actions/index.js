@@ -4,7 +4,7 @@ import { formatPostData } from '../helpers';
 
 //what is address for doing call for BASE_URL?
 
-const BASE_URL = 'http://api.reactprototypes.com';
+const BASE_URL = '/api/gameapp.php';
 
 export function viewDetails(gameid){
     const newItem = {searchrequest: gameid};
@@ -80,9 +80,9 @@ export function browseResults(terms){
 export function createAccount(userInfo){
     return async (dispatch) => {
         try {
-            const resp = await axios.post(`${BASE_URL}/signup`, userInfo);
+            const resp = await axios.post('/api/gameapp.php', userInfo);
 
-            localStorage.setItem("token", resp.data.token);
+            localStorage.setItem("username", resp.data.user.username);
 
             dispatch ({type: types.SIGN_UP});
         } catch(err) {
@@ -101,7 +101,7 @@ export function accountSignIn(userInfo){
                 action: 'login'
             }
         });
-
+        localStorage.setItem("username", resp.data.user.username);
         console.log('Sign In Resp:', resp);
         if(resp.data.success){
             return dispatch({
@@ -120,7 +120,7 @@ export function accountSignIn(userInfo){
 }
 
 export function signOut(){
-    localStorage.removeItem('token');
+    localStorage.removeItem('username');
     console.log(localStorage);
     return{type: types.SIGN_OUT};
 }
