@@ -14,8 +14,10 @@
 }
 
 .carousel-img {
-    width: 100%;
-    min-height: 100%;
+  width: 76%;
+  min-height: 70%;
+  height: 70%;
+  border-radius: 25px;
 }
 
 /* Next Image Classes */
@@ -103,10 +105,14 @@
     background-color: #F0C808;
 }
 
-button i{
+.ImgAndArrowBox button i{
   font-size: 50px;
-  color: #086788;
-  margin: 0 12px;
+  color: #F0C808;
+  margin: 0;
+  opacity: .5;
+}
+.ImgAndArrowBox button:focus{
+  outline: none;
 }
 .loadingImage {
   display: flex;
@@ -122,11 +128,17 @@ button i{
 
 @media only screen and (max-width: 600px) {
   .carousel-container {
-    height: 300px;
-    width: 300px;
+    height: 290px;
+    width: 375px;
 }
 .indicators {
   width: 80%;
 }
 
+}
+/* --------------------------------------- */
+.ImgAndArrowBox{
+  display: flex;
+  max-height: 300px;
+  min-height: 300px;
 }
