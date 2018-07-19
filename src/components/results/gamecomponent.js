@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactStars from 'react-stars'
 import '../gamedetails/gamedetails.scss'
 import Modal from 'react-modal';
-import {Link} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 class GameResult extends Component {
     constructor () {
@@ -65,7 +65,7 @@ class GameResult extends Component {
                                 </div>
                             </div>
                             <div className="modalRow">
-                                <button className='detailsButton'><Link to={`/game/${this.props.details.game_id}/gamedetails`}>View Game Details</Link></button>
+                                <button className='detailsButton' onClick={this.closeModal}><Link to={`/game/${this.props.details.game_id}/gamedetails`}>View Game Details</Link></button>
                                 <button className='detailsButton' onClick={this.closeModal}>Continue Browsing</button>
                             </div>
                         </div>
@@ -75,4 +75,4 @@ class GameResult extends Component {
         )
     }
 } 
-export default GameResult;
+export default withRouter(GameResult);

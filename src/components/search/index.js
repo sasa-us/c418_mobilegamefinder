@@ -5,7 +5,7 @@ import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
 import {searchResults, setLoadingFlag} from '../../actions/';
 import Loader from '../loader';
-import NotFound from '../notfound';
+import sadferret from '../../assets/images/sadferret.png';
 
 class SearchResults extends Component {
     componentDidMount(){
@@ -25,7 +25,10 @@ class SearchResults extends Component {
         if (this.props.loading){
             if(this.props.listError === false){
                 return (
-                    <NotFound />
+                    <div className="notFound">
+                        <img src={sadferret} alt="Sad Ferret"/>
+                        <h4>Your search had no results. Please try again!</h4>
+                    </div>
                 )
             }
             return (

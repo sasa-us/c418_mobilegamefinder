@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars';
+import {withRouter} from 'react-router-dom';
 import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
-import {viewDetails} from '../../actions/';
+import {viewDetails, setLoadingFlag} from '../../actions/';
 import Screenshots from '../carousel/screenshot-carousel';
 import formatPostData from '../../helpers/';
 import axios from 'axios';
 import Loader from '../loader';
+import GameRenderer from '../results/gamerenderer';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -27,26 +29,19 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
-    
-    // componentDidMount(){
-    //     if(!this.props.viewDetails){
-    //         const newItem = {searchrequest: this.props.match.params.game_details};
-    //         const postItem = formatPostData(newItem);
-    //         const resp = axios.post('/api/gameapp.php', postItem, {
-    //             params: {
-    //                 action: 'details'
-    //             }
-    //         })
-    //     } else {
-    //         this.props.viewDetails(this.props.match.params.game_details);
-    //     }
-    // }
 
-    componentWillMount(){
+    componentDidMount(){
+        this.props.setLoadingFlag();
         this.props.viewDetails(this.props.match.params.game_details);
     }
+  
     //---------------------
     componentDidUpdate(prevProps, prevState){
+        window.scrollTo(0, 0);
+        if(prevProps.location.pathname !== this.props.location.pathname){
+            this.props.setLoadingFlag();
+            this.props.viewDetails(this.props.match.params.game_details);
+        }
         if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
             || prevProps.details.id !== this.props.details.id || !this.state.screenshots.length
         ){
@@ -97,6 +92,15 @@ class GameDetailsIndexPage extends Component{
         const androidButtonDisplay = {
             display: getAndroid ? "block" : "none"
         }
+        //----------------------------------
+        
+        const data = this.props.details.related_game_apps;
+        let showRelated = true;
+        if(!this.props.details.related_game_apps ){
+            showRelated = false;            
+        }
+        
+
         // --------------------------------------
         return(
             <div className="singleGamePage">
@@ -171,15 +175,27 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
+
+                        { showRelated ? <h4 className="appHeader">Related Games</h4> : null }
+                           
                     </div> 
-                </div>       
+                </div>   
+                {/* // Need to setup flag in render to indicate if there is any data in the related games section.
+                // Then set conditional to show or hide the gamerenderer component based on that flag. 
+                //This should remove the issue with failure on load. 
+                //Still need to research the location issue. */}
+                <div className="relatedCarousel" >
+                    {this.props.details.related_game_apps ? <GameRenderer data={data} /> : null }
+                </div>
             </div>
         );
     }
 }
 function mapStateToProps(state){
     return {
-        details: state.game.details
+        details: state.game.details,
+        errors: state.game.errors,
+        loading: state.search.loading
     }
 }
-export default connect(mapStateToProps, {viewDetails})(GameDetailsIndexPage);
+export default withRouter(connect(mapStateToProps, {viewDetails, setLoadingFlag})(GameDetailsIndexPage));
