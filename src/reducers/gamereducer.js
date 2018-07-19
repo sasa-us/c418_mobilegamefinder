@@ -1,7 +1,7 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    details: null,
+    details: {},
     errors: null,
     loading: true
 }

@@ -6,6 +6,9 @@ import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
 import {viewDetails, setLoadingFlag} from '../../actions/';
+import Screenshots from '../carousel/screenshot-carousel';
+import formatPostData from '../../helpers/';
+import axios from 'axios';
 import Loader from '../loader';
 import GameRenderer from '../results/gamerenderer';
 
@@ -16,6 +19,7 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
+            screenshots: []
         };
     };
     toggleDescriptionExpand(event){
@@ -25,25 +29,41 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
+
+    componentDidMount(){
+        this.props.setLoadingFlag();
+        this.props.viewDetails(this.props.match.params.game_details);
+    }
+  
+    //---------------------
     componentDidUpdate(prevProps, prevState){
         window.scrollTo(0, 0);
         if(prevProps.location.pathname !== this.props.location.pathname){
             this.props.setLoadingFlag();
             this.props.viewDetails(this.props.match.params.game_details);
-            
+        }
+        if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
+            || prevProps.details.id !== this.props.details.id || !this.state.screenshots.length
+        ){
+            this.splitScreenshots(this.props.details.screenshot_urls);
         }
     }
-    componentDidMount(){
-        this.props.setLoadingFlag();
-        this.props.viewDetails(this.props.match.params.game_details);
+    splitScreenshots(str){
+        var screenshotsSplit = str.split(',');
+        this.setState({
+            screenshots: screenshotsSplit
+            });
     }
+    //----------------------
     render(){
-        if (!this.props.details){
+        console.log(this.props);
+        if (!Object.keys(this.props.details).length){
             return (
                 <Loader />
             )
         }
         const gameDetails = this.props.details;
+        console.log('details', gameDetails);
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
             background: this.state.infoExpanded.gameDescripSection ? "transparent" : "linear-gradient(to bottom, rgba(175,238,238,0), rgba(175,238,238,0.2))"
@@ -52,13 +72,19 @@ class GameDetailsIndexPage extends Component{
         // --------------------------------------
         let getiOS = false;
         let getAndroid = false;
+        let iOSLink = '';
+        let androidLink = '';
         if (gameDetails.platform === "both") {
-            getiOS = true
-            getAndroid = true
+            getiOS = true;
+            iOSLink = gameDetails.secondary_store_url;
+            getAndroid = true;
+            androidLink = gameDetails.store_url;
         } else if (gameDetails.platform === "apple") {
-            getiOS = true
+            getiOS = true;
+            iOSLink = gameDetails.store_url;
         } else if (gameDetails.platform === "android") {
-            getAndroid = true
+            getAndroid = true;
+            androidLink = gameDetails.store_url;
         }
         const iOSButtonDisplay = {
             display: getiOS ? "block" : "none"
@@ -101,10 +127,10 @@ class GameDetailsIndexPage extends Component{
                         </div>
                         <div className="getItHere">
                             <button type="iOSButton" style={iOSButtonDisplay}>
-                                <img src={iOS} className="iOSButtonImg"/>
+                                <a href={iOSLink} target='_blank'><img src={iOS} className="iOSButtonImg"/></a>
                             </button>
                             <button type="androidButton" style={androidButtonDisplay}>
-                                <img src={Android} className="androidButtonImg"/>
+                            <a href={androidLink} target='_blank'><img src={Android} className="androidButtonImg"/></a>
                             </button>
                         </div>
                         <div>
@@ -117,6 +143,9 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.release_date.slice(0, 4)}
                                     </div>
                                 </div>
+                                <div>
+                                    Rated: {gameDetails.content_rating}
+                                </div>
                                 <div className="genre">
                                     <div>
                                         Genre: 
@@ -125,12 +154,16 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.genres.replace(/,/g ,", ")}
                                     </div>
                                 </div>
-                                <div>
-                                    Rated: {gameDetails.content_rating}
-                                </div>
                             </div>
                         </div>
-                            <div className="screenshots"></div>
+                    </div>
+                </div>
+                <div className="screenshots">
+                    <Screenshots images={this.state.screenshots}/>
+                </div>
+
+                <div className="gameDetailsBottom">
+                    <div className="detailsBottomInnerBox">
                         <h4 className="descripHeader">
                             Description
                         </h4>
@@ -142,6 +175,7 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
+
                         { showRelated ? <h4 className="appHeader">Related Games</h4> : null }
                            
                     </div> 
