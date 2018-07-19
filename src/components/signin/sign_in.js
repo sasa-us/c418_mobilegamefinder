@@ -22,6 +22,7 @@ class SignIn extends Component {
 
     render() {
         const {handleSubmit, authError} = this.props;
+
         return (
 
             <form onSubmit={handleSubmit(this.handleSignIn.bind(this))}>

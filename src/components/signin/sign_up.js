@@ -18,10 +18,10 @@ class SignUp extends Component {
             <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
                 <h1 className="text-center">Create Account</h1>
                 <div className="row col-xs-6 col-xs-offset-3">
-                    <Field className="col-6 offset-3" name="username" component={renderInputs} label="User Name"/>
+                    <Field className="col-6 offset-3" name="username" component={renderInputs} label="Username"/>
                 </div>
                 <div className="row col-xs-6 col-xs-offset-3">
-                    <Field type="password" className="col-6 offset-3" name="email" component={renderInputs} label="Email"/>
+                    <Field className="col-6 offset-3" name="email" component={renderInputs} label="Email"/>
                 </div>
                 <div className="row col-xs-6 col-xs-offset-3">
                     <Field type="password" className="col-6 offset-3" name="password" component={renderInputs} label="Password"/>
@@ -37,25 +37,31 @@ class SignUp extends Component {
 }
 
 function validate(values) {
-    const{email, password, confirmPassword} = values;
+    const{username, email, password} = values;
     const errors = {};
 
-    if(!email) {
+    if(!username) {
         errors.email = "Please enter your email";
     }
-    if (!password) {
+    if (!email) {
         errors.password = "Please enter a password"
     }
-    if (password !== confirmPassword) {
+    if (!password) {
         errors.confirmPassword = "Passwords do not match"
     }
     return errors;
 
 }
+function mapStateToProps(state){
+    return {
+        authError: state.user.error
+    }
+}
+
 
 SignUp = reduxForm({
     form: "sign-up",
     validate: validate
 })(SignUp);
 
-export default connect(null, {createAccount: createAccount})(SignUp);
+export default connect(mapStateToProps, {createAccount: createAccount})(SignUp);
