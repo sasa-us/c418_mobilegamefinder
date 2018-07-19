@@ -4,9 +4,11 @@ import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
-import ferret from '../../assets/images/ferretgif.gif';
 import {viewDetails} from '../../actions/';
 import Screenshots from '../carousel/screenshot-carousel';
+import formatPostData from '../../helpers/';
+import axios from 'axios';
+import Loader from '../loader';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -58,21 +60,15 @@ class GameDetailsIndexPage extends Component{
             });
     }
     //----------------------
-
     render(){
         console.log(this.props);
         if (!Object.keys(this.props.details).length){
             return (
-                <div className="carousel-container">
-                    <div className="loadingImage">
-                        <img src={ferret} alt="Loading Images" />
-                    </div>
-                </div>
+                <Loader />
             )
         }
-
         const gameDetails = this.props.details;
-
+        console.log('details', gameDetails);
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
             background: this.state.infoExpanded.gameDescripSection ? "transparent" : "linear-gradient(to bottom, rgba(175,238,238,0), rgba(175,238,238,0.2))"
@@ -81,18 +77,20 @@ class GameDetailsIndexPage extends Component{
         // --------------------------------------
         let getiOS = false;
         let getAndroid = false;
-
+        let iOSLink = '';
+        let androidLink = '';
         if (gameDetails.platform === "both") {
-            getiOS = true
-            getAndroid = true
-            
+            getiOS = true;
+            iOSLink = gameDetails.secondary_store_url;
+            getAndroid = true;
+            androidLink = gameDetails.store_url;
         } else if (gameDetails.platform === "apple") {
-            getiOS = true
-
+            getiOS = true;
+            iOSLink = gameDetails.store_url;
         } else if (gameDetails.platform === "android") {
-            getAndroid = true
+            getAndroid = true;
+            androidLink = gameDetails.store_url;
         }
-
         const iOSButtonDisplay = {
             display: getiOS ? "block" : "none"
         }
@@ -100,10 +98,7 @@ class GameDetailsIndexPage extends Component{
             display: getAndroid ? "block" : "none"
         }
         // --------------------------------------
-        
-        
         return(
-            
             <div className="singleGamePage">
                 <div className="gameTitle">
                     <h2>{gameDetails.app_name}</h2>
@@ -128,10 +123,10 @@ class GameDetailsIndexPage extends Component{
                         </div>
                         <div className="getItHere">
                             <button type="iOSButton" style={iOSButtonDisplay}>
-                                <img src={iOS} className="iOSButtonImg"/>
+                                <a href={iOSLink} target='_blank'><img src={iOS} className="iOSButtonImg"/></a>
                             </button>
                             <button type="androidButton" style={androidButtonDisplay}>
-                                <img src={Android} className="androidButtonImg"/>
+                            <a href={androidLink} target='_blank'><img src={Android} className="androidButtonImg"/></a>
                             </button>
                         </div>
                         <div>

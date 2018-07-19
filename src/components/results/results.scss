@@ -1,6 +1,7 @@
 // CSS for Recommendations Page Component
 .resContainer{
     text-align: center;
+    margin-top: 5%;
 }
 
 .detailContainer {
@@ -31,12 +32,7 @@
 .titleLabel {
     text-transform:capitalize;
 }
-@media only screen and (min-width: 600px) {
-    .detailContainer{
-        width: 50%;
-        margin: auto;     
-    }
-}
 .gameBlock h4{
     overflow-wrap: break-word;
 }
+

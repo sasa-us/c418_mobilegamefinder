@@ -28,7 +28,6 @@ const App = () => (
             <div>
             <Header/>
             </div>
-
             <div className="mainBody">
                 <Switch>
                     <Route exact path="/" component={Home}/>
@@ -49,7 +48,7 @@ const App = () => (
                     <Route path="/about" component={About}/>
                     <Route path="/search/results" component={Search}/>
                     <Route path='/game/:game_details' component={GameInfo} />
-                    <Route component={NotFound} />
+                    <Route component={NotFound} />  
                 </Switch>
             </div>
             <Footer/>

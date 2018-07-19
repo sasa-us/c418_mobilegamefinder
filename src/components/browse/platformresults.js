@@ -4,7 +4,7 @@ import '../results/results.scss';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
 import {browseResults} from '../../actions/';
-import ferret from '../../assets/images/ferretgif.gif';
+import Loader from '../loader';
 
 class PlatformResultsList extends Component {
 
@@ -17,15 +17,10 @@ class PlatformResultsList extends Component {
         };
         this.props.browseResults(newItem)
     }
-    
     render(){
         if (!this.props.browseresult){
             return (
-                <div className="carousel-container">
-                    <div className="loadingImage">
-                        <img src={ferret} alt="Loading Images" />
-                    </div>
-                </div>
+                <Loader />
             )
         }
     const data = this.props.browseresult.data;
