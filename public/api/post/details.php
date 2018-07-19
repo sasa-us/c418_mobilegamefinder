@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $request = ($_POST['searchrequest']);
 
 $output = [
