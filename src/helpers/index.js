@@ -2,10 +2,12 @@ import React from "react";
 
 export function formatPostData(data){
     const params = new URLSearchParams();
+    console.log("data", data)
 
     for(let [k, v] of Object.entries(data)){
         params.append(k, v);
     }
+    console.log('params?', params)
     return params;
 }
 
