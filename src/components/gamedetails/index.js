@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars';
+import {withRouter} from 'react-router-dom';
 import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
@@ -9,6 +10,7 @@ import formatPostData from '../../helpers/';
 import axios from 'axios';
 import Loader from '../loader';
 import GameComponent from '../results/gamecomponent';
+import GameRenderer from '../results/gamerenderer';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -69,7 +71,10 @@ class GameDetailsIndexPage extends Component{
         const androidButtonDisplay = {
             display: getAndroid ? "block" : "none"
         }
+        //----------------------------------
+        
         const data = this.props.details.related_game_apps;
+        console.log('location', location);
         let showRelated = true;
         if(!this.props.details.related_game_app  || !this.props.details.related_apps ){
             showRelated = false;            
@@ -150,11 +155,15 @@ class GameDetailsIndexPage extends Component{
                     </div> 
                 </div>   
                  
-                <div className="relatedCarousel" style={showRelated}>
-                    
-                    <div className="detailContainer">
-                        {data.map(game => <GameComponent key={game.game_id} details={game}/>)}
-                    </div>
+                <div className="relatedCarousel" >
+                // Need to setup flag in render to indicate if there is any data in the related games section.
+                // Then set conditional to show or hide the gamerenderer component based on that flag. 
+                //This should remove the issue with failure on load. 
+                //Still need to research the location issue.
+                    <GameRenderer data={data} />
+                    {/* <div className="detailContainer">
+                        {data.map(game => <GameComponent key={game.game_id} details={game} location={location}/>)}
+                    </div> */}
                 </div>
             </div>
         );
@@ -162,7 +171,8 @@ class GameDetailsIndexPage extends Component{
 }
 function mapStateToProps(state){
     return {
-        details: state.game.details
+        details: state.game.details,
+        errors: state.game.errors
     }
 }
-export default connect(mapStateToProps, {viewDetails})(GameDetailsIndexPage);
+export default withRouter(connect(mapStateToProps, {viewDetails})(GameDetailsIndexPage));
