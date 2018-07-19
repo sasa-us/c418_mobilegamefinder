@@ -11,7 +11,6 @@ import Simulation from "../../assets/images/wizard-icons/simulation.png";
 import Racing from "../../assets/images/wizard-icons/racing.png";
 import "../wizard/wizard.scss";
 
-
 class Genre extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +23,6 @@ class Genre extends Component {
         this.handleIconClick = this.handleIconClick.bind(this);
 
     }
-
     handleIconClick(e, title) {
         let genre = {
             genre: title
@@ -38,34 +36,25 @@ class Genre extends Component {
         })
 
     }
-
     render() {
         return(
-
             <div className="wizardContainer">
-
                 <h4 className="gameName">Which genre appeals to you?</h4>
-
-
                 <div className="gameIcons">
-
                     <div className="flexRow">
                         <div className="icon">
                             <img className="game_wiz" src ={Adventure} onClick={(e) => this.handleIconClick(e, 'adventure')}/>
                             <div className="genreTitle">Adventure</div>
                         </div>
-
                         <div className="icon">
                             <img className="game_wiz" src ={Board} onClick={(e) => this.handleIconClick(e, 'board')} />
                             <div className="genreTitle">Board</div>
                         </div>
-
                         <div className="icon">
                             <img className="game_wiz" src ={Strategy} onClick={(e) => this.handleIconClick(e, 'strategy')}/>
                             <div className="genreTitle">Strategy</div>
                         </div>
                     </div>
-
                     <div className="flexRow">
                         <div className="icon">
                             <img className="game_wiz" src ={Puzzle} onClick={(e) => this.handleIconClick(e, 'puzzle')}/>
@@ -75,25 +64,21 @@ class Genre extends Component {
                             <img className="game_wiz" src ={Action} onClick={(e) => this.handleIconClick(e, 'action')}/>
                             <div className="genreTitle">Action</div>
                         </div>
-
                         <div className="icon">
                             <img className="game_wiz" src ={RolePlaying} onClick={(e) => this.handleIconClick(e, 'role playing')}/>
                             <div className="genreTitle">Role</div>
                             <div className="genreTitle">Playing</div>
                         </div>
                     </div>
-
                     <div className="flexRow">
                         <div className="icon">
                             <img className="game_wiz" src ={Arcade} onClick={(e) => this.handleIconClick(e, 'arcade')}/>
                             <div className="genreTitle">Arcade</div>
                         </div>
-
                         <div className="icon">
                             <img className="game_wiz" src ={Simulation} onClick={(e) => this.handleIconClick(e, 'simulation')}/>
                             <div className="genreTitle">Simulation</div>
                         </div>
-
                         <div className="icon">
                             <img className="game_wiz" src ={Racing} onClick={(e) => this.handleIconClick(e, 'racing')}/>
                             <div className="genreTitle">Racing</div>
@@ -110,6 +95,5 @@ class Genre extends Component {
 
         )
     }
-
 }
 export default Genre

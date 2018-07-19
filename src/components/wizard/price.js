@@ -4,8 +4,6 @@ import Paid from "../../assets/images/wizard-icons/001-money.png";
 import Free from "../../assets/images/wizard-icons/002-free.png";
 import "./wizard.scss";
 
-
-
 class Wizard extends Component {
     constructor(props) {
         super(props);
@@ -13,12 +11,9 @@ class Wizard extends Component {
             price:"",
             disabled: "disabled",
             styling: "inactive-wizard-button"
-
-
     };
         this.handleIconClick = this.handleIconClick.bind(this);
     }
-
     handleIconClick(e, title) {
         let price = {
             price: title
@@ -30,26 +25,19 @@ class Wizard extends Component {
             disabled: "",
             styling: "active-wizard-button"
         })
-
     }
-
     render() {
-
         return(
-
             <div className="wizardContainer">
                 <h4 className="priceGameName">Are you looking for FREE or PAID games?</h4>
                 <div className="priceIcons">
-
                     <div className="flexColumn">
                         <div className="icon">
                             <img className="lg_icon_wiz" src ={Free} onClick={(e) => this.handleIconClick(e, 'free')} />
                         </div>
-
                         <div className="icon">
                             <img className="lg_icon_wiz" src ={Paid} onClick={(e) => this.handleIconClick(e, 'paid')}/>
                         </div>
-
                     </div>
                 </div>
                 <div className="buttonContainer">
@@ -58,10 +46,7 @@ class Wizard extends Component {
                     </Link>
                 </div>
             </div>
-
-
         )
     }
-
 }
 export default Wizard;

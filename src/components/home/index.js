@@ -5,7 +5,6 @@ import FirstTimeModal from '../modals/firstTimeModal';
 import Carousel from '../carousel';
 import GeneralText from '../multiuse/generaltext';
 
-
 class HomePage extends Component {
     componentDidMount() {
         const isNotFirstTimeVisit = window.localStorage.getItem('notfirstimer');

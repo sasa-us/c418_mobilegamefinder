@@ -4,12 +4,10 @@ import '../results/results.scss';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
 import {searchResults, setLoadingFlag} from '../../actions/';
-import ferret from '../../assets/images/ferretgif.gif';
-import sadferret from '../../assets/images/sadferret.png'
+import Loader from '../loader';
+import NotFound from '../notfound';
 
 class SearchResults extends Component {
-
-
     componentDidMount(){
         const search_term = new URLSearchParams(this.props.location.search).get('search_term');
         this.props.searchResults(search_term);
@@ -27,18 +25,11 @@ class SearchResults extends Component {
         if (this.props.loading){
             if(this.props.listError === false){
                 return (
-                    <div className="notFound">
-                        <img src={sadferret} alt="Sad Ferret"/>
-                        <h4>Your search didn't return any results. Please try again!</h4>
-                    </div>
+                    <NotFound />
                 )
             }
             return (
-                <div className="carousel-container">
-                    <div className="loadingImage">
-                        <img src={ferret} alt="Loading Images" />
-                    </div>
-                </div>
+                <Loader />
             )
         }
         const data = this.props.gamelist.data;

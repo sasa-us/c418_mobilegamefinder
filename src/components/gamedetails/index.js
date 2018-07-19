@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars';
-// import Data from './dummydata';
 import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
-import ferret from '../../assets/images/ferretgif.gif';
 import {viewDetails} from '../../actions/';
-// import {formatPostData} from '../../helper';
-// import axios from 'axios';
+import formatPostData from '../../helpers/';
+import axios from 'axios';
+import Loader from '../loader';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -17,7 +16,6 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
-            randIndex: Math.floor(Math.random() * 10)
         };
     };
     toggleDescriptionExpand(event){
@@ -40,22 +38,13 @@ class GameDetailsIndexPage extends Component{
             this.props.viewDetails(this.props.match.params.game_details);
         }
     }
-
     render(){
         if (!this.props.details){
             return (
-                <div className="carousel-container">
-                    <div className="loadingImage">
-                        <img src={ferret} alt="Loading Images" />
-                    </div>
-                </div>
+                <Loader />
             )
         }
-
         const gameDetails = this.props.details;
-
-        console.log('props', this.props);
-
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
             background: this.state.infoExpanded.gameDescripSection ? "transparent" : "linear-gradient(to bottom, rgba(175,238,238,0), rgba(175,238,238,0.2))"
@@ -64,18 +53,14 @@ class GameDetailsIndexPage extends Component{
         // --------------------------------------
         let getiOS = false;
         let getAndroid = false;
-
         if (gameDetails.platform === "both") {
             getiOS = true
             getAndroid = true
-            
         } else if (gameDetails.platform === "apple") {
             getiOS = true
-
         } else if (gameDetails.platform === "android") {
             getAndroid = true
         }
-
         const iOSButtonDisplay = {
             display: getiOS ? "block" : "none"
         }
@@ -83,10 +68,7 @@ class GameDetailsIndexPage extends Component{
             display: getAndroid ? "block" : "none"
         }
         // --------------------------------------
-        
-        
         return(
-            
             <div className="singleGamePage">
                 <div className="gameTitle">
                     <h2>{gameDetails.app_name}</h2>
