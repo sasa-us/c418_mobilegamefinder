@@ -112,15 +112,16 @@ class HeaderBar extends Component {
 
 
     renderLinks() {
+        console.log(this.props)
         if(this.props.auth) {
             return (
                 <Fragment>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to ="/favorites">Favorites</NavLink>
+                        <NavLink className="nav-text nav-text-bottom" to ="/favorites">Favorites</NavLink>
                     </li>
 
                     <li className="nav-item">
-                        <NavLink onClick={this.props.signOut} className="nav-link" to ="signin">SignOut</NavLink>
+                        <NavLink onClick={this.props.signOut} className="nav-text nav-text-bottom" to ="sign-in">SignOut</NavLink>
                     </li>
                 </Fragment>
 

@@ -8,6 +8,8 @@ import GeneralText from '../multiuse/generaltext';
 
 
 class HomePage extends Component {
+
+
     componentDidMount() {
         const isNotFirstTimeVisit = window.localStorage.getItem('notfirstimer');
         console.log(isNotFirstTimeVisit, 'woo you must love ferrets');
