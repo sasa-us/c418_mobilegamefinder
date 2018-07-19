@@ -4,9 +4,7 @@ import Paid from "../../assets/images/wizard-icons/001-money.png";
 import Free from "../../assets/images/wizard-icons/002-free.png";
 import "../wizard/wizard.scss";
 
-
 class PriceOptions extends Component {
-
     render() {
         return(
             <div className="wizardContainer">
@@ -29,7 +27,6 @@ class PriceOptions extends Component {
                 </div>
             </div>
         )
-}
-
+    }
 }
 export default PriceOptions;

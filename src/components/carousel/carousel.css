@@ -6,6 +6,7 @@
     width: 500px;
     overflow: hidden;
     margin: auto;
+    max-height: 500px;
 }
 
 .carousel-text {
@@ -14,6 +15,7 @@
 
 .carousel-img {
     width: 100%;
+    min-height: 100%;
 }
 
 /* Next Image Classes */

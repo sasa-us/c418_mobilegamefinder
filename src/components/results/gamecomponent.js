@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars'
-import '../modals/modal.scss'
 import '../gamedetails/gamedetails.scss'
 import Modal from 'react-modal';
 import {Link} from 'react-router-dom';
-
 
 class GameResult extends Component {
     constructor () {
@@ -12,7 +10,6 @@ class GameResult extends Component {
         this.state = {
             modalIsOpen: false
           };
-        
           this.openModal = this.openModal.bind(this);
           this.closeModal = this.closeModal.bind(this);
     } 
@@ -37,7 +34,6 @@ class GameResult extends Component {
                 zIndex: '5',
             }
         }
-
         return (
             <div className="resItem">
                 <div className='gameBlock' onClick={this.openModal}>
@@ -45,7 +41,6 @@ class GameResult extends Component {
                     <div className="stars">
                         <ReactStars count={5}  color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
                     </div>
-                    
                     <h4>{this.props.details.app_name}</h4>
                 </div>
                 <Modal 

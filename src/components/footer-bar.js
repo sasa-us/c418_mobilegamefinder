@@ -5,7 +5,6 @@ import Mail from '../assets/images/mail.png';
 class FooterBar extends Component {
     constructor(props){
         super(props);
-
         };
     render() {
         return(
@@ -27,5 +26,4 @@ class FooterBar extends Component {
         )
     }
 }
-
 export default FooterBar;
