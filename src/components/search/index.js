@@ -3,8 +3,9 @@ import GameComponent from '../results/gamecomponent';
 import '../results/results.scss';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
-import {searchResults} from '../../actions/';
+import {searchResults, setLoadingFlag} from '../../actions/';
 import ferret from '../../assets/images/ferretgif.gif';
+import sadferret from '../../assets/images/sadferret.png'
 
 class SearchResults extends Component {
 
@@ -18,11 +19,20 @@ class SearchResults extends Component {
             return;
         } else {
         const search_term = new URLSearchParams(newProps.location.search).get('search_term');
+        this.props.setLoadingFlag();
         this.props.searchResults(search_term);
         }
     }
     render(){
-        if (!this.props.gamelist){
+        if (this.props.loading){
+            if(this.props.listError === false){
+                return (
+                    <div className="notFound">
+                        <img src={sadferret} alt="Sad Ferret"/>
+                        <h4>Your search didn't return any results. Please try again!</h4>
+                    </div>
+                )
+            }
             return (
                 <div className="carousel-container">
                     <div className="loadingImage">
@@ -46,7 +56,9 @@ class SearchResults extends Component {
 }
 function mapStateToProps(state){
     return {
-        gamelist: state.search.gamelist
+        gamelist: state.search.gamelist,
+        listError: state.search.errors,
+        loading: state.search.loading
     }
 }
-export default connect(mapStateToProps, {searchResults})(SearchResults);
+export default connect(mapStateToProps, {searchResults, setLoadingFlag})(SearchResults);

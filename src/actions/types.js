@@ -4,5 +4,6 @@ export default {
     WIZARD_RESULTS: 'wizard_results',
     TRIGGER_MODAL: 'trigger_modal',
     CLEAR_MODAL: 'clear_modal',
-    BROWSE_RESULTS: 'browse_results'
+    BROWSE_RESULTS: 'browse_results',
+    SET_LOADING_FLAG: 'set_loading_flag'
 };

@@ -73,4 +73,6 @@ export function browseResults(terms){
         payload: resp
     }
 }
-
+export function setLoadingFlag(){
+    return { type: types.SET_LOADING_FLAG };
+}
