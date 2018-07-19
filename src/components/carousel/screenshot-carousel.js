@@ -161,31 +161,19 @@ class Carousel extends Component {
                             </button>
                         </div>
 
-                        {/* <Modal 
+                        <Modal 
                             isOpen={this.state.modalIsOpen}
                             onAfterOpen={this.afterOpenModal}
                             onRequestClose={this.closeModal} 
                             shouldCloseOnOverlayClick={true} 
                             contentLabel="Game Details Modal"
-                            className='modal-main'
+                            className='screenshot-modal-main'
                             >
-                            <div className="modalContainer">
-                                <img className='modalImg' src={src} alt={text} />
-                                <div className="modalDetails"> 
-                                <h3>{text}</h3>
-                                <div className="modalRow">
-                                    
-                                </div>
-                                <div className="modalRow">
-                                <Link to={`/game/${id}/gamedetails`}><button className='detailsButton'>View Game Details</button></Link>
-                                    <button className='detailsButton' onClick={this.closeModal}>Continue Browsing</button>
-                                </div>
-                            </div>
-                            </div>
-                        </Modal> */}
+                            <img className='screenshotModalImg' src={src} alt={text} onClick={this.closeModal} />
+                            
+                        </Modal>
 
                     </Transition>
-                {/* </div> */}
                 
                 <Indicators onClick={this.directToImage.bind(this)} count={images.length} current={currentIndex} />
                 
