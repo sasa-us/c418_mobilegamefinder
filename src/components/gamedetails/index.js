@@ -63,7 +63,7 @@ class GameDetailsIndexPage extends Component{
             androidLink = gameDetails.store_url;
         } else if (gameDetails.platform === "apple") {
             getiOS = true;
-            iOSLink = gameDetails.secondary_store_url;
+            iOSLink = gameDetails.store_url;
         } else if (gameDetails.platform === "android") {
             getAndroid = true;
             androidLink = gameDetails.store_url;
@@ -100,10 +100,10 @@ class GameDetailsIndexPage extends Component{
                         </div>
                         <div className="getItHere">
                             <button type="iOSButton" style={iOSButtonDisplay}>
-                                <a href={iOSLink} target='blank'><img src={iOS} className="iOSButtonImg"/></a>
+                                <a href={iOSLink} target='_blank'><img src={iOS} className="iOSButtonImg"/></a>
                             </button>
                             <button type="androidButton" style={androidButtonDisplay}>
-                            <a href={androidLink} target='blank'><img src={Android} className="androidButtonImg"/></a>
+                            <a href={androidLink} target='_blank'><img src={Android} className="androidButtonImg"/></a>
                             </button>
                         </div>
                         <div>
