@@ -12,6 +12,7 @@ import ReactStars from 'react-stars'
 import '../modals/modal.scss'
 
 
+
 class Carousel extends Component {
     constructor(props){
         super(props);

@@ -122,7 +122,15 @@ class Carousel extends Component {
                         transitionEnterTimeout={transitionTime}
                         transitionLeaveTimeout={transitionTime}
                     >
-                        <img key={src} src={src} alt={text} onClick={this.openModal} className="carousel-img" />
+                        <div className="ImgAndArrowBox">
+                            <button onClick={this.changeImg.bind(this, 'previous')}>
+                                <i className="fa fa-chevron-left"></i>
+                            </button>
+                            <img key={src} src={src} alt={text} onClick={this.openModal} className="carousel-img" />
+                            <button onClick={this.changeImg.bind(this, 'next')}>
+                                <i className="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
                         <Modal 
                             isOpen={this.state.modalIsOpen}
                             onAfterOpen={this.afterOpenModal}
@@ -156,12 +164,7 @@ class Carousel extends Component {
                 <h4 className="carousel-text">{text}</h4>
                 <h5 className="genreLabel">{genre} Game</h5>
                 <Indicators onClick={this.directToImage.bind(this)} count={images.length} current={currentIndex} />
-                <button onClick={this.changeImg.bind(this, 'previous')}>
-                    <i className="fa fa-arrow-alt-circle-left"></i>
-                </button>
-                <button onClick={this.changeImg.bind(this, 'next')}>
-                    <i className="fa fa-arrow-alt-circle-right"></i>
-                </button>
+                
             </div>
         );
     }
