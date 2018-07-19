@@ -1,4 +1,5 @@
 <?php
+session_start();
 $genres = array('Action', 'Puzzle', 'Adventure', 'Simulation', 'Strategy', 'Role Playing', 'Racing', 'Arcade', 'Trivia', 'Board');
 
 foreach($genres as $genre) {

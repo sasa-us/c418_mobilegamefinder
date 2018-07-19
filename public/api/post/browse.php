@@ -1,4 +1,5 @@
 <?php
+session_start();
 //browse rating: will send back `all_rating`=5 & 27pc
 if(isset($_POST['all_rating'])) {
     $query = "SELECT `all_rating`, `genre`, `app_name`, `icon_url`, `game_id`, `price_value`, `description`, `platform`

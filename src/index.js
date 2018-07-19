@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import Promise from 'redux-promise';
 import rootReducer from './reducers/';
 import think from "./middleware/think"
-import types from "../../scratchpad/redux-user-auth-GF/src/actions/types";
+import types from "./actions/types";
 
 const store = createStore(rootReducer, {}, applyMiddleware(Promise, think));
 

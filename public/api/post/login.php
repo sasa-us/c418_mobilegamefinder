@@ -39,8 +39,11 @@ session_start();
     
             $output['success'] = true;
             $_SESSION['valid'] = true;
-            //print_r($_SESSION);  //[userID] => 1  [valid] => 1
-      
+
+            //print_r($_SESSION); //[userID] => 1  [valid] => 1
+            //if member, will go to index page 
+            //header('Location: ../index.html');
+
         } else {
            
             $output['error'] = 'invalide username or password';
