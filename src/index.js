@@ -11,7 +11,7 @@ import types from "./actions/types";
 
 const store = createStore(rootReducer, {}, applyMiddleware(Promise, think));
 
-if(localStorage.getItem("token")) {
+if(localStorage.getItem("username")) {
     store.dispatch({type: types.SIGN_IN})
 }
 

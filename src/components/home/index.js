@@ -5,14 +5,25 @@ import FirstTimeModal from '../modals/firstTimeModal';
 import Carousel from '../carousel';
 import './home.scss';
 import GeneralText from '../multiuse/generaltext';
+import types from "../../actions/types";
 
 
 class HomePage extends Component {
+    state = {
+        genText: 'Welcome to Games Ferret!'
+    }
 
-
+    componentWillMount() {
+        const getUserNameFromStorage = window.localStorage.getItem('username');
+        if(getUserNameFromStorage) {
+            this.setState({
+                genText: `Welcome ${getUserNameFromStorage}` //browser
+            });
+        }
+    }
     componentDidMount() {
         const isNotFirstTimeVisit = window.localStorage.getItem('notfirstimer');
-        console.log(isNotFirstTimeVisit, 'woo you must love ferrets');
+        //console.log(isNotFirstTimeVisit, 'woo you must love ferrets');
         if(!isNotFirstTimeVisit) {
             this.props.triggerModal('hello')
             window.localStorage.setItem('notfirstimer', true);
@@ -23,7 +34,7 @@ class HomePage extends Component {
     }
     render() {
         const {modal: {firstModal }} = this.props;
-        const genText = 'Welcome to GamesFerret!'
+        const {genText} = this.state;
         return (
             <div className="homePageContainer">
                 <FirstTimeModal parentComponent={genText} content={firstModal} handleClose={() => this.handleModalClose()} />
