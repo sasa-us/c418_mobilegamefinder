@@ -18,8 +18,7 @@ foreach($favorite_list as $game_id) {
     $query = "INSERT INTO 
                 `user_game`(`user_id`, `game_id`) 
              VALUES 
-                ('$user_id', '$game_id')
-             ON DUPLICATE KEY UPDATE `game_id` = '$game_id'   
+                ('$user_id', '$game_id')   
              ";
 
     checkInsert($conn, $query);

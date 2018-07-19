@@ -19,7 +19,7 @@ session_start();
    $hash_and_salt = $hashFormat . $salt;
    $password = crypt($password, $hash_and_salt);
 
-    $query = "SELECT `email`, `password`, `id`, `username`
+    $query = "SELECT `email`, `id`, `username`
               FROM `users` 
               WHERE `email`='{$email}' AND `password`='{$password}'";
     $result = null;
@@ -38,7 +38,7 @@ session_start();
            // $_SESSION['username'] = $userData['username'];
     
             $output['success'] = true;
-            $_SESSION['valid'] = true;
+            $_SESSION['sessionValidUser'] = true;
             //print_r($_SESSION);  //[userID] => 1  [valid] => 1
       
         } else {

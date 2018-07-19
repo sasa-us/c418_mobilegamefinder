@@ -2,9 +2,10 @@
 <script>
 
    const newItem = {
-        username: 'aa',
-        email:  'aa',
-        password: 'aa'
+        username: 'sasa',
+        email:  'sasa@gmail.com',
+        //email: '',
+        password: 'sasa'
     };
     const postnewItem = formatPostData(newItem);
    // axios.get('mainpage.php', {
