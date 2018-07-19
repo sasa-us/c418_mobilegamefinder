@@ -25,6 +25,21 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
+    
+    // componentDidMount(){
+    //     if(!this.props.viewDetails){
+    //         const newItem = {searchrequest: this.props.match.params.game_details};
+    //         const postItem = formatPostData(newItem);
+    //         const resp = axios.post('/api/gameapp.php', postItem, {
+    //             params: {
+    //                 action: 'details'
+    //             }
+    //         })
+    //     } else {
+    //         this.props.viewDetails(this.props.match.params.game_details);
+    //     }
+    // }
+
     componentWillMount(){
         this.props.viewDetails(this.props.match.params.game_details);
     }
