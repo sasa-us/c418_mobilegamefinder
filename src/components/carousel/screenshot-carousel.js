@@ -22,6 +22,7 @@ class Carousel extends Component {
             transitionTime: 500,
             canClick: true,
             modalIsOpen: false,
+            loadError: false
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -100,15 +101,21 @@ class Carousel extends Component {
         }
         
         this.setState({
+            loadError: false,
             currentIndex: nextIndex,
             direction: nextDirection,
             canClick: false
         }, () => this.enableClick(transitionTime));
     }
 
+    handleImgError(){
+        this.setState({
+            loadError: true
+        })
+    }
+
     render(){
 
-        console.log('CAROUSEL PROPS:', this.props);
         const { direction, currentIndex, transitionTime } = this.state;
         const { images, details } = this.props;
         Modal.setAppElement(document.getElementById('root'));
@@ -135,11 +142,14 @@ class Carousel extends Component {
         }
 
         const { icon_url, app_name, all_rating, price_value, game_id, genre } = details;
-        const src= images[currentIndex];
+        const src= this.state.loadError ? ferret : images[currentIndex];
         const text = app_name
         const rating = all_rating;
         const price = price_value;
         const id = game_id;
+        // const imgError = {
+        //     src = this.state.loadError ? "ferret" : "src"
+        // }
         // const descrip = description;
 
         return (
@@ -155,7 +165,7 @@ class Carousel extends Component {
                             <button className="leftButton" onClick={this.changeImg.bind(this, 'previous')}>
                                 <i className="fa fa-caret-left"></i>
                             </button>
-                            <img key={src} src={src} alt={text} onClick={this.openModal} className="screenshot-carousel-img" />
+                            <img key={src} src={src} alt={text} onClick={this.openModal} onError={this.handleImgError.bind(this)} className="screenshot-carousel-img" />
                             <button className="rightButton" onClick={this.changeImg.bind(this, 'next')}>
                                 <i className="fa fa-caret-right"></i>
                             </button>
