@@ -2,7 +2,8 @@ import types from '../actions/types';
 
 const DEFAULT_STATE = {
     details: null,
-    errors: null
+    errors: null,
+    loading: true
 }
 
 export default (state = DEFAULT_STATE, action) => {
@@ -12,10 +13,14 @@ export default (state = DEFAULT_STATE, action) => {
                 return {
                     ...state, 
                     details: action.payload.data.data[0],
-                    errors: "No related games available"
+                    errors: "No related games available",
+                    loading: false
                 }
             }
-            return {...state, details: action.payload.data.data[0]};
+            return {...state, details: action.payload.data.data[0], loading: false};
+        case types.SET_LOADING_FLAG:
+            return {...state, loading: true
+            } 
         default:
             return state;
     }

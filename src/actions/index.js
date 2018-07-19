@@ -25,7 +25,6 @@ export function searchResults(terms){
             action: 'search'
         }
     })
-    console.log('resp', resp);
     return {
         type: types.SEARCH_RESULTS,
         payload: resp
