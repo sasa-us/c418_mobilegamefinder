@@ -40,7 +40,7 @@
 }
 .getItHere{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding-bottom: 5px;
     border-bottom: 2px solid rgba(175,238,238,.3);
 }
@@ -56,6 +56,10 @@
 }
 .androidButtonImg{
     height: 53px;
+}
+.favIcon{
+    color: #00A7E1;
+    font-size: 32px;
 }
 //-------------------------------------------------------------
 .gameDetailsBottom{
