@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import Header from './header-bar';
 import Home from './home';
 import NotFound from './notfound';
@@ -21,9 +21,11 @@ import About from './about';
 import Footer from './footer-bar';
 import WizardResults from "./wizard/wizardresults"
 import '../assets/css/app.scss';
+import {connect} from 'react-redux';
+// import {push} from 'react-router'
 
 
-const App = () => (
+let App = () => (
         <div className="appOuterDiv">
             <div>
             <Header/>
@@ -57,5 +59,5 @@ const App = () => (
 
         
 );
-
+App = withRouter(connect(null)(App));
 export default App;

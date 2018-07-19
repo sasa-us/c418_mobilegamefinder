@@ -6,10 +6,7 @@ import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
 import {viewDetails} from '../../actions/';
-import formatPostData from '../../helpers/';
-import axios from 'axios';
 import Loader from '../loader';
-import GameComponent from '../results/gamecomponent';
 import GameRenderer from '../results/gamerenderer';
 
 class GameDetailsIndexPage extends Component{
@@ -29,27 +26,19 @@ class GameDetailsIndexPage extends Component{
         });
     }
     componentDidUpdate(prevProps, prevState){
-        console.log('Component did update!!!!!!');
         console.log('PREV PROPS:', prevProps);
         console.log('Current Props:', this.props);
         console.log('PREV State:', prevState);
         console.log('Current State:', this.state);
+        // if(prevProps.location !== this.props.location){
+        //     this.props.history.push(`/${this.props.location.pathname}`, null);
+        // }
 
     }
 
     componentDidMount(){
         window.scrollTo(0, 0);
-        if(!this.props.viewDetails){
-            const newItem = {searchrequest: this.props.match.params.game_details};
-            const postItem = formatPostData(newItem);
-            const resp = axios.post('/api/gameapp.php', postItem, {
-                params: {
-                    action: 'details'
-                }
-            })
-        } else {
             this.props.viewDetails(this.props.match.params.game_details);
-        }
     }
     render(){
         if (!this.props.details){
@@ -83,7 +72,6 @@ class GameDetailsIndexPage extends Component{
         //----------------------------------
         
         const data = this.props.details.related_game_apps;
-        console.log('location', location);
         let showRelated = true;
         if(!this.props.details.related_game_app  || !this.props.details.related_apps ){
             showRelated = false;            
@@ -91,8 +79,8 @@ class GameDetailsIndexPage extends Component{
         const relatedApps = {
             display: showRelated ? "block" : "none"
         };
-        console.log('props', this.props);
         
+
         // --------------------------------------
         return(
             <div className="singleGamePage">
@@ -163,16 +151,12 @@ class GameDetailsIndexPage extends Component{
                         <h4>Related Games</h4>   
                     </div> 
                 </div>   
-                 
-                <div className="relatedCarousel" >
-                // Need to setup flag in render to indicate if there is any data in the related games section.
+                {/* // Need to setup flag in render to indicate if there is any data in the related games section.
                 // Then set conditional to show or hide the gamerenderer component based on that flag. 
                 //This should remove the issue with failure on load. 
-                //Still need to research the location issue.
-                    <GameRenderer data={data} />
-                    {/* <div className="detailContainer">
-                        {data.map(game => <GameComponent key={game.game_id} details={game} location={location}/>)}
-                    </div> */}
+                //Still need to research the location issue. */}
+                <div className="relatedCarousel" >
+                    {!this.props.details.related_apps ? <GameRenderer data={data} /> : null }
                 </div>
             </div>
         );
