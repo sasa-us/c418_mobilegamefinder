@@ -28,6 +28,15 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
+    componentDidUpdate(prevProps, prevState){
+        console.log('Component did update!!!!!!');
+        console.log('PREV PROPS:', prevProps);
+        console.log('Current Props:', this.props);
+        console.log('PREV State:', prevState);
+        console.log('Current State:', this.state);
+
+    }
+
     componentDidMount(){
         window.scrollTo(0, 0);
         if(!this.props.viewDetails){
