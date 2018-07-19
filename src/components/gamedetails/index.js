@@ -8,6 +8,7 @@ import {viewDetails} from '../../actions/';
 import formatPostData from '../../helpers/';
 import axios from 'axios';
 import Loader from '../loader';
+import GameComponent from '../results/gamecomponent';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -26,6 +27,7 @@ class GameDetailsIndexPage extends Component{
         });
     }
     componentDidMount(){
+        window.scrollTo(0, 0);
         if(!this.props.viewDetails){
             const newItem = {searchrequest: this.props.match.params.game_details};
             const postItem = formatPostData(newItem);
@@ -67,6 +69,16 @@ class GameDetailsIndexPage extends Component{
         const androidButtonDisplay = {
             display: getAndroid ? "block" : "none"
         }
+        const data = this.props.details.related_game_apps;
+        let showRelated = true;
+        if(!this.props.details.related_game_app  || !this.props.details.related_apps ){
+            showRelated = false;            
+        }
+        const relatedApps = {
+            display: showRelated ? "block" : "none"
+        };
+        console.log('props', this.props);
+        
         // --------------------------------------
         return(
             <div className="singleGamePage">
@@ -134,12 +146,16 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
-                        {/* <h4>Related Games</h4> */}
+                        <h4>Related Games</h4>   
                     </div> 
-                </div>       
-                {/* <div className="relatedCarosel">
+                </div>   
+                 
+                <div className="relatedCarousel" style={showRelated}>
                     
-                </div> */}
+                    <div className="detailContainer">
+                        {data.map(game => <GameComponent key={game.game_id} details={game}/>)}
+                    </div>
+                </div>
             </div>
         );
     }
