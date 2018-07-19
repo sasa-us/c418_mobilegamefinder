@@ -96,6 +96,7 @@ function signup_user($username, $email, $password) {
             VALUES 
                     ('$username', '$email', '$password')";
     checkInsert($conn, $query);
+    getuserDB($username, $email, $conn);
 }
 function checkInsert($conn, $query) {
     $result = mysqli_query($conn, $query);
@@ -106,6 +107,39 @@ function checkInsert($conn, $query) {
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }
+}
+
+function getuserDB($username, $email, $conn) {
+    global $output;
+
+    $query = "SELECT `email`, `id`, `username`
+                FROM `users` 
+                WHERE `email`='{$email}' AND `username`='{$username}'";
+    $result = null;
+    $output = [
+            'success'=> false
+            ];
+    $result = mysqli_query($conn, $query);
+
+    if($result) {
+    if(mysqli_num_rows($result) > 0) {
+        $userData = mysqli_fetch_assoc($result);
+
+    //print_r($userData);
+        $output['user'] = $userData;
+        $_SESSION['userID'] = $userData['id'];
+    // $_SESSION['username'] = $userData['username'];
+
+        $output['success'] = true;
+        $_SESSION['sessionValidUser'] = true;
+    //print_r($_SESSION);  
+
+    } else {
+    
+        $output['error'] = 'invalide username or password';
+        }
+    } 
+
 }
 
 
