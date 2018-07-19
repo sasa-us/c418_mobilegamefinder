@@ -168,7 +168,12 @@ class Carousel extends Component {
                             shouldCloseOnOverlayClick={true} 
                             contentLabel="Game Details Modal"
                             className='screenshot-modal-main'
+                            onClick={this.closeModal}
                             >
+                            <div className="screenshotModalCloseX" onClick={this.closeModal}>
+                                <div className="closeX1"></div>
+                                <div className="closeX2"></div>
+                            </div>
                             <img className='screenshotModalImg' src={src} alt={text} onClick={this.closeModal} />
                             
                         </Modal>

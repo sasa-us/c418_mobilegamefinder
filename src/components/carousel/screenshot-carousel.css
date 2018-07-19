@@ -163,3 +163,27 @@ button i{
 .screenshotBox :focus{
   outline: none;
 }
+.screenshotModalCloseX{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 40px;
+  right: 26px;
+  height: 40px;
+  width: 40px;
+}
+.closeX1{
+  background: darkgray;
+  border-radius: 15px;
+  width: 5px;
+  transform: rotate(45deg);
+}
+.closeX2{
+  position: absolute;
+  right: 16px;
+  background: darkgray;
+  border-radius: 15px;
+  width: 5px;
+  height: 40px;
+  transform: rotate(-45deg);
+}
