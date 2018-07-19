@@ -25,14 +25,14 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
-    async componentDidMount(){
-        if(!Object.keys(this.props.details).length){
-            this.props.viewDetails(this.props.match.params.game_details);
-        }
+    componentWillMount(){
+        this.props.viewDetails(this.props.match.params.game_details);
     }
     //---------------------
-    componentDidUpdate(prevProps){
-        if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length){
+    componentDidUpdate(prevProps, prevState){
+        if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
+            || prevProps.details.id !== this.props.details.id || !this.state.screenshots.length
+        ){
             this.splitScreenshots(this.props.details.screenshot_urls);
         }
     }
@@ -45,6 +45,7 @@ class GameDetailsIndexPage extends Component{
     //----------------------
 
     render(){
+        console.log(this.props);
         if (!Object.keys(this.props.details).length){
             return (
                 <div className="carousel-container">

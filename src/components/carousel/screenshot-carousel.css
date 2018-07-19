@@ -13,8 +13,10 @@
 } */
 
 .screenshot-carousel-img {
-    width: 99%;
-    height: 100%;
+  width: auto;
+  max-height: 211px;
+  min-height: 211px;
+  max-width: 100%;
 }
 
 /* Next Image Classes */
@@ -89,17 +91,18 @@
 }
 
 .screenshot-indicators .dot {
-    border: 2px solid #086788;
+    border: 2px solid #F0C808;
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
     height: 10px;
     margin: auto;
     width: 10px;
+    opacity: .4;
 }
 
 .screenshot-indicators .dot.active {
-    background-color: #086788;
+    background-color: #F0C808;
 }
 
 button i{
@@ -131,14 +134,32 @@ button i{
 }
 /* ========================================== */
 .screenshotBox{
-    display: flex;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 .leftButton, .rightButton{
-    font-size: 1.5em;
+  position: absolute;
+  font-size: 1.5em;
+  height: 211px;
+  opacity: .7;
+}
+.leftButton{
+  left: 0;
+}
+.rightButton{
+  right: 0;
 }
 .leftButton i{
-    margin: 0 5px 0 0;
+  color: #086788;
+  margin: 0 5px 0 0;
+  text-shadow: 0px 0px 10px snow;
 }
 .rightButton i{
-    margin: 0 0 0 5px;
+  color: #086788;
+  margin: 0 0 0 5px;
+  text-shadow: 0px 0px 10px snow;
+}
+.screenshotBox :focus{
+  outline: none;
 }

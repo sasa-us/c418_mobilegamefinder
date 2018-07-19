@@ -145,7 +145,7 @@ class Carousel extends Component {
         return (
             <div className="center-all">
                 
-                <div className="screenshot-carousel-container">
+                {/* <div className="screenshot-carousel-container"> */}
                     <Transition
                         transitionName={`carousel-${direction}`}
                         transitionEnterTimeout={transitionTime}
@@ -185,7 +185,7 @@ class Carousel extends Component {
                         </Modal> */}
 
                     </Transition>
-                </div>
+                {/* </div> */}
                 
                 <Indicators onClick={this.directToImage.bind(this)} count={images.length} current={currentIndex} />
                 
