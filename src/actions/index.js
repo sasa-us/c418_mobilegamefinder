@@ -1,6 +1,6 @@
 import types from './types';
 import axios from 'axios';
-import { formatPostData} from '../../src/helpers';
+import { formatPostData } from '../helpers';
 
 //what is address for doing call for BASE_URL?
 
@@ -93,19 +93,29 @@ export function createAccount(userInfo){
 
 export function accountSignIn(userInfo){
     return async dispatch => {
-        try {
-            const resp = await axios.post(`${BASE_URL}/signin`, userInfo);
 
-            console.log('Sign In:', resp.data.token);
+        const postnewItem = formatPostData(userInfo);
 
-            localStorage.setItem("token", resp.data.token);
-            dispatch({type: types.SIGN_IN});
-            console.log(localStorage);
+        const resp = await axios.post('/api/gameapp.php', postnewItem, {
+            params: {
+                action: 'login'
+            }
+        });
 
-        } catch(err) {
-            console.log("error signing in: ", err.message)
+        console.log('Sign In Resp:', resp);
+        if(resp.data.success){
+            return dispatch({
+                type: types.SIGN_IN,
+                user: resp.data.user
+            });
         }
 
+        dispatch({
+            type: types.AUTH_ERROR,
+            error: resp.data.error
+        });
+
+        throw new Error('Invalid login information');
     }
 }
 

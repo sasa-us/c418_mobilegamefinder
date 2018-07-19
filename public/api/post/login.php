@@ -40,7 +40,7 @@ session_start();
             $output['success'] = true;
             $_SESSION['sessionValidUser'] = true;
             //print_r($_SESSION);  //[userID] => 1  [valid] => 1
-      
+     
         } else {
            
             $output['error'] = 'invalide username or password';
