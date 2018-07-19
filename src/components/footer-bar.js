@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Twitter from '../assets/images/twitter.png';
-import Facebook from '../assets/images/facebook.png';
 import Mail from '../assets/images/mail.png';
 
 class FooterBar extends Component {
@@ -14,13 +13,10 @@ class FooterBar extends Component {
                     <footer className="footer">
                         <ul>
                             <li>
-                                <img src={Facebook}/>
+                                <a href="http://twitter.com/games_ferret"><img src={Twitter}/></a>
                             </li>
                             <li>
-                                <img src={Twitter}/>
-                            </li>
-                            <li>
-                                <img src={Mail}/>
+                                <a href="mailto:gamesferrets@gmail.com"><img src={Mail}/></a>
                             </li>
                         </ul>
                         <p>

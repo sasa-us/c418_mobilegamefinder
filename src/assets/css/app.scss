@@ -23,10 +23,10 @@ button {
 //404 Page
 .notFound{
     text-align: center;
-    margin: 10%;
+    margin: 5%;
 }
 .notFound img {
-    max-width: 70%;
+    max-width: 50%;
 }
 .notFound :any-link {
     color: rgb(8, 103, 136);
@@ -116,5 +116,8 @@ button {
     .indicators{
         width: 20%;
         margin-top: 2%;
+    }
+    .notFound img {
+        max-width: 30%;
     }
 }
