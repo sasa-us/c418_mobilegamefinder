@@ -5,6 +5,7 @@ import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
 import {viewDetails} from '../../actions/';
+import Screenshots from '../carousel/screenshot-carousel';
 import formatPostData from '../../helpers/';
 import axios from 'axios';
 import Loader from '../loader';
@@ -16,6 +17,7 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
+            screenshots: []
         };
     };
     toggleDescriptionExpand(event){
@@ -25,21 +27,42 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
-    componentDidMount(){
-        if(!this.props.viewDetails){
-            const newItem = {searchrequest: this.props.match.params.game_details};
-            const postItem = formatPostData(newItem);
-            const resp = axios.post('/api/gameapp.php', postItem, {
-                params: {
-                    action: 'details'
-                }
-            })
-        } else {
-            this.props.viewDetails(this.props.match.params.game_details);
+    
+    // componentDidMount(){
+    //     if(!this.props.viewDetails){
+    //         const newItem = {searchrequest: this.props.match.params.game_details};
+    //         const postItem = formatPostData(newItem);
+    //         const resp = axios.post('/api/gameapp.php', postItem, {
+    //             params: {
+    //                 action: 'details'
+    //             }
+    //         })
+    //     } else {
+    //         this.props.viewDetails(this.props.match.params.game_details);
+    //     }
+    // }
+
+    componentWillMount(){
+        this.props.viewDetails(this.props.match.params.game_details);
+    }
+    //---------------------
+    componentDidUpdate(prevProps, prevState){
+        if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
+            || prevProps.details.id !== this.props.details.id || !this.state.screenshots.length
+        ){
+            this.splitScreenshots(this.props.details.screenshot_urls);
         }
     }
+    splitScreenshots(str){
+        var screenshotsSplit = str.split(',');
+        this.setState({
+            screenshots: screenshotsSplit
+            });
+    }
+    //----------------------
     render(){
-        if (!this.props.details){
+        console.log(this.props);
+        if (!Object.keys(this.props.details).length){
             return (
                 <Loader />
             )
@@ -116,6 +139,9 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.release_date.slice(0, 4)}
                                     </div>
                                 </div>
+                                <div>
+                                    Rated: {gameDetails.content_rating}
+                                </div>
                                 <div className="genre">
                                     <div>
                                         Genre: 
@@ -124,12 +150,16 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.genres.replace(/,/g ,", ")}
                                     </div>
                                 </div>
-                                <div>
-                                    Rated: {gameDetails.content_rating}
-                                </div>
                             </div>
                         </div>
-                            <div className="screenshots"></div>
+                    </div>
+                </div>
+                <div className="screenshots">
+                    <Screenshots images={this.state.screenshots}/>
+                </div>
+
+                <div className="gameDetailsBottom">
+                    <div className="detailsBottomInnerBox">
                         <h4 className="descripHeader">
                             Description
                         </h4>
@@ -141,12 +171,8 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
-                        {/* <h4>Related Games</h4> */}
                     </div> 
                 </div>       
-                {/* <div className="relatedCarosel">
-                    
-                </div> */}
             </div>
         );
     }
