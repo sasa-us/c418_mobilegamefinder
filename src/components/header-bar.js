@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
-import '../assets/css/header-bar.scss'
+import '../assets/css/header-bar.scss';
+import WelcomeLogo from "../assets/images/wizard-icons/headerlogo.png"
 
 class HeaderBar extends Component {
     constructor(props){
@@ -181,7 +182,7 @@ class HeaderBar extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <h2 className="appName">Games Ferret</h2>
+                    <img className="logo" src={WelcomeLogo}/>
                     <div className="fas fa-search search-icon" onClick={this.toggleSearchBar.bind(this)}></div> 
                 </nav>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
