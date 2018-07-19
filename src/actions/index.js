@@ -77,14 +77,49 @@ export function browseResults(terms){
     }
 }
 
+//   const newItem = {
+// username: 'sasa',
+//     email:  'sasa@gmail.com',
+//     //email: '',
+//     password: 'sasa'
+// };
+// const postnewItem = formatPostData(newItem);
+// // axios.get('mainpage.php', {
+// axios.post('/api/gameapp.php', postnewItem, {
+//     params: {
+//         action: 'signup'
+//     }
+// }).then(resp => {
+//     console.log('POST RESPONSE:', resp);
+// });
+//
+// function formatPostData(data){
+//     const params = new URLSearchParams();
+//
+//     for(let [k, v] of Object.entries(data)){
+//         params.append(k, v);
+//     }
+//
+//     return params;
+// }
+
 export function createAccount(userInfo){
     return async (dispatch) => {
         try {
-            const resp = await axios.post('/api/gameapp.php', userInfo);
+            const postnewItem = formatPostData(userInfo);
 
+            const resp = await axios.post('/api/gameapp.php', postnewItem, {
+                params: {
+                    action: 'signup'
+                }
+            });
+            debugger;
             localStorage.setItem("username", resp.data.user.username);
 
-            dispatch ({type: types.SIGN_UP});
+            dispatch ({
+                type: types.SIGN_UP,
+                user: resp.data.user
+            });
         } catch(err) {
             console.log('SIGN UP ERROR:', err.message);
         }
@@ -101,6 +136,8 @@ export function accountSignIn(userInfo){
                 action: 'login'
             }
         });
+
+        debugger;
         localStorage.setItem("username", resp.data.user.username);
         console.log('Sign In Resp:', resp);
         if(resp.data.success){
