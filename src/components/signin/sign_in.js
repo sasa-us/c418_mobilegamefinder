@@ -7,17 +7,21 @@ import {renderInputs} from "../../helpers";
 class SignIn extends Component {
 
 
-    handleSignIn (values) {
+    async handleSignIn (values) {
         console.log("form values", values);
-        this.props.accountSignIn(values)
-    }
-    handleSignUp (values) {
-        console.log("form values", values);
-        this.props.createAccount(values)
+
+        try{
+            await this.props.accountSignIn(values);
+
+            this.props.history.push('/');
+        } catch(err){
+            console.warn(err);
+        }
+
     }
 
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, authError} = this.props;
         return (
 
             <form onSubmit={handleSubmit(this.handleSignIn.bind(this))}>
@@ -31,6 +35,7 @@ class SignIn extends Component {
                 <div className="row col-xs-6 col-xs-offset-3">
                     <div className="signInInput">
                         <button className="btn btn-outline-info btn-sm col-xs-6 col-xs-offset-3">Sign In</button>
+                        <p className="text-danger">{authError}</p>
                     </div>
                 </div>
             </form>
@@ -57,4 +62,10 @@ SignIn = reduxForm({
     validate: validate
 })(SignIn);
 
-export default connect(null, {accountSignIn: accountSignIn})(SignIn);
+function mapStateToProps(state){
+    return {
+        authError: state.user.error
+    }
+}
+
+export default connect(mapStateToProps, {accountSignIn: accountSignIn})(SignIn);

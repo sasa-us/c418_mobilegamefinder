@@ -40,7 +40,7 @@ session_start();
     
             $output['success'] = true;
             $_SESSION['valid'] = true;
-            print_r($_SESSION);
+            //print_r($_SESSION);
             //if member, will go to index page 
             //header('Location: ../index.html');
         } else {
