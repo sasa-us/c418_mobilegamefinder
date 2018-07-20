@@ -31,7 +31,7 @@ class WizardResults extends Component {
             )
     }
     const data = this.props.wizard.data;
-    const text = 'Based on your choices, we think you would enjoy these games.';
+    const text = 'Based on your choices, we think you will enjoy these games.';
         return (
             <div className="resContainer">
                 <h2>Recommendations</h2>

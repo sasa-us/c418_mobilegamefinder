@@ -26,7 +26,7 @@ class GenreResultsList extends Component {
         }
     const data = this.props.browseresult.data;
     const genreName = this.props.match.params.genre;
-    const text = 'Here are some games we think you would like!';
+    const text = 'Here are some games we think you will like!';
         return (
             <div className="resContainer">
                 <h2 className="titleLabel">{`${genreName} Games`}</h2>

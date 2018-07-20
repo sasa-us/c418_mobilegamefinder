@@ -24,7 +24,7 @@ class PlatformResultsList extends Component {
             )
         }
     const data = this.props.browseresult.data;
-    const text = 'Here are some results we think you would like!';
+    const text = 'Here are some results we think you will like!';
         return (
             <div className="resContainer">
                 <h2 className="titleLabel">{`${this.props.match.params.platform} Games`}</h2>
