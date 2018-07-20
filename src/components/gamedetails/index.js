@@ -5,7 +5,7 @@ import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
-import {viewDetails, setLoadingFlag} from '../../actions/';
+import {viewDetails, setLoadingFlag, returnFavorites, saveFavorite, deleteFavorite} from '../../actions/';
 import Screenshots from '../carousel/screenshot-carousel';
 import formatPostData from '../../helpers/';
 import axios from 'axios';
@@ -19,8 +19,11 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
+            favorite: false,
             screenshots: []
         };
+        this.debouncedSaveFavorite = this.debounce(props.saveFavorite, 1000);
+        this.debouncedDeleteFavorite = this.debounce(props.deleteFavorite, 1000);
     };
     toggleDescriptionExpand(event){
         event.stopPropagation();
@@ -31,10 +34,19 @@ class GameDetailsIndexPage extends Component{
     }
 
     componentDidMount(){
-        this.props.setLoadingFlag();
+        this.props.returnFavorites();
         this.props.viewDetails(this.props.match.params.game_details);
+        if(!this.props.viewDetails){
+            const newItem = {searchrequest: this.props.match.params.game_details};
+            const postItem = formatPostData(newItem);
+            const resp = axios.post('/api/gameapp.php', postItem, {
+                params: {
+                    action: 'details'
+                }
+            })
+        } 
     }
-  
+
     //---------------------
     componentDidUpdate(prevProps, prevState){
         window.scrollTo(0, 0);
@@ -42,12 +54,61 @@ class GameDetailsIndexPage extends Component{
             this.props.setLoadingFlag();
             this.props.viewDetails(this.props.match.params.game_details);
         }
-        if(Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
-            || prevProps.details.id !== this.props.details.id || !this.state.screenshots.length
+        if(
+            Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
+            || prevProps.details.id !== this.props.details.id 
+            || (!this.state.screenshots.length && Object.keys(this.props.details).length)
         ){
+            console.log('screenshots props', this.props);
             this.splitScreenshots(this.props.details.screenshot_urls);
         }
     }
+    componentWillReceiveProps(newProps){
+        if(newProps.favorites){
+            var checkFavorites = this.favoriteCheck(this.props.match.params.game_details, newProps.favorites)
+        console.log('check on favorite', checkFavorites );
+        this.handleArrayCheck();
+        }
+    }
+    debounce(callback, delay){
+        let timeout = null;
+        return function(...args){
+            clearTimeout(timeout);
+            timeout = setTimeout(() => callback(...args), delay);
+        }
+    }
+    handleFavoriteToggle(){
+        if (this.state.favorite === true){
+            this.setState({
+                favorite: false
+            });
+            this.debouncedDeleteFavorite(this.props.user.id, this.props.match.params.game_details);
+            console.log('Fav: changed to FALSE');
+        } else {
+            this.setState({
+                favorite: true
+            });
+        
+            this.debouncedSaveFavorite(this.props.user.id, this.props.match.params.game_details);
+            console.log('Fav: changed to TRUE');
+        }
+    }
+    handleArrayCheck(){
+        if (this.favoriteCheck(this.props.match.params.game_details, this.props.favorites)){
+            this.setState({
+                favorite: true
+            });
+        } 
+    }
+    favoriteCheck(favorite, array){
+        var length = array.length;
+        for (var i = 0; i < length; i++) {
+            if (array[i].game_id === favorite)
+            return true;
+            }
+            return false;
+    }
+
     splitScreenshots(str){
         var screenshotsSplit = str.split(',');
         this.setState({
@@ -56,14 +117,15 @@ class GameDetailsIndexPage extends Component{
     }
     //----------------------
     render(){
-        console.log('========== THIS PROPS ===========', this.props);
         if (!Object.keys(this.props.details).length || this.props.loading){
             return (
                 <Loader />
             )
         }
         const gameDetails = this.props.details;
-        console.log('details', gameDetails);
+        const favToggle = this.state.favorite ? "fas fa-heart" : "far fa-heart";
+        console.log('props', this.props);
+
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
             background: this.state.infoExpanded.gameDescripSection ? "transparent" : "linear-gradient(to bottom, rgba(175,238,238,0), rgba(175,238,238,0.2))"
@@ -132,6 +194,9 @@ class GameDetailsIndexPage extends Component{
                             <button type="androidButton" style={androidButtonDisplay}>
                             <a href={androidLink} target='_blank'><img src={Android} className="androidButtonImg"/></a>
                             </button>
+                            <button type="button" className="favButton" onClick={this.handleFavoriteToggle.bind(this)}>
+                                <i className={`${favToggle} favIcon`}></i>
+                            </button>
                         </div>
                         <div>
                             <div className="gameDetailsTiny">
@@ -194,8 +259,11 @@ class GameDetailsIndexPage extends Component{
 function mapStateToProps(state){
     return {
         details: state.game.details,
+        favorites: state.favorite.favorites,
+        user: state.user.user,
         errors: state.game.errors,
         loading: state.game.loading
     }
 }
-export default withRouter(connect(mapStateToProps, {viewDetails, setLoadingFlag})(GameDetailsIndexPage));
+export default withRouter(connect(mapStateToProps, {viewDetails, returnFavorites, saveFavorite, deleteFavorite, setLoadingFlag})(GameDetailsIndexPage));
+

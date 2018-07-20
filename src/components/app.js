@@ -21,6 +21,9 @@ import About from './about';
 import Footer from './footer-bar';
 import WizardResults from "./wizard/wizardresults"
 import '../assets/css/app.scss';
+import SignIn from "../components/signin/sign_in";
+import SignUp from "../components/signin/sign_up";
+import Favorites from "../components/favorites";
 
 
 const App = () => (
@@ -48,7 +51,10 @@ const App = () => (
                     <Route path="/about" component={About}/>
                     <Route path="/search/results" component={Search}/>
                     <Route path='/game/:game_details' component={GameInfo} />
-                    <Route component={NotFound} />  
+                    <Route path='/sign-in' component={SignIn}/>
+                    <Route path="/sign-up" component={SignUp}/>
+                    <Route path="/favorites" component={Favorites}/>
+                    <Route component={NotFound} />
                 </Switch>
             </div>
             <Footer/>
