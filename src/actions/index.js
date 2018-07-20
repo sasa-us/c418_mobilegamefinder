@@ -109,14 +109,14 @@ export function accountSignIn(userInfo){
             }
         });
 
-        localStorage.setItem("user", JSON.stringify(resp.data.user));
+        localStorage.setItem("username", resp.data.user);
         if(resp.data.success){
             return dispatch({
                 type: types.SIGN_IN,
                 user: resp.data.user
             });
         }
-
+        
         dispatch({
             type: types.AUTH_ERROR,
             error: resp.data.error
@@ -127,7 +127,7 @@ export function accountSignIn(userInfo){
 }
 
 export function signOut(){
-    localStorage.removeItem('user');
+    localStorage.removeItem('username');
     return{type: types.SIGN_OUT};
 }
 

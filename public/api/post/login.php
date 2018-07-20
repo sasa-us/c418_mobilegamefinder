@@ -43,7 +43,7 @@ session_start();
      
         } else {
            
-            $output['error'] = 'invalide username or password';
+            $output['error'] = 'Invalid username and/or password';
         }
     } else {
         $output['error'] = 'you are not regeistered';
