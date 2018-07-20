@@ -109,7 +109,7 @@ export function accountSignIn(userInfo){
             }
         });
 
-        localStorage.setItem("username", resp.data.user);
+        localStorage.setItem("username", resp.data.user.username);
         if(resp.data.success){
             return dispatch({
                 type: types.SIGN_IN,
