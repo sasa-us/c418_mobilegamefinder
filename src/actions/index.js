@@ -127,8 +127,17 @@ export function accountSignIn(userInfo){
 }
 
 export function signOut(){
-    localStorage.removeItem('username');
-    return{type: types.SIGN_OUT};
+    localStorage.removeItem('user');
+    const resp = axios.get('/api/gameapp.php', {
+        params: {
+            action: 'logout'
+        }
+    });    
+    console.log('logged out');
+    return{
+        type: types.SIGN_OUT,
+        payload: resp
+    };
 }
 
 export function saveFavorite(userID, gameID) {
