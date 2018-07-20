@@ -16,9 +16,9 @@ $output['error'] = [
 ];
 
 
-if(strlen($username) < 4) {
-    $output['error']['username'] = 'username needs to longer';
-}
+// if(strlen($username) < 4) {
+//     $output['error']['username'] = 'username needs to longer';
+// }
 if($username == '') {
     $output['error']['username'] = 'username can not be empty';
 }
@@ -96,6 +96,7 @@ function signup_user($username, $email, $password) {
             VALUES 
                     ('$username', '$email', '$password')";
     checkInsert($conn, $query);
+
     getuserDB($username, $email, $conn);
 }
 function checkInsert($conn, $query) {
@@ -103,7 +104,6 @@ function checkInsert($conn, $query) {
     global $output;
     if ($result) {
         $output['success'] = true;
-        //echo " New records insert successfully";
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }
