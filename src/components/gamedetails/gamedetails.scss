@@ -1,6 +1,7 @@
 .singleGamePage{
     display: flex;
     flex-direction: column;
+    color: #086788;
 }
 .gameTitle{
     display: flex;
@@ -41,7 +42,7 @@
 .getItHere{
     display: flex;
     justify-content: space-around;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 2px solid rgba(175,238,238,.3);
 }
 .iOSButton, .androidButton{
@@ -72,16 +73,16 @@
 }
 //----------------------------
 .gameDetailsTiny{
-    font-size: 12px;
+    font-size: 14px;
+    color: #82ACBA;
     display: flex;
     justify-content: space-between;
     padding: 0 15px 0 2px;
-    border-bottom: 2px solid rgba(175,238,238,.8);
+    border-bottom: 2px solid rgba(175,238,238,.3);
     margin-bottom: 10px;
-    opacity: .5;
 }
 .genre{
-    width: 40%;
+    max-width: 40%;
     display: flex;
 }
 .genre :nth-child(1){
@@ -89,14 +90,14 @@
 }
 //---------------------------------------------
 .screenshots{
-    background: cadetblue;
-    height: 200px;
     width: 100%;
+    margin-top: 10px;
 }
 //---------------------------------------------
 .gameDescripOuterBox{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 .gameDescrip{
     overflow-y: hidden;
@@ -105,13 +106,10 @@
 .descripExpandDiv{
     display: flex;
     justify-content: flex-end;
-    border-bottom: 2px solid rgba(175,238,238,.3);
+    margin-bottom: 15px;
 }
 .descripExpandButton{
-    color: paleturquoise;
+    color: #82ACBA;
 }
 //-------------------------------------------------
-.relatedCarosel{
-    background: cadetblue;
-    height: 200px;
-}
+

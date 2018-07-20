@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import ReactStars from 'react-stars';
-// import Data from './dummydata';
+import {withRouter} from 'react-router-dom';
 import iOS from '../../assets/images/iOS/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
 import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
-import ferret from '../../assets/images/ferretgif.gif';
-import {viewDetails, returnFavorites, saveFavorite, deleteFavorite} from '../../actions/';
-// import {formatPostData} from '../../helper';
-// import axios from 'axios';
+import {viewDetails, setLoadingFlag, returnFavorites, saveFavorite, deleteFavorite} from '../../actions/';
+import Screenshots from '../carousel/screenshot-carousel';
+import formatPostData from '../../helpers/';
+import axios from 'axios';
+import Loader from '../loader';
+import GameRenderer from '../results/gamerenderer';
 
 class GameDetailsIndexPage extends Component{
     constructor(props){
@@ -17,7 +19,8 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
-            favorite: false
+            favorite: false,
+            screenshots: []
         };
         this.debouncedSaveFavorite = this.debounce(props.saveFavorite, 1000);
         this.debouncedDeleteFavorite = this.debounce(props.deleteFavorite, 1000);
@@ -29,10 +32,10 @@ class GameDetailsIndexPage extends Component{
             ...this.state
         });
     }
+
     componentDidMount(){
         this.props.returnFavorites();
-        this.favoriteCheck(this.props.match.params.game_details, this.props.favorites);
-        
+        this.props.viewDetails(this.props.match.params.game_details);
         if(!this.props.viewDetails){
             const newItem = {searchrequest: this.props.match.params.game_details};
             const postItem = formatPostData(newItem);
@@ -41,14 +44,31 @@ class GameDetailsIndexPage extends Component{
                     action: 'details'
                 }
             })
-        } else {
+        } 
+    }
+
+    //---------------------
+    componentDidUpdate(prevProps, prevState){
+        window.scrollTo(0, 0);
+        if(prevProps.location.pathname !== this.props.location.pathname){
+            this.props.setLoadingFlag();
             this.props.viewDetails(this.props.match.params.game_details);
         }
+        if(
+            Object.keys(prevProps.details).length !== Object.keys(this.props.details).length
+            || prevProps.details.id !== this.props.details.id 
+            || (!this.state.screenshots.length && Object.keys(this.props.details).length)
+        ){
+            console.log('screenshots props', this.props);
+            this.splitScreenshots(this.props.details.screenshot_urls);
+        }
     }
-    componentWillReceiveProps(){
-        var checkFavorites = this.favoriteCheck(this.props.match.params.game_details, this.props.favorites)
+    componentWillReceiveProps(newProps){
+        if(newProps.favorites){
+            var checkFavorites = this.favoriteCheck(this.props.match.params.game_details, newProps.favorites)
         console.log('check on favorite', checkFavorites );
         this.handleArrayCheck();
+        }
     }
     debounce(callback, delay){
         let timeout = null;
@@ -89,23 +109,21 @@ class GameDetailsIndexPage extends Component{
             return false;
     }
 
+    splitScreenshots(str){
+        var screenshotsSplit = str.split(',');
+        this.setState({
+            screenshots: screenshotsSplit
+            });
+    }
+    //----------------------
     render(){
-        
-        console.log('==============props=============', this.props);
-        if (!this.props.details){
+        if (!Object.keys(this.props.details).length || this.props.loading){
             return (
-                <div className="carousel-container">
-                    <div className="loadingImage">
-                        <img src={ferret} alt="Loading Images" />
-                    </div>
-                </div>
+                <Loader />
             )
         }
-        
         const gameDetails = this.props.details;
-
         const favToggle = this.state.favorite ? "fas fa-heart" : "far fa-heart";
-
         console.log('props', this.props);
 
         const gameDescripExpand = {
@@ -116,29 +134,37 @@ class GameDetailsIndexPage extends Component{
         // --------------------------------------
         let getiOS = false;
         let getAndroid = false;
-
+        let iOSLink = '';
+        let androidLink = '';
         if (gameDetails.platform === "both") {
-            getiOS = true
-            getAndroid = true
-            
+            getiOS = true;
+            iOSLink = gameDetails.secondary_store_url;
+            getAndroid = true;
+            androidLink = gameDetails.store_url;
         } else if (gameDetails.platform === "apple") {
-            getiOS = true
-
+            getiOS = true;
+            iOSLink = gameDetails.store_url;
         } else if (gameDetails.platform === "android") {
-            getAndroid = true
+            getAndroid = true;
+            androidLink = gameDetails.store_url;
         }
-
         const iOSButtonDisplay = {
             display: getiOS ? "block" : "none"
         }
         const androidButtonDisplay = {
             display: getAndroid ? "block" : "none"
         }
+        //----------------------------------
+        
+        const data = this.props.details.related_game_apps;
+        let showRelated = true;
+        if(!this.props.details.related_game_apps ){
+            showRelated = false;            
+        }
+        
+
         // --------------------------------------
-        
-        
         return(
-            
             <div className="singleGamePage">
                 <div className="gameTitle">
                     <h2>{gameDetails.app_name}</h2>
@@ -163,10 +189,10 @@ class GameDetailsIndexPage extends Component{
                         </div>
                         <div className="getItHere">
                             <button type="iOSButton" style={iOSButtonDisplay}>
-                                <img src={iOS} className="iOSButtonImg"/>
+                                <a href={iOSLink} target='_blank'><img src={iOS} className="iOSButtonImg"/></a>
                             </button>
                             <button type="androidButton" style={androidButtonDisplay}>
-                                <img src={Android} className="androidButtonImg"/>
+                            <a href={androidLink} target='_blank'><img src={Android} className="androidButtonImg"/></a>
                             </button>
                             <button type="button" className="favButton" onClick={this.handleFavoriteToggle.bind(this)}>
                                 <i className={`${favToggle} favIcon`}></i>
@@ -182,6 +208,9 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.release_date.slice(0, 4)}
                                     </div>
                                 </div>
+                                <div>
+                                    Rated: {gameDetails.content_rating}
+                                </div>
                                 <div className="genre">
                                     <div>
                                         Genre: 
@@ -190,12 +219,16 @@ class GameDetailsIndexPage extends Component{
                                         {gameDetails.genres.replace(/,/g ,", ")}
                                     </div>
                                 </div>
-                                <div>
-                                    Rated: {gameDetails.content_rating}
-                                </div>
                             </div>
                         </div>
-                            <div className="screenshots"></div>
+                    </div>
+                </div>
+                <div className="screenshots">
+                    <Screenshots images={this.state.screenshots}/>
+                </div>
+
+                <div className="gameDetailsBottom">
+                    <div className="detailsBottomInnerBox">
                         <h4 className="descripHeader">
                             Description
                         </h4>
@@ -207,11 +240,17 @@ class GameDetailsIndexPage extends Component{
                                 {expandButton}
                             </button>
                         </div>
-                        <h4>Related Games</h4>
+
+                        { showRelated ? <h4 className="appHeader">Related Games</h4> : null }
+                           
                     </div> 
-                </div>       
-                <div className="relatedCarosel">
-                    
+                </div>   
+                {/* // Need to setup flag in render to indicate if there is any data in the related games section.
+                // Then set conditional to show or hide the gamerenderer component based on that flag. 
+                //This should remove the issue with failure on load. 
+                //Still need to research the location issue. */}
+                <div className="relatedCarousel" >
+                    {this.props.details.related_game_apps ? <GameRenderer data={data} /> : null }
                 </div>
             </div>
         );
@@ -221,7 +260,10 @@ function mapStateToProps(state){
     return {
         details: state.game.details,
         favorites: state.favorite.favorites,
-        user: state.user.user
+        user: state.user.user,
+        errors: state.game.errors,
+        loading: state.game.loading
     }
 }
-export default connect(mapStateToProps, {viewDetails, returnFavorites, saveFavorite, deleteFavorite})(GameDetailsIndexPage);
+export default withRouter(connect(mapStateToProps, {viewDetails, returnFavorites, saveFavorite, deleteFavorite, setLoadingFlag})(GameDetailsIndexPage));
+

@@ -11,5 +11,6 @@ export default {
     AUTH_ERROR: "auth_error",
     SEND_FAVORITE: "send_favorite",
     FAVORITE_RESULTS: "favorite_results",
-    DELETE_FAVORITE: "delete_favorite"
+    DELETE_FAVORITE: "delete_favorite",
+    SET_LOADING_FLAG: 'set_loading_flag'
 };

@@ -3,6 +3,8 @@ import {NavLink, Link, withRouter} from 'react-router-dom';
 import '../assets/css/header-bar.scss'
 import {signIn, signOut} from "../actions";
 import { connect } from "react-redux";
+import WelcomeLogo from "../assets/images/wizard-icons/headerlogo.png"
+
 
 class HeaderBar extends Component {
     constructor(props){
@@ -199,20 +201,13 @@ class HeaderBar extends Component {
                             </ul>
                         </li>
                         <Link to="/wizard"><li className="nav-text">Wizard</li></Link>
-                        <li className="nav-text nav-text-bottom">
-                            <div className="plus-bar" onClick={this.toggleAboutMenu.bind(this)}>
-                                <Link to="/about">About </Link>
-                                <span className={`glyphicon glyphicon-${this.state.dropdownsOpen.about ? "minus" : "plus"}`} alt="list expand icon" aria-expanded={`${this.state.dropdownsOpen.about ? "true" : "false"}`} aria-label="About-Menu expansion"></span>
-                            </div>
-                            <ul className="about-menu" style={aboutMenuStyle}>
-                                <li><a>Contact Us</a></li>
-                            </ul>
-                        </li>
+                        <Link to="/about"><li className="nav-text">About</li></Link>
                         <Link to="/sign-up"><li className="nav-text">Sign Up</li></Link>
                         {this.renderLinks()}
                     </ul>
-                    <h2 className="appName">Games Ferret</h2>
-                    <div className="fas fa-search search-icon" onClick={this.toggleSearchBar.bind(this)}></div>
+                    <img className="logo" src={WelcomeLogo}/>
+                    <div className="fas fa-search search-icon" onClick={this.toggleSearchBar.bind(this)}></div> 
+
                 </nav>
                 <div className="dropdownSearch" style={searchDropDownStyle}>
                     <div>

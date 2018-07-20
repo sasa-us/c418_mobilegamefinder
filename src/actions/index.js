@@ -188,3 +188,6 @@ export function deleteFavorite(userID, gameID) {
         payload: resp
     }
 }
+export function setLoadingFlag(){
+    return { type: types.SET_LOADING_FLAG };
+}

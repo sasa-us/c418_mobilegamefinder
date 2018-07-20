@@ -16,7 +16,7 @@ import Wizard from './wizard/price';
 import Platform from "./wizard/platform";
 import Genre from "./wizard/genre";
 import Search from './search';
-import GameInfo from '../components/gamedetails'
+import GameInfo from './gamedetails';
 import About from './about';
 import Footer from './footer-bar';
 import WizardResults from "./wizard/wizardresults"
@@ -31,7 +31,6 @@ const App = () => (
             <div>
             <Header/>
             </div>
-
             <div className="mainBody">
                 <Switch>
                     <Route exact path="/" component={Home}/>
@@ -64,5 +63,4 @@ const App = () => (
 
         
 );
-
 export default App;

@@ -7,7 +7,7 @@ foreach($genres as $genre) {
                 FROM (
                     SELECT MIN(gac.id) AS id
                     FROM (
-                        SELECT CEIL(RAND() * MAX(id)) AS id
+                        SELECT CEIL(RAND() * (MAX(id) - MIN(id)) + MIN(id)) AS id
                         FROM `combined_game_content` 
                         WHERE genre = '$genre'
                         GROUP BY genre
