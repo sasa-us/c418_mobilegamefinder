@@ -29,7 +29,6 @@ class Genre extends Component {
         };
         this.setState(genre)
         localStorage.setItem('genre', JSON.stringify(genre));
-        console.log(localStorage);
         this.setState({
             disabled: "",
             styling: "active-wizard-button"

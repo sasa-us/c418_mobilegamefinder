@@ -9,7 +9,6 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type){
         case types.VIEW_DETAILS:
-        console.log('payload', action.payload);
             if(!action.payload.data.data[0].related_game_apps){
                 return {
                     ...state, 

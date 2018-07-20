@@ -8,8 +8,6 @@ class SignIn extends Component {
 
 
     async handleSignIn (values) {
-        console.log("form values", values);
-
         try{
             await this.props.accountSignIn(values);
 

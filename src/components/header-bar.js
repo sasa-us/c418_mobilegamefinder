@@ -114,7 +114,6 @@ class HeaderBar extends Component {
 
 
     renderLinks() {
-        console.log(this.props)
         if(this.props.auth) {
             return (
                 <Fragment>

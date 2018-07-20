@@ -19,7 +19,6 @@ class WizardResults extends Component {
         var priceData = JSON.parse(localStorage.getItem('price'));
         var platformData = JSON.parse(localStorage.getItem('platform'));
         var genreData = JSON.parse(localStorage.getItem('genre'));
-        console.log("wizard data: ", priceData.price, platformData.platform, genreData.genre);
         this.setState({
             price: priceData.price,
             platform: platformData.platform,
