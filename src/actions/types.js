@@ -10,5 +10,6 @@ export default {
     SIGN_OUT: "sign_out",
     AUTH_ERROR: "auth_error",
     SEND_FAVORITE: "send_favorite",
-    FAVORITE_RESULTS: "favorite_results"
+    FAVORITE_RESULTS: "favorite_results",
+    DELETE_FAVORITE: "delete_favorite"
 };

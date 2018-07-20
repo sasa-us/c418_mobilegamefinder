@@ -112,8 +112,8 @@ export function accountSignIn(userInfo){
             }
         });
 
-        localStorage.setItem("username", resp.data.user.username);
-        console.log('Sign In Resp:', resp);
+        localStorage.setItem("user", JSON.stringify(resp.data.user));
+        
         if(resp.data.success){
             return dispatch({
                 type: types.SIGN_IN,
@@ -171,4 +171,20 @@ export function returnFavorites(userID) {
         payload: resp
     }
 
+}
+export function deleteFavorite(userID, gameID) {
+    const newItem = {
+        user_id: userID,
+        game_id: gameID
+    };
+    const postnewItem = formatPostData(newItem);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
+        params: {
+            action: 'deletefavor'
+        }
+})
+    return {
+        type: types.DELETE_FAVORITE,
+        payload: resp
+    }
 }
