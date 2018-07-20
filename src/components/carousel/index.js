@@ -113,7 +113,7 @@ class Carousel extends Component {
         const rating = all_rating;
         const price = price_value;
         const id = game_id;
-        const descrip = description;
+        const miniDescription = description.replace(/<\/?[^><]*>|\&\#?\d*\w*\;/gm, " ");
         return (
             <div className="center-all"> 
                 <div className="carousel-container">
@@ -145,7 +145,7 @@ class Carousel extends Component {
                                 <div className="modalRow">
                                     <img className='modalImg' src={src} alt={text} />
                                     <div className="infoColumn">
-                                        <p>{ (descrip.length > 60) ? ((descrip.substring(0,60-3)) + '...') : descrip }</p>
+                                        <p>{ (miniDescription.length > 60) ? ((miniDescription.substring(0,60-3)) + '...') : miniDescription }</p>
                                         <div className="ratingStars">
                                             <ReactStars count={5} size={18} color2={'#ffd700'} value={parseFloat(rating)} edit={false}/>
                                         </div>
