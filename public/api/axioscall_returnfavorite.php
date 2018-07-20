@@ -9,19 +9,23 @@
 // recommendedGame = JSON.stringify(recommendedGame);
 const newItem = {
         user_id: '1',
-        game_id: 'tasas.classicsudokupro'
-        //favorite_list: recommendedGame
-
     };
+
 const postnewItem = formatPostData(newItem);
 axios.post('/api/gameapp.php', postnewItem, {
             params: {
-                action: 'savefavorite'
+                action: 'returnfavorite'
             }
     }).then(resp => {
         console.log('POST RESPONSE:', resp);
 });
 
+    function formatPostData(data){
+        const params = new URLSearchParams();
+        for(let [k, v] of Object.entries(data)){
+            params.append(k, v);
+        }
+        return params;
 }
 
 
