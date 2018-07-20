@@ -121,7 +121,6 @@ class HeaderBar extends Component {
                     <li className="nav-text nav-text-bottom">
                         <NavLink to ="/favorites">Favorites</NavLink>
                     </li>
-
                     <li className="nav-text nav-text-bottom">
                         <NavLink onClick={this.props.signOut} to ="sign-in">Sign Out</NavLink>
                     </li>
@@ -131,6 +130,9 @@ class HeaderBar extends Component {
         }
         return(
             <Fragment>
+                <li className="nav-text nav-text-bottom">
+                    <NavLink to="/sign-up">Sign Up</NavLink>
+                </li>
                 <li className="nav-item nav-text">
                     <NavLink className="nav-link" to ="/sign-in">Sign In</NavLink>
                 </li>
@@ -202,7 +204,7 @@ class HeaderBar extends Component {
                         </li>
                         <Link to="/wizard"><li className="nav-text">Wizard</li></Link>
                         <Link to="/about"><li className="nav-text">About</li></Link>
-                        <Link to="/sign-up"><li className="nav-text">Sign Up</li></Link>
+                        
                         {this.renderLinks()}
                     </ul>
                     <img className="logo" src={WelcomeLogo}/>
