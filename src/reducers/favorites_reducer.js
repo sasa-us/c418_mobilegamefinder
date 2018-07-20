@@ -12,6 +12,8 @@ export default (state = DEFAULT_STATE, action)=> {
             return {...state, newFavorite: action.payload.data};
         case types.FAVORITE_RESULTS:
             return {...state, favorites: action.payload.data.data};
+        case types.DELETE_FAVORITE:
+            return {...state, favorites: action.payload.data.data};
         default:
             return state;
     }

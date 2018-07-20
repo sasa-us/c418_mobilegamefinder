@@ -6,7 +6,7 @@ import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
 import ferret from '../../assets/images/ferretgif.gif';
-import {viewDetails, returnFavorites, saveFavorite} from '../../actions/';
+import {viewDetails, returnFavorites, saveFavorite, deleteFavorite} from '../../actions/';
 // import {formatPostData} from '../../helper';
 // import axios from 'axios';
 
@@ -20,6 +20,7 @@ class GameDetailsIndexPage extends Component{
             favorite: false
         };
         this.debouncedSaveFavorite = this.debounce(props.saveFavorite, 1000);
+        this.debouncedDeleteFavorite = this.debounce(props.deleteFavorite, 1000);
     };
     toggleDescriptionExpand(event){
         event.stopPropagation();
@@ -61,6 +62,7 @@ class GameDetailsIndexPage extends Component{
             this.setState({
                 favorite: false
             });
+            this.debouncedDeleteFavorite(this.props.user.id, this.props.match.params.game_details);
             console.log('Fav: changed to FALSE');
         } else {
             this.setState({
@@ -222,4 +224,4 @@ function mapStateToProps(state){
         user: state.user.user
     }
 }
-export default connect(mapStateToProps, {viewDetails, returnFavorites, saveFavorite})(GameDetailsIndexPage);
+export default connect(mapStateToProps, {viewDetails, returnFavorites, saveFavorite, deleteFavorite})(GameDetailsIndexPage);
