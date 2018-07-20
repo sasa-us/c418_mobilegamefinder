@@ -87,7 +87,7 @@ export function createAccount(userInfo){
                 }
             });
 
-            localStorage.setItem("username", resp.data.user.username);
+            localStorage.setItem("user", resp.data.user);
 
             dispatch ({
                 type: types.SIGN_UP,
@@ -108,9 +108,9 @@ export function accountSignIn(userInfo){
                 action: 'login'
             }
         });
-
-        localStorage.setItem("username", resp.data.user.username);
+        
         if(resp.data.success){
+            localStorage.setItem("user", JSON.stringify(resp.data.user));
             return dispatch({
                 type: types.SIGN_IN,
                 user: resp.data.user
@@ -133,7 +133,6 @@ export function signOut(){
             action: 'logout'
         }
     });    
-    console.log('logged out');
     return{
         type: types.SIGN_OUT,
         payload: resp
@@ -175,21 +174,25 @@ export function returnFavorites(userID) {
 
 }
 export function deleteFavorite(userID, gameID) {
-    const newItem = {
-        user_id: userID,
-        game_id: gameID
-    };
-    const postnewItem = formatPostData(newItem);
-    const resp = axios.post('/api/gameapp.php', postnewItem, {
-        params: {
-            action: 'deletefavor'
-        }
-})
-    return {
-        type: types.DELETE_FAVORITE,
-        payload: resp
+    return async dispatch => {
+        const newItem = {
+            user_id: userID,
+            game_id: gameID
+        };
+
+        const postnewItem = formatPostData(newItem);
+        const resp = await axios.post('/api/gameapp.php', postnewItem, {
+            params: {
+                action: 'deletefavor'
+            }
+        });
+        dispatch({
+            type: types.DELETE_FAVORITE,
+            payload: resp
+        });
     }
 }
+
 export function setLoadingFlag(){
     return { type: types.SET_LOADING_FLAG };
 }

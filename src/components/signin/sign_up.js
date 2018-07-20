@@ -11,14 +11,10 @@ class SignUp extends Component {
             await this.props.createAccount(values);
             this.props.history.push('/');
         } catch(err){
-            console.warn(err);
         }
 
     }
 
-    // handleSignUp (values) {
-    //     this.props.createAccount(values)
-    // }
 
     render() {
         const {handleSubmit} = this.props;

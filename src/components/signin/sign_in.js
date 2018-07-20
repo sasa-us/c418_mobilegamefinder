@@ -13,7 +13,6 @@ class SignIn extends Component {
 
             this.props.history.push('/');
         } catch(err){
-            console.warn(err);
         }
 
     }

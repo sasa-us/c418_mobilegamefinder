@@ -7,18 +7,6 @@ import GeneralText from '../multiuse/generaltext';
 import types from "../../actions/types";
 
 class HomePage extends Component {
-    state = {
-        genText: 'Welcome to Games Ferret!'
-    }
-
-    componentWillMount() {
-        const getUserNameFromStorage = window.localStorage.getItem('username');
-        if(getUserNameFromStorage) {
-            this.setState({
-                genText: `Welcome ${getUserNameFromStorage}` //browser
-            });
-        }
-    }
     componentDidMount() {
         const isNotFirstTimeVisit = window.localStorage.getItem('notfirstimer');
         if(!isNotFirstTimeVisit) {
@@ -30,8 +18,8 @@ class HomePage extends Component {
         this.props.clearModal();
     }
     render() {
-        const {modal: {firstModal }} = this.props;
-        const {genText} = this.state;
+        const {modal: {firstModal }, user } = this.props;
+        const genText = user && user.username ? `Welcome ${user.username}` : 'Welcome to Games Ferret!';
         return (
             <div className="homePageContainer">
                 <FirstTimeModal parentComponent={genText} content={firstModal} handleClose={() => this.handleModalClose()} />
@@ -42,6 +30,7 @@ class HomePage extends Component {
     }
 }
 const mapStateToProps = (state) => ({
-    modal: state.modal
+    modal: state.modal,
+    user: state.user.user
 });
 export default connect(mapStateToProps,{ triggerModal, clearModal })(HomePage);

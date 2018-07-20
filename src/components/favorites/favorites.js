@@ -11,8 +11,9 @@ class Favorites extends Component {
     constructor(){
         super();
     }
-    removeFavorite(){
-        this.props.deleteFavorite(this.props.user.id, this.props.details.game_id);
+    async removeFavorite(){
+        await this.props.deleteFavorite(this.props.user.id, this.props.details.game_id);
+        
         this.props.returnFavorites(this.props.user.id);
     }
     render(){
