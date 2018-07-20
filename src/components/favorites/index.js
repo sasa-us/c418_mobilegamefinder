@@ -3,39 +3,36 @@ import Favorites from './favorites';
 import './results.scss';
 import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
-import {searchResults} from '../../actions/';
+import {searchResults, returnFavorites} from '../../actions/';
 import ferret from '../../assets/images/ferretgif.gif';
 
-class ResultsList extends Component {
+class FavoritesList extends Component {
 
 
     componentDidMount(){
-        this.getFavoritesData(this.props.search);
-    }
-    getFavoritesData(){
-        this.props.searchFavorites(this.props.search);
-       
+        this.props.returnFavorites("1");
     }
 
+
     render(){
-        if (!this.props.gamelist){
-            return (
-                <div className="carousel-container">
-                    <div className="loadingImage">
-                        <img src={ferret} alt="Loading Images" />
-                    </div>
-                </div>
-            )
-    }
-    const data = this.props.gamelist.data;
-        return (
+        console.log("props", this.props.favorites);
+        // if (!this.props.gamelist){
+        //     return (
+        //         <div className="carousel-container">
+        //             <div className="loadingImage">
+        //                 <img src={ferret} alt="Loading Images" />
+        //             </div>
+        //         </div>
+        //     )
+    // }
+    const data = this.props.favorites;
+    console.log("data", data);
+         return (
             <div className="resContainer">
-                <h2>{this.props.title}</h2>
-                <GeneralText text={this.props.text} />
+                {/*<h2>{data.app_name}</h2>*/}
                 <div className="detailContainer">
                     {data.map(game => <Favorites key={game.game_id} details={game}/>)}
                 </div>
-                <h1>test header</h1>
             </div>
         )
     }
@@ -44,7 +41,7 @@ class ResultsList extends Component {
 
 function mapStateToProps(state){
     return {
-        gamelist: state.search.gamelist
+        favorites: state.favorite.favorites
     }
 }
-export default connect(mapStateToProps, {searchResults})(ResultsList);
+export default connect(mapStateToProps, {searchResults, returnFavorites})(FavoritesList);

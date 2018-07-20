@@ -136,7 +136,7 @@ export function signOut(){
     return{type: types.SIGN_OUT};
 }
 
-export function searchFavorites(userID, gameID) {
+export function saveFavorite(userID, gameID) {
     const newItem = {
         user_id: userID,
         game_id: gameID
@@ -147,8 +147,28 @@ export function searchFavorites(userID, gameID) {
             action: 'savefavorite'
         }
     });
+    console.log('save favorites:', resp);
     return {
         type: types.SEND_FAVORITE,
         payload: resp
     }
+}
+
+export function returnFavorites(userID) {
+    const newItem = {
+        user_id: userID,
+    };
+
+    const postnewItem = formatPostData(newItem);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
+        params: {
+            action: 'returnfavorite'
+        }
+    });
+    console.log('return favorites:', resp)
+    return {
+        type: types.FAVORITE_RESULTS,
+        payload: resp
+    }
+
 }
