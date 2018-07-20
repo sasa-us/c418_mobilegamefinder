@@ -1,15 +1,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script>
 
-let recommendedGame = ['com.gameloft.android.ANMP.GloftINHM',           
-                        'techmasterplus.classicsudokupro', 'techmasterplus.sudokumasteradfree'
-                      ];
+// let recommendedGame = ['com.gameloft.android.ANMP.GloftINHM',
+//                         'techmasterplus.classicsudokupro', 'techmasterplus.sudokumasteradfree'
+//                       ];
 
   
-recommendedGame = JSON.stringify(recommendedGame);
+//recommendedGame = JSON.stringify(recommendedGame);
 const newItem = {
         user_id: '1',
-        favorite_list: recommendedGame
+        game_id: 'com.gameloft.android.ANMP.GloftINHM'
     };
 const postnewItem = formatPostData(newItem);
 axios.post('/api/gameapp.php', postnewItem, {

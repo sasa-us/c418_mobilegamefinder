@@ -10,10 +10,10 @@ class ResultsList extends Component {
 
 
     componentDidMount(){
-        this.getResultData(this.props.search);
+        this.getFavoritesData(this.props.search);
     }
-    getResultData(){
-        this.props.searchResults(this.props.search);
+    getFavoritesData(){
+        this.props.searchFavorites(this.props.search);
        
     }
 
