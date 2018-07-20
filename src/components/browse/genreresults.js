@@ -12,7 +12,6 @@ class GenreResultsList extends Component {
         this.getData();
     }
     getData() {
-        console.log("this is the browse data: ", this.props.match.params.genre);
         const newItem = {
             genre: this.props.match.params.genre,
         };

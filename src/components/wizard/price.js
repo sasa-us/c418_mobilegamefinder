@@ -20,7 +20,6 @@ class Wizard extends Component {
         };
         this.setState(price);
         localStorage.setItem('price', JSON.stringify(price));
-        console.log(localStorage);
         this.setState({
             disabled: "",
             styling: "active-wizard-button"

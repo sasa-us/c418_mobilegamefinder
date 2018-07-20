@@ -21,7 +21,6 @@ class Platform extends Component {
         };
         this.setState(platform);
         localStorage.setItem('platform', JSON.stringify(platform));
-        console.log(localStorage);
         this.setState({
             disabled: "",
             styling: "active-wizard-button"

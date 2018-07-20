@@ -59,14 +59,12 @@ class GameDetailsIndexPage extends Component{
             || prevProps.details.id !== this.props.details.id 
             || (!this.state.screenshots.length && Object.keys(this.props.details).length)
         ){
-            console.log('screenshots props', this.props);
             this.splitScreenshots(this.props.details.screenshot_urls);
         }
     }
     componentWillReceiveProps(newProps){
         if(newProps.favorites){
             var checkFavorites = this.favoriteCheck(this.props.match.params.game_details, newProps.favorites)
-        console.log('check on favorite', checkFavorites );
         this.handleArrayCheck();
         }
     }
@@ -83,14 +81,12 @@ class GameDetailsIndexPage extends Component{
                 favorite: false
             });
             this.debouncedDeleteFavorite(this.props.user.id, this.props.match.params.game_details);
-            console.log('Fav: changed to FALSE');
         } else {
             this.setState({
                 favorite: true
             });
         
             this.debouncedSaveFavorite(this.props.user.id, this.props.match.params.game_details);
-            console.log('Fav: changed to TRUE');
         }
     }
     handleArrayCheck(){
@@ -124,7 +120,6 @@ class GameDetailsIndexPage extends Component{
         }
         const gameDetails = this.props.details;
         const favToggle = this.state.favorite ? "fas fa-heart" : "far fa-heart";
-        console.log('props', this.props);
 
         const gameDescripExpand = {
             height: this.state.infoExpanded.gameDescripSection ? "auto" : "144px",
@@ -162,7 +157,7 @@ class GameDetailsIndexPage extends Component{
             showRelated = false;            
         }
         let loggedIn = false;
-        if(this.props.user ){
+        if(localStorage.getItem("user")){
             loggedIn = true;            
         }
 

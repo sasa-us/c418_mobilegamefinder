@@ -21,7 +21,6 @@ class HomePage extends Component {
     }
     componentDidMount() {
         const isNotFirstTimeVisit = window.localStorage.getItem('notfirstimer');
-        //console.log(isNotFirstTimeVisit, 'woo you must love ferrets');
         if(!isNotFirstTimeVisit) {
             this.props.triggerModal('hello')
             window.localStorage.setItem('notfirstimer', true);

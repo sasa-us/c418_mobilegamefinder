@@ -81,13 +81,11 @@ export function createAccount(userInfo){
     return async (dispatch) => {
         try {
             const postnewItem = formatPostData(userInfo);
-            console.log("postnew item? ", postnewItem);
             const resp = await axios.post('/api/gameapp.php', postnewItem, {
                 params: {
                     action: 'signup'
                 }
             });
-            console.log("resp?", resp);
 
             localStorage.setItem("username", resp.data.user.username);
 
@@ -95,8 +93,7 @@ export function createAccount(userInfo){
                 type: types.SIGN_UP,
                 user: resp.data.user
             });
-        } catch(err) {
-            console.log('SIGN UP ERROR:', err.message);
+        } catch(err) {;
         }
     }
 }
@@ -113,7 +110,6 @@ export function accountSignIn(userInfo){
         });
 
         localStorage.setItem("user", JSON.stringify(resp.data.user));
-        console.log('resp user:', resp.data.user)
         if(resp.data.success){
             return dispatch({
                 type: types.SIGN_IN,
@@ -132,7 +128,6 @@ export function accountSignIn(userInfo){
 
 export function signOut(){
     localStorage.removeItem('user');
-    console.log(localStorage);
     return{type: types.SIGN_OUT};
 }
 
@@ -147,7 +142,6 @@ export function saveFavorite(userID, gameID) {
             action: 'savefavorite'
         }
     });
-    console.log('save favorites:', resp);
     return {
         type: types.SEND_FAVORITE,
         payload: resp
@@ -165,7 +159,6 @@ export function returnFavorites(userID) {
             action: 'returnfavorite'
         }
     });
-    console.log('return favorites:', resp)
     return {
         type: types.FAVORITE_RESULTS,
         payload: resp

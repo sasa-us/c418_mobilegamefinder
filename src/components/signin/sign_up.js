@@ -7,8 +7,6 @@ import {renderInputs} from "../../helpers";
 class SignUp extends Component {
 
     async handleSignUp (values) {
-        console.log("form values", values);
-
         try{
             await this.props.createAccount(values);
             this.props.history.push('/');
@@ -19,7 +17,6 @@ class SignUp extends Component {
     }
 
     // handleSignUp (values) {
-    //     console.log("form values", values);
     //     this.props.createAccount(values)
     // }
 

@@ -2,7 +2,6 @@ import React from 'react';
 import GameComponent from './gamecomponent';
 
 export default props =>{
-    console.log('renderer props', props);
     const data = props.data;
     return(
         <div className="detailContainer">
