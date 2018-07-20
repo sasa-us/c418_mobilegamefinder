@@ -8,6 +8,7 @@ import Promise from 'redux-promise';
 import rootReducer from './reducers/';
 import think from "./middleware/think"
 import types from "./actions/types";
+import './/assets/css/app.scss';
 
 const store = createStore(rootReducer, {}, applyMiddleware(Promise, think));
 
