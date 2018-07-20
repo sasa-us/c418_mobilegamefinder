@@ -107,13 +107,14 @@ export function createAccount(userInfo){
     return async (dispatch) => {
         try {
             const postnewItem = formatPostData(userInfo);
-
+            console.log("postnew item? ", postnewItem);
             const resp = await axios.post('/api/gameapp.php', postnewItem, {
                 params: {
                     action: 'signup'
                 }
             });
-            debugger;
+            console.log("resp?", resp);
+
             localStorage.setItem("username", resp.data.user.username);
 
             dispatch ({

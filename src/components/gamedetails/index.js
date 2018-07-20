@@ -17,7 +17,7 @@ class GameDetailsIndexPage extends Component{
             infoExpanded: {
                 gameDescripSection: false
             },
-            randIndex: Math.floor(Math.random() * 10)
+            favorite: false
         };
     };
     toggleDescriptionExpand(event){
@@ -40,6 +40,19 @@ class GameDetailsIndexPage extends Component{
             this.props.viewDetails(this.props.match.params.game_details);
         }
     }
+    handleFavorite(){
+        if (this.state.favorite === true){
+            this.setState({
+                favorite: false
+            });
+            console.log('Fav: changed to FALSE');
+        } else {
+            this.setState({
+                favorite: true
+            });
+            console.log('Fav: changed to TRUE');
+        }
+    }
 
     render(){
         if (!this.props.details){
@@ -53,6 +66,8 @@ class GameDetailsIndexPage extends Component{
         }
 
         const gameDetails = this.props.details;
+
+        const favToggle = this.state.favorite ? "fas fa-heart" : "far fa-heart";
 
         console.log('props', this.props);
 
@@ -115,6 +130,9 @@ class GameDetailsIndexPage extends Component{
                             </button>
                             <button type="androidButton" style={androidButtonDisplay}>
                                 <img src={Android} className="androidButtonImg"/>
+                            </button>
+                            <button type="button" className="favButton" onClick={this.handleFavorite.bind(this)}>
+                                <i className={`${favToggle} favIcon`}></i>
                             </button>
                         </div>
                         <div>

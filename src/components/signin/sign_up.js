@@ -6,11 +6,22 @@ import {renderInputs} from "../../helpers";
 
 class SignUp extends Component {
 
-
-    handleSignUp (values) {
+    async handleSignUp (values) {
         console.log("form values", values);
-        this.props.createAccount(values)
+
+        try{
+            await this.props.createAccount(values);
+            this.props.history.push('/');
+        } catch(err){
+            console.warn(err);
+        }
+
     }
+
+    // handleSignUp (values) {
+    //     console.log("form values", values);
+    //     this.props.createAccount(values)
+    // }
 
     render() {
         const {handleSubmit} = this.props;

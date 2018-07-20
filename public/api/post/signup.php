@@ -104,7 +104,6 @@ function checkInsert($conn, $query) {
     global $output;
     if ($result) {
         $output['success'] = true;
-      //  echo " New records insert successfully";
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }
