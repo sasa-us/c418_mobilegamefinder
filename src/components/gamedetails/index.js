@@ -56,8 +56,8 @@ class GameDetailsIndexPage extends Component{
     }
     //----------------------
     render(){
-        console.log(this.props);
-        if (!Object.keys(this.props.details).length){
+        console.log('========== THIS PROPS ===========', this.props);
+        if (!Object.keys(this.props.details).length || this.props.loading){
             return (
                 <Loader />
             )
@@ -195,7 +195,7 @@ function mapStateToProps(state){
     return {
         details: state.game.details,
         errors: state.game.errors,
-        loading: state.search.loading
+        loading: state.game.loading
     }
 }
 export default withRouter(connect(mapStateToProps, {viewDetails, setLoadingFlag})(GameDetailsIndexPage));
