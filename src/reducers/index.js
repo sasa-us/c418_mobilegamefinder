@@ -6,6 +6,7 @@ import wizardReducer from './wizardreducer';
 import modalReducer from './modalReducer';
 import browseReducer from './browsereducer';
 import userReducer from './user_reducer';
+import favoriteReducer from "./favorites_reducer";
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     wizard: wizardReducer,
     modal: modalReducer,
     browse: browseReducer,
-    user: userReducer
+    user: userReducer,
+    favorite: favoriteReducer
 });
 export default rootReducer;

@@ -6,7 +6,7 @@ import Android from '../../assets/images/android/google-play-badge.png';
 import './gamedetails.scss';
 import {connect} from 'react-redux';
 import ferret from '../../assets/images/ferretgif.gif';
-import {viewDetails} from '../../actions/';
+import {viewDetails, returnFavorites, saveFavorite} from '../../actions/';
 // import {formatPostData} from '../../helper';
 // import axios from 'axios';
 
@@ -185,4 +185,4 @@ function mapStateToProps(state){
         details: state.game.details
     }
 }
-export default connect(mapStateToProps, {viewDetails})(GameDetailsIndexPage);
+export default connect(mapStateToProps, {viewDetails, returnFavorites, saveFavorite})(GameDetailsIndexPage);

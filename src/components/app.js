@@ -23,7 +23,7 @@ import WizardResults from "./wizard/wizardresults"
 import '../assets/css/app.scss';
 import SignIn from "../components/signin/sign_in";
 import SignUp from "../components/signin/sign_up";
-import Favorites from "../components/favorites/favorites";
+import Favorites from "../components/favorites";
 
 
 const App = () => (

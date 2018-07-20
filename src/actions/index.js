@@ -77,32 +77,6 @@ export function browseResults(terms){
     }
 }
 
-//   const newItem = {
-// username: 'sasa',
-//     email:  'sasa@gmail.com',
-//     //email: '',
-//     password: 'sasa'
-// };
-// const postnewItem = formatPostData(newItem);
-// // axios.get('mainpage.php', {
-// axios.post('/api/gameapp.php', postnewItem, {
-//     params: {
-//         action: 'signup'
-//     }
-// }).then(resp => {
-//     console.log('POST RESPONSE:', resp);
-// });
-//
-// function formatPostData(data){
-//     const params = new URLSearchParams();
-//
-//     for(let [k, v] of Object.entries(data)){
-//         params.append(k, v);
-//     }
-//
-//     return params;
-// }
-
 export function createAccount(userInfo){
     return async (dispatch) => {
         try {
@@ -138,7 +112,6 @@ export function accountSignIn(userInfo){
             }
         });
 
-        debugger;
         localStorage.setItem("username", resp.data.user.username);
         console.log('Sign In Resp:', resp);
         if(resp.data.success){
@@ -161,4 +134,41 @@ export function signOut(){
     localStorage.removeItem('username');
     console.log(localStorage);
     return{type: types.SIGN_OUT};
+}
+
+export function saveFavorite(userID, gameID) {
+    const newItem = {
+        user_id: userID,
+        game_id: gameID
+    };
+    const postnewItem = formatPostData(newItem);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
+        params: {
+            action: 'savefavorite'
+        }
+    });
+    console.log('save favorites:', resp);
+    return {
+        type: types.SEND_FAVORITE,
+        payload: resp
+    }
+}
+
+export function returnFavorites(userID) {
+    const newItem = {
+        user_id: userID,
+    };
+
+    const postnewItem = formatPostData(newItem);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
+        params: {
+            action: 'returnfavorite'
+        }
+    });
+    console.log('return favorites:', resp)
+    return {
+        type: types.FAVORITE_RESULTS,
+        payload: resp
+    }
+
 }
