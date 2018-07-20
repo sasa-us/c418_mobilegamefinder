@@ -9,9 +9,8 @@
 // recommendedGame = JSON.stringify(recommendedGame);
 const newItem = {
         user_id: '1',
-        game_id: 'tasas.classicsudokupro'
     };
-    
+
 const postnewItem = formatPostData(newItem);
 axios.post('/api/gameapp.php', postnewItem, {
             params: {
