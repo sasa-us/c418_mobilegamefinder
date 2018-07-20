@@ -161,7 +161,10 @@ class GameDetailsIndexPage extends Component{
         if(!this.props.details.related_game_apps ){
             showRelated = false;            
         }
-        
+        let loggedIn = false;
+        if(this.props.user ){
+            loggedIn = true;            
+        }
 
         // --------------------------------------
         return(
@@ -194,9 +197,10 @@ class GameDetailsIndexPage extends Component{
                             <button type="androidButton" style={androidButtonDisplay}>
                             <a href={androidLink} target='_blank'><img src={Android} className="androidButtonImg"/></a>
                             </button>
-                            <button type="button" className="favButton" onClick={this.handleFavoriteToggle.bind(this)}>
+                            { loggedIn ? <button type="button" className="favButton" onClick={this.handleFavoriteToggle.bind(this)}>
                                 <i className={`${favToggle} favIcon`}></i>
-                            </button>
+                            </button>: null }
+                            
                         </div>
                         <div>
                             <div className="gameDetailsTiny">
