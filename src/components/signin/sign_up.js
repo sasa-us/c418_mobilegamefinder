@@ -36,7 +36,7 @@ class SignUp extends Component {
                 </div>
                 <div className="row col-xs-6 col-xs-offset-3">
                     <div className="d-flex col-6 offset-3 justify-content-end">
-                        <button className="btn btn-outline-info btn-sm">Sign Up</button>
+                        <button className="btn btn-outline-info btn-sm col-xs-6 col-xs-offset-3">Sign Up</button>
                     </div>
                 </div>
             </form>
