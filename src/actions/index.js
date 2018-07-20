@@ -112,7 +112,6 @@ export function accountSignIn(userInfo){
             }
         });
 
-        debugger;
         localStorage.setItem("username", resp.data.user.username);
         console.log('Sign In Resp:', resp);
         if(resp.data.success){
@@ -137,6 +136,19 @@ export function signOut(){
     return{type: types.SIGN_OUT};
 }
 
-export function searchFavorites() {
-    //this is where we
+export function searchFavorites(userID, gameID) {
+    const newItem = {
+        user_id: userID,
+        game_id: gameID
+    };
+    const postnewItem = formatPostData(newItem);
+    const resp = axios.post('/api/gameapp.php', postnewItem, {
+        params: {
+            action: 'savefavorite'
+        }
+    });
+    return {
+        type: types.SEND_FAVORITE,
+        payload: resp
+    }
 }
