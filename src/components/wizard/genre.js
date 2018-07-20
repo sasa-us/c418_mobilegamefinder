@@ -85,12 +85,14 @@ class Genre extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="buttonContainer">
                 <Link to="/platform">
                     <button className="active-wizard-button" type="button">Back</button>
                 </Link>
                 <Link to="/wizardresults">
                     <button className={this.state.styling} disabled={this.state.disabled} type="button" onClick={this.getDataFromLocalStorage}>Next</button>
                 </Link>
+            </div>
             </div>
 
         )
