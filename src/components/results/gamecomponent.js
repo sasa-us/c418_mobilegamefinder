@@ -20,6 +20,8 @@ class GameResult extends Component {
         this.setState({modalIsOpen: false});
       }
     render(){
+        const miniDescription = this.props.details.description.replace(/<\/?[^><]*>|\&\#?\d*\w*\;/gm, " ");
+        
         const ratingChanged = (newRating) => {
         };
         Modal.setAppElement(document.getElementById('root'));
@@ -57,7 +59,7 @@ class GameResult extends Component {
                             <div className="modalRow">
                                 <img className='modalImg' src={this.props.details.icon_url} alt={this.props.details.app_name} />
                                 <div className="infoColumn">
-                                    <p>{ ((this.props.details.description).length > 60) ? (((this.props.details.description).substring(0,60-3)) + '...') : this.props.description }</p>
+                                    <p>{ (miniDescription.length > 60) ? ((miniDescription.substring(0,60-3)) + '...') : miniDescription }</p>
                                     <div className="stars">
                                         <ReactStars count={5} color2={'#ffd700'} value={parseFloat(this.props.details.all_rating)} edit={false}/>
                                     </div>
