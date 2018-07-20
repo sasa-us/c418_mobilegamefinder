@@ -1,10 +1,14 @@
 <?php
 session_start();
+$userID = $_POST['user_id'];
 
-$query = "SELECT `app_name`, `icon_url`, g.`game_id`, `content_rating`, `price_value`, `description`, `all_rating` 
-            FROM `user_game` AS `u` 
-            JOIN `combined_game_content` AS `g` 
-            ON u.game_id = g.game_id";
+$query = "SELECT `app_name`, `icon_url`, cgc.`game_id`, `content_rating`, `price_value`, `description`, `all_rating` 
+    FROM `user_game` AS `ug` 
+    JOIN `combined_game_content` AS `cgc` 
+    JOIN `users` AS `u`
+    ON ug.game_id = cgc.game_id
+    WHERE u.id = ug.user_id
+AND u.id = '{$userID}'";
 
 getDB($conn, $query);
 
