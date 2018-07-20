@@ -112,8 +112,8 @@ export function accountSignIn(userInfo){
             }
         });
 
-        localStorage.setItem("username", resp.data.user.username);
-        console.log('Sign In Resp:', resp);
+        localStorage.setItem("user", JSON.stringify(resp.data.user));
+        
         if(resp.data.success){
             return dispatch({
                 type: types.SIGN_IN,

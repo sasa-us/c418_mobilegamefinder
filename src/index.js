@@ -11,8 +11,12 @@ import types from "./actions/types";
 
 const store = createStore(rootReducer, {}, applyMiddleware(Promise, think));
 
-if(localStorage.getItem("username")) {
-    store.dispatch({type: types.SIGN_IN})
+if(localStorage.getItem("user")) {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    store.dispatch({
+        type: types.SIGN_IN,
+        user: userData
+    });
 }
 
 ReactDOM.render(
