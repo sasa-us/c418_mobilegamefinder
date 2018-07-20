@@ -1,35 +1,30 @@
 import React, {Component} from 'react';
 import Favorites from './favorites';
 import './results.scss';
-import GeneralText from '../multiuse/generaltext';
 import {connect} from 'react-redux';
 import {searchResults, returnFavorites} from '../../actions/';
-import ferret from '../../assets/images/ferretgif.gif';
+import GeneralText from '../multiuse/generaltext';
+import Loader from '../loader';
 
 class FavoritesList extends Component {
 
 
     componentDidMount(){
-        this.props.returnFavorites("1");
+        this.props.returnFavorites(this.props.user.id);
     }
-
-
+    
     render(){
-        console.log("props", this.props.favorites);
-        // if (!this.props.gamelist){
-        //     return (
-        //         <div className="carousel-container">
-        //             <div className="loadingImage">
-        //                 <img src={ferret} alt="Loading Images" />
-        //             </div>
-        //         </div>
-        //     )
-    // }
+        if (!this.props.favorites){
+            return (
+                <Loader />
+            )
+    }
     const data = this.props.favorites;
-    console.log("data", data);
+    const text = `Here are your favorite games, ${this.props.user.username}`;
          return (
             <div className="resContainer">
-                {/*<h2>{data.app_name}</h2>*/}
+                <h2>My Favorites</h2>
+                <GeneralText text={text} />
                 <div className="detailContainer">
                     {data.map(game => <Favorites key={game.game_id} details={game}/>)}
                 </div>
@@ -38,10 +33,10 @@ class FavoritesList extends Component {
     }
 }
 
-
 function mapStateToProps(state){
     return {
-        favorites: state.favorite.favorites
+        favorites: state.favorite.favorites,
+        user: state.user.user
     }
 }
 export default connect(mapStateToProps, {searchResults, returnFavorites})(FavoritesList);

@@ -113,7 +113,7 @@ export function accountSignIn(userInfo){
         });
 
         localStorage.setItem("user", JSON.stringify(resp.data.user));
-        
+        console.log('resp user:', resp.data.user)
         if(resp.data.success){
             return dispatch({
                 type: types.SIGN_IN,
@@ -131,7 +131,7 @@ export function accountSignIn(userInfo){
 }
 
 export function signOut(){
-    localStorage.removeItem('username');
+    localStorage.removeItem('user');
     console.log(localStorage);
     return{type: types.SIGN_OUT};
 }

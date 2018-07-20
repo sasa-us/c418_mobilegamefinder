@@ -34,7 +34,7 @@ class GameDetailsIndexPage extends Component{
     }
 
     componentDidMount(){
-        this.props.returnFavorites();
+        this.props.returnFavorites(this.props.user.id);
         this.props.viewDetails(this.props.match.params.game_details);
         if(!this.props.viewDetails){
             const newItem = {searchrequest: this.props.match.params.game_details};

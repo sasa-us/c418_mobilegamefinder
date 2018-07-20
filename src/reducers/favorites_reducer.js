@@ -8,7 +8,7 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action)=> {
     switch (action.type){
         case types.SEND_FAVORITE:
-        console.log('payload', action.payload);
+        
             return {...state, newFavorite: action.payload.data};
         case types.FAVORITE_RESULTS:
             return {...state, favorites: action.payload.data.data};
