@@ -139,6 +139,7 @@
 /* --------------------------------------- */
 .ImgAndArrowBox{
   display: flex;
+  justify-content: space-evenly;
   max-height: 300px;
   min-height: 300px;
 }
