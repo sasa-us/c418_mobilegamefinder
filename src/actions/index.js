@@ -86,13 +86,15 @@ export function createAccount(userInfo){
                     action: 'signup'
                 }
             });
-
-            localStorage.setItem("user", resp.data.user);
-
-            dispatch ({
-                type: types.SIGN_UP,
-                user: resp.data.user
-            });
+            console.log('resp user data', resp.data.user);
+            if(resp.data.success){
+                
+                localStorage.setItem("user", JSON.stringify(resp.data.user));   
+                dispatch ({
+                    type: types.SIGN_UP,
+                    user: resp.data.user
+                });
+            }
         } catch(err) {;
         }
     }
@@ -110,6 +112,7 @@ export function accountSignIn(userInfo){
         });
         
         if(resp.data.success){
+            console.log('sign in user', resp.data.user);
             localStorage.setItem("user", JSON.stringify(resp.data.user));
             return dispatch({
                 type: types.SIGN_IN,
