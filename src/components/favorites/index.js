@@ -14,11 +14,13 @@ class FavoritesList extends Component {
     }
     
     render(){
+        console.log('favorite props', this.props);
         if (!this.props.favorites){
             return (
                 <Loader />
             )
     }
+
     const data = this.props.favorites;
     const text = `Here are your favorite games, ${this.props.user.username}`;
          return (
