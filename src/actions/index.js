@@ -86,7 +86,6 @@ export function createAccount(userInfo){
                     action: 'signup'
                 }
             });
-            console.log('resp user data', resp.data.user);
             if(resp.data.success){
                 
                 localStorage.setItem("user", JSON.stringify(resp.data.user));   
@@ -112,7 +111,6 @@ export function accountSignIn(userInfo){
         });
         
         if(resp.data.success){
-            console.log('sign in user', resp.data.user);
             localStorage.setItem("user", JSON.stringify(resp.data.user));
             return dispatch({
                 type: types.SIGN_IN,

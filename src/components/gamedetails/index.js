@@ -100,7 +100,6 @@ class GameDetailsIndexPage extends Component{
         if(!array){
             return;
         }
-        debugger;
         var length = array.length;
         for (var i = 0; i < length; i++) {
             if (array[i].game_id === favorite)
